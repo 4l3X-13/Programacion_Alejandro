@@ -11,7 +11,7 @@ public class Ejercicio28 {
 
         Random random = new Random();
         int randomInt = random.nextInt(10000);
-        System.out.println(randomInt);
+        //System.out.println(randomInt);  // Quitar comentario para ver cual es el número ganador.
 
         do {
             System.out.println("Introduce un número para ganar la lotería: ");
