@@ -10,7 +10,7 @@ public class Ejercicio28 {
 
 
         Random random = new Random();
-        int randomInt = random.nextInt(10000);
+        int randomInt = random.nextInt(99999);
         //System.out.println(randomInt);  // Quitar comentario para ver cual es el número ganador.
 
         do {
