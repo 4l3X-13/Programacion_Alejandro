@@ -16,7 +16,7 @@ public class Ejercicio24 {
             }
             if (nota >= 5){
                 aprovado ++;
-            }else{
+            } else if (nota < 5 && nota >= 0) {
                 suspendido ++;
             }
 
