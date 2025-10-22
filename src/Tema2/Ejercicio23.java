@@ -6,8 +6,8 @@ public class Ejercicio23 {
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
         int num;
-        int contador1 = 0;
-        int contador2 = 0;
+        double contador1 = 0;
+        double contador2 = 0;
         do {
             System.out.println("Introduce un número positivo: ");
             num = sc.nextInt();
