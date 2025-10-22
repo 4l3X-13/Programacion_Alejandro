@@ -11,13 +11,13 @@ public class Ejercicio23 {
         do {
             System.out.println("Introduce un número positivo: ");
             num = sc.nextInt();
-            if (num >= 0){
-            contador1= contador1 + num;
-            contador2 ++;
+            if (num >= 0) {
+                contador1 = contador1 + num;
+                contador2++;
             }
         } while (num >= 0);
 
-        double media = contador1/contador2;
+        double media = contador1 / contador2;
         System.out.println("La media de los números son: " + media);
 
     }
