@@ -140,13 +140,13 @@ public class EjercicioCombateTema2 {
             int llenos1 = (vida1 * longitud) / vidaMax1;
             int llenos2 = (vida2 * longitud) / vidaMax2;
 
-            System.out.print("Jugador ①: [");
+            System.out.print("Jugador ①: ");
             for (int i = 0; i < longitud; i++) System.out.print(i < llenos1 ? "█" : "░");
-            System.out.println("] " + vida1 + "/" + vidaMax1);
+            System.out.println(" " + vida1 + "/" + vidaMax1);
 
-            System.out.print("Jugador ②: [");
+            System.out.print("Jugador ②: ");
             for (int i = 0; i < longitud; i++) System.out.print(i < llenos2 ? "█" : "░");
-            System.out.println("] " + vida2 + "/" + vidaMax2);
+            System.out.println(" " + vida2 + "/" + vidaMax2);
 
             // -------------------- TURNOS --------------------
             for (int turno = 1; turno <= 2; turno++) {
