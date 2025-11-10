@@ -7,46 +7,60 @@ public class Ejercicio8 {
         Scanner sc = new Scanner(System.in);
 
         System.out.println("Introduce una fecha:");
-        System.out.print("Mes: ");
-        int mes = esMes(sc);
-
         System.out.print("Día: ");
-        int dia = esDia(sc, mes);
+        int dia = sc.nextInt();
 
-        System.out.println("Fecha introducida: " + dia + "/" + mes);
+        System.out.print("Mes: ");
+        int mes = sc.nextInt();
+
+        System.out.print("Año: ");
+        int anio = sc.nextInt();
+
+        if (esFechaValida(dia, mes, anio)) {
+            System.out.println("La fecha es correcta.");
+        } else {
+            System.out.println("La fecha es incorrecta.");
+        }
+
         sc.close();
     }
 
-    public static int esMes(Scanner sc) {
-        int mes;
-        do {
-            mes = sc.nextInt();
-            if (mes < 1 || mes > 12) {
-                System.out.print("Mes incorrecto, inténtalo de nuevo: ");
-            }
-        } while (mes < 1 || mes > 12);
-        System.out.println("Mes correcto");
-        return mes;
-    }
-
-    public static int esDia(Scanner sc, int mes) {
-        int dia;
-        int maxDias;
-
-        switch (mes) {
-            case 2 -> maxDias = 28;
-            case 4, 6, 9, 11 -> maxDias = 30;
-            default -> maxDias = 31;
+    public static boolean esFechaValida(int dia, int mes, int anio) {
+        if (mes < 1 || mes > 12) {
+            return false;
         }
 
-        do {
-            dia = sc.nextInt();
-            if (dia < 1 || dia > maxDias) {
-                System.out.print("Día incorrecto, introduce un número entre 1 y " + maxDias + ": ");
-            }
-        } while (dia < 1 || dia > maxDias);
+        int diasEnMes = diasEnMes(mes, anio);
+        if (dia < 1 || dia > diasEnMes) {
+            return false;
+        }
 
-        System.out.println("Día correcto");
-        return dia;
+        return true;
+    }
+
+    public static int diasEnMes(int mes, int anio) {
+        switch (mes) {
+            case 1:
+            case 3:
+            case 5:
+            case 7:
+            case 8:
+            case 10:
+            case 12:
+                return 31;
+            case 4:
+            case 6:
+            case 9:
+            case 11:
+                return 30;
+            case 2:
+                return esBisiesto(anio) ? 29 : 28;
+            default:
+                return 0;
+        }
+    }
+
+    public static boolean esBisiesto(int anio) {
+        return (anio % 4 == 0 && anio % 100 != 0) || (anio % 400 == 0);
     }
 }
