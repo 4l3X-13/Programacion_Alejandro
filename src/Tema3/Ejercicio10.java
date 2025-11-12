@@ -1,5 +1,6 @@
 package Tema3;
 
+import java.sql.SQLOutput;
 import java.util.Scanner;
 
 public class Ejercicio10 {
@@ -15,26 +16,35 @@ public class Ejercicio10 {
                 "h) Comprobador de fechas.\n" +
                 "i) Dibujar triángulos.");
         System.out.println("\n Elige un ejercicio: ");
-        int eleccion = sc.nextInt();
+        char eleccion = sc.next().charAt(0);
 
         switch (eleccion) {
             case 'a':
+                System.out.println("EJERCICIO 1");
                 Ejercicio1.main(args);
             case 'b':
+                System.out.println("EJERCICIO 2");
                 Ejercicio2.main(args);
             case 'c':
+                System.out.println("EJERCICIO 3");
                 Ejercicio3.main(args);
             case 'd':
+                System.out.println("EJERCICIO 4");
                 Ejercicio4.main(args);
             case 'e':
+                System.out.println("EJERCICIO 5");
                 Ejercicio5.main(args);
             case 'f':
+                System.out.println("EJERCICIO 6");
                 Ejercicio6.main(args);
             case 'g':
+                System.out.println("EJERCICIO 7");
                 Ejercicio7.main(args);
             case 'h':
+                System.out.println("EJERCICIO 8");
                 Ejercicio8.main(args);
             case 'i':
+                System.out.println("EJERCICIO 9");
                 Ejercicio9.main(args);
 
         }
