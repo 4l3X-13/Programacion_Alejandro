@@ -20,10 +20,8 @@ public class Ejercicio10 {
         switch (eleccion) {
             case 'a':
                 Ejercicio1.main(args);
-
             case 'b':
                 Ejercicio2.main(args);
-
             case 'c':
                 Ejercicio3.main(args);
             case 'd':
@@ -34,7 +32,6 @@ public class Ejercicio10 {
                 Ejercicio6.main(args);
             case 'g':
                 Ejercicio7.main(args);
-
             case 'h':
                 Ejercicio8.main(args);
             case 'i':
