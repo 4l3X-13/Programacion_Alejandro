@@ -11,7 +11,7 @@ public class Ejercicio5 {
     }
 
     public static void tablaMult(int numero) {
-        System.out.println("Tabla del " + numero);
+        System.out.println("\n TABLA DEL " + numero);
         System.out.println("1 * " + numero + " = " + (1 * numero));
         System.out.println("2 * " + numero + " = " + (2 * numero));
         System.out.println("3 * " + numero + " = " + (3 * numero));
