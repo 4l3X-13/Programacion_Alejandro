@@ -9,10 +9,10 @@ public class Ejercicio3 {
         double radius = sc.nextDouble();
         System.out.println("El radio es válido?");
         System.out.println(validRadius(radius));
-        if (validRadius(radius) == true){
-            System.out.println(calculateCirclePerimeter(radius));
-            System.out.println(calculateCircleArea(radius));
-        }else{
+        if (validRadius(radius) == true) {
+            System.out.println("El perímetro del círculo es: " + calculateCirclePerimeter(radius));
+            System.out.println("La superfície del círculo es: " + calculateCircleArea(radius));
+        } else {
             System.out.println("El radio es inválido");
         }
 
