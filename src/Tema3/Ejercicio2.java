@@ -3,10 +3,17 @@ package Tema3;
 import java.util.Scanner;
 
 public class Ejercicio2 {
-     public static void main(String[] args) {
+    public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
-        System.out.println("Introduce tu edad:");
-        int age = sc.nextInt();
+        int age = 0;
+        do {
+            System.out.println("Introduce tu edad:");
+            age = sc.nextInt();
+            if (age < 0) {
+                System.out.println("Edad incorrecta, introduce otra edad: ");
+                age = sc.nextInt();
+            }
+        } while (age < 0);
         System.out.println("¿Eres mayor de edad?");
         System.out.println(isAdult(age));
         sc.close();
