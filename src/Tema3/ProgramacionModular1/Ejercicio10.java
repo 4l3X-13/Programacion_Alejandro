@@ -1,6 +1,5 @@
-package Tema3;
+package Tema3.ProgramacionModular1;
 
-import java.sql.SQLOutput;
 import java.util.Scanner;
 
 public class Ejercicio10 {

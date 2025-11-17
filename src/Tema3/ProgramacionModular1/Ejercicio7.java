@@ -1,4 +1,4 @@
-package Tema3;
+package Tema3.ProgramacionModular1;
 
 import java.util.Scanner;
 
@@ -10,7 +10,7 @@ public class Ejercicio7 {
             System.out.println("Introduce un número entero positivo hasta que introduzcas 0 para terminar el programa: ");
             num = scanner.nextInt();
             if (num > 0) {
-                if (esPrimo(num) == true) {
+                if (esPrimo(num)) {
                     System.out.println(num + " es primo");
                 } else if (esPrimo(num) == false) {
                     System.out.println(num + " no es primo");

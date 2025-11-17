@@ -1,15 +1,17 @@
-package Tema3;
+package Tema3.ProgramacionModular1;
 
 public class Ejercicio6 {
     public static void main(String[] args) {
         System.out.println("TABLAS DE MULTIPLICAR");
-        int num = 0;
-        numMult(num);
+        //int num = 0;
+        numMult();
     }
 
-    public static void numMult(int num) {
+    public static void numMult() {
+        int num =0;
         while (num < 10) {
             num++;
+            //for
             System.out.println("\n TABLA DEL  " + num);
             System.out.println(num + " x 1= " + num);
             System.out.println(num + " x 2= " + num * 2);

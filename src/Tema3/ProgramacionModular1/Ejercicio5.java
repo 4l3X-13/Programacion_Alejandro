@@ -1,4 +1,4 @@
-package Tema3;
+package Tema3.ProgramacionModular1;
 
 import java.util.Scanner;
 
@@ -6,12 +6,14 @@ public class Ejercicio5 {
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
         System.out.println("Introduce un número entero:");
+        //comprobar que sea del 1 al 10
         int numero = sc.nextInt();
         tablaMult(numero);
     }
 
     public static void tablaMult(int numero) {
         System.out.println("\n TABLA DEL " + numero);
+        //for
         System.out.println("1 * " + numero + " = " + (1 * numero));
         System.out.println("2 * " + numero + " = " + (2 * numero));
         System.out.println("3 * " + numero + " = " + (3 * numero));
