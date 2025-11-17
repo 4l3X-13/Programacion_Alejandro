@@ -5,25 +5,23 @@ import java.util.Scanner;
 public class Ejercicio3 {
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
-        System.out.println("Introduce un radio válido");
-        double radius = sc.nextDouble();
-        System.out.println("El radio es válido?");
-        System.out.println(validRadius(radius));
-        if (validRadius(radius) == true) {
-            System.out.println("El perímetro del círculo es: " + calculateCirclePerimeter(radius));
-            System.out.println("La superfície del círculo es: " + calculateCircleArea(radius));
-        } else {
-            System.out.println("El radio es inválido");
-        }
+        double radius;
 
+        do {
+            System.out.println("Introduce un radio válido:");
+            radius = sc.nextDouble();
+
+            if (!validRadius(radius)) {
+                System.out.println("El radio es inválido, prueba otra vez.");
+            }
+        } while (!validRadius(radius));
+
+        System.out.println("El perímetro del círculo es: " + calculateCirclePerimeter(radius));
+        System.out.println("La superficie del círculo es: " + calculateCircleArea(radius));
     }
 
     public static boolean validRadius(double radius) {
-        if (radius < 0) {
-            return false;
-        } else {
-            return true;
-        }
+        return radius >= 0;
     }
 
     public static double calculateCirclePerimeter(double radius) {
