@@ -1,8 +1,5 @@
 package Tema3;
 
-import org.w3c.dom.ls.LSOutput;
-
-import java.sql.SQLOutput;
 import java.util.Scanner;
 
 public class Ejercicio4 {
@@ -13,45 +10,40 @@ public class Ejercicio4 {
 
         switch (eleccion) {
             case 1:
-                euro2dollar();
+                System.out.println("Elegiste de EUROS a DÓLARES");
+                System.out.println("Introduce cuántos EUROS quieres convertir:");
+                double euros = sc.nextDouble();
+                double resultado1 = euro2dollar(euros);
+                System.out.println(euros + " EUROS son " + resultado1 + " DÓLARES");
                 break;
+
             case 2:
-                dollar2euro();
+                System.out.println("Elegiste de DÓLARES a EUROS");
+                System.out.println("Introduce cuántos DÓLARES quieres convertir:");
+                double dollars = sc.nextDouble();
+                double resultado2 = dollar2euro(dollars);
+                System.out.println(dollars + " DÓLARES son " + resultado2 + " EUROS");
                 break;
 
             default:
-                System.out.println("Opcion invalida");
+                System.out.println("Opción inválida");
         }
+
         sc.close();
     }
 
 
     public static void showMenu() {
-        System.out.println("Elije que quieres:");
-        System.out.println("1. Pasar de EUROS a DOLLARES");
-        System.out.println("2. Pasar de DOLLARES a EUROS");
+        System.out.println("Elige qué quieres:");
+        System.out.println("1. Pasar de EUROS a DÓLARES");
+        System.out.println("2. Pasar de DÓLARES a EUROS");
     }
 
-
-    public static double euro2dollar() {
-        Scanner sc = new Scanner(System.in);
-        System.out.println("Elegiste  de EUROS a DOLLARES");
-        System.out.println("Introduce cuántos EUROS quieres convertir a DOLLARES");
-        double euros1 = sc.nextDouble();
-        double dollares1 = euros1 * 1.157;
-        System.out.println(euros1 + " EUROS son " + dollares1 + " DOLLARES");
-        return dollares1;
+    public static double euro2dollar(double euros) {
+        return euros * 1.157;
     }
 
-    public static double dollar2euro() {
-        Scanner sc = new Scanner(System.in);
-        System.out.println("Elegiste  de DOLLARES a EUROS");
-        System.out.println("Introduce cuántos DOLLARES quieres convertir a EUROS");
-        double dollares2 = sc.nextDouble();
-        double euros2 = dollares2 * 0.86;
-        System.out.println(dollares2 + " DOLLARES son " + euros2 + " EUROS");
-        return euros2;
+    public static double dollar2euro(double dollars) {
+        return dollars * 0.86;
     }
-
-
 }
