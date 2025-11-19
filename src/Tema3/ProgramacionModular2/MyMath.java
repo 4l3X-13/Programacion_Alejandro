@@ -50,10 +50,14 @@ public class MyMath {
                 break;
 
             case 8:
-                boolean esPrimo2 = noEsPrimo2();
-                if (esPrimo2 == false) {
+                boolean noEsPrimo2 = noEsPrimo2();
+                if (noEsPrimo2 == false) {
                     System.out.println("No es primo");
                 }
+                break;
+
+            case 9:
+                numDigit();
                 break;
 
             default:
@@ -137,6 +141,21 @@ public class MyMath {
             }
         }
         return true;
+    }
+
+    public static void numDigit() {
+        Scanner scanner = new Scanner(System.in);
+        System.out.println("Introduce un numero:");
+        int num = scanner.nextInt();
+        int cifra = 0;
+        if (num == 0) {
+            System.out.println("Tiene 1 cifra");
+        }
+        do {
+            num = num / 10;
+            cifra++;
+        } while (num > 0);
+        System.out.println("Tiene " + cifra + " cifras");
     }
 }
 
