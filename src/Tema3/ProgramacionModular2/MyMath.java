@@ -43,13 +43,19 @@ public class MyMath {
                 break;
 
             case 7:
-                boolean esPrimo = esPrimo();
-                if (esPrimo == true) {
+                boolean esPrimo1 = esPrimo1();
+                if (esPrimo1 == true) {
                     System.out.println("Es primo");
-                } else {
+                }
+                break;
+
+            case 8:
+                boolean esPrimo2 = esPrimo2();
+                if (esPrimo2 == false) {
                     System.out.println("No es primo");
                 }
                 break;
+
             default:
                 System.out.println("Opción inválida");
         }
@@ -103,7 +109,22 @@ public class MyMath {
         return Math.PI * Math.pow(radio, 2);
     }
 
-    public static boolean esPrimo() {
+    public static boolean esPrimo1() {
+        Scanner scanner = new Scanner(System.in);
+        System.out.println("Introduce un número:");
+        int numero = scanner.nextInt();
+        if (numero <= 1) {
+            return false;
+        }
+        for (int i = 2; i <= Math.sqrt(numero); i++) {
+            if (numero % i == 0) {
+                return false;
+            }
+        }
+        return true;
+    }
+
+    public static boolean esPrimo2() {
         Scanner scanner = new Scanner(System.in);
         System.out.println("Introduce un número:");
         int numero = scanner.nextInt();
