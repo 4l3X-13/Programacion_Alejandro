@@ -50,7 +50,7 @@ public class MyMath {
                 break;
 
             case 8:
-                boolean esPrimo2 = esPrimo2();
+                boolean esPrimo2 = noEsPrimo2();
                 if (esPrimo2 == false) {
                     System.out.println("No es primo");
                 }
@@ -124,7 +124,7 @@ public class MyMath {
         return true;
     }
 
-    public static boolean esPrimo2() {
+    public static boolean noEsPrimo2() {
         Scanner scanner = new Scanner(System.in);
         System.out.println("Introduce un número:");
         int numero = scanner.nextInt();
