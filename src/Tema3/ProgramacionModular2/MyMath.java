@@ -13,7 +13,10 @@ public class MyMath {
         System.out.println("4. Sacar el área del rectángulo.");
         System.out.println("5. Sacar el perímetro del círculo.");
         System.out.println("6. Sacar el área del círculo.");
-        System.out.println("7. Sacar si un número NO es primo.");
+        System.out.println("7. Sacar si un número es primo.");
+        System.out.println("8. Sacar si un número NO es primo.");
+        System.out.println("9. Sacar cuantos dígitos tiene un número.");
+        System.out.println("10. Sacar cuantos digitos pares que tiene un número: ");
 
         int eleccion = scanner.nextInt();
 
@@ -58,6 +61,10 @@ public class MyMath {
 
             case 9:
                 numDigit();
+                break;
+
+            case 10:
+                numDigitPares();
                 break;
 
             default:
@@ -156,6 +163,22 @@ public class MyMath {
             cifra++;
         } while (num > 0);
         System.out.println("Tiene " + cifra + " cifras");
+    }
+
+    public static void numDigitPares(){
+        Scanner scanner = new Scanner(System.in);
+        System.out.println("Introduce un numero:");
+        int num = scanner.nextInt();
+        int cifra = 0;
+        if (num == 0) {
+            System.out.println("Tiene 1 cifra");
+        }
+        do {
+            num = num - 2;
+            cifra++;
+        } while (num > 0);
+        System.out.println("Tiene " + cifra + " cifras pares");
+
     }
 }
 
