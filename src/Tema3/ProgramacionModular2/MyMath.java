@@ -13,6 +13,7 @@ public class MyMath {
         System.out.println("4. Sacar el área del rectángulo.");
         System.out.println("5. Sacar el perímetro del círculo.");
         System.out.println("6. Sacar el área del círculo.");
+        System.out.println("7. Sacar si un número NO es primo.");
 
         int eleccion = scanner.nextInt();
 
@@ -41,6 +42,14 @@ public class MyMath {
                 System.out.println("Área del círculo: " + circleArea());
                 break;
 
+            case 7:
+                boolean esPrimo = esPrimo();
+                if (esPrimo == true) {
+                    System.out.println("Es primo");
+                } else {
+                    System.out.println("No es primo");
+                }
+                break;
             default:
                 System.out.println("Opción inválida");
         }
@@ -92,6 +101,21 @@ public class MyMath {
         System.out.print("Inserta el radio: ");
         double radio = scanner.nextDouble();
         return Math.PI * Math.pow(radio, 2);
+    }
+
+    public static boolean esPrimo() {
+        Scanner scanner = new Scanner(System.in);
+        System.out.println("Introduce un número:");
+        int numero = scanner.nextInt();
+        if (numero <= 1) {
+            return false;
+        }
+        for (int i = 2; i <= Math.sqrt(numero); i++) {
+            if (numero % i == 0) {
+                return false;
+            }
+        }
+        return true;
     }
 }
 
