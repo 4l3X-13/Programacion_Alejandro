@@ -165,20 +165,24 @@ public class MyMath {
         System.out.println("Tiene " + cifra + " cifras");
     }
 
-    public static void numDigitPares(){
+    public static void numDigitPares() {
         Scanner scanner = new Scanner(System.in);
         System.out.println("Introduce un numero:");
         int num = scanner.nextInt();
-        int cifra = 0;
+        int par = 0;
         if (num == 0) {
-            System.out.println("Tiene 1 cifra");
+            System.out.println("Tiene 1 cifra par");
         }
         do {
-            num = num - 2;
-            cifra++;
-        } while (num > 0);
-        System.out.println("Tiene " + cifra + " cifras pares");
+            if (num % 2 == 0) {
+                par++;
+                num = num / 10;
 
+            }else if (num % 2 != 0) {
+                num = num / 10;
+            }
+        } while (num != 0);
+        System.out.println("Tiene " + par + " cifras pares");
     }
 }
 
