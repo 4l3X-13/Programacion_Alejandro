@@ -1,11 +1,8 @@
 package Tema3.ProgramacionModular2;
 
-import java.util.Scanner;
-
 public class MyMath {
 
-    //TODO: cambiar y pasar por parámetro los datos necesarios de cada función
-    public static double squarePerimeter(int lado1) {
+    public static double squarePerimeter(double lado1) {
         return lado1 * 4;
     }
 
@@ -26,19 +23,14 @@ public class MyMath {
     }
 
     public static double circleArea(double radio2) {
-
         return Math.PI * Math.pow(radio2, 2);
     }
 
     public static boolean esPrimo1(int numero) {
+        if (numero <= 1) return false;
 
-        if (numero <= 1) {
-            return false;
-        }
         for (int i = 2; i <= Math.sqrt(numero); i++) {
-            if (numero % i == 0) {
-                return false;
-            }
+            if (numero % i == 0) return false;
         }
         return true;
     }
@@ -50,96 +42,77 @@ public class MyMath {
     public static void numDigit(int num, int cifra) {
         if (num == 0) {
             System.out.println("Tiene 1 cifra");
+            return;
         }
-        do {
+
+        while (num > 0) {
             num = num / 10;
             cifra++;
-        } while (num > 0);
+        }
+
         System.out.println("Tiene " + cifra + " cifras");
     }
 
     public static void numDigitPares(int num2, int par2) {
         if (num2 == 0) {
             System.out.println("Tiene 1 cifra par");
+            return;
         }
-        do {
-            if (num2 % 2 == 0) {
-                par2++;
-                num2 = num2 / 10;
 
-            } else if (num2 % 2 != 0) {
-                num2 = num2 / 10;
-            }
-        } while (num2 != 0);
+        while (num2 != 0) {
+            int digito = num2 % 10;
+            if (digito % 2 == 0) par2++;
+            num2 = num2 / 10;
+        }
+
         System.out.println("Tiene " + par2 + " cifras pares");
     }
 
     public static void numDigitImpares(int num3, int impar3) {
-
         if (num3 == 0) {
-            System.out.println("Tiene 1 cifra par");
+            System.out.println("Tiene 1 cifra impar");
+            return;
         }
-        do {
-            if (num3 % 2 == 0) {
-                num3 = num3 / 10;
 
-            } else if (num3 % 2 != 0) {
-                impar3++;
-                num3 = num3 / 10;
-            }
-        } while (num3 != 0);
+        while (num3 != 0) {
+            int digito = num3 % 10;
+            if (digito % 2 != 0) impar3++;
+            num3 = num3 / 10;
+        }
+
         System.out.println("Tiene " + impar3 + " cifras impares");
     }
 
-    public static int factorial() {
-        Scanner scanner = new Scanner(System.in);
-        int num = scanner.nextInt();
-        int factorial = 1;
-        for (int i = 1; i <= num; i++) {
-            factorial = factorial * i;
+    public static int factorial(int num4, int factorial) {
+        for (int i = 1; i <= num4; i++) {
+            factorial *= i;
         }
         return factorial;
     }
 
-    public static int factorialRecursivo(int num) {
-        Scanner scanner = new Scanner(System.in);
-        if (num <= 1) {
+    public static int factorialRecursivo(int num5) {
+        if (num5 <= 1) {
             return 1;
         } else {
-            return num * factorialRecursivo(num - 1);
+            return num5 * factorialRecursivo(num5 - 1);
         }
-
     }
 
-    public static void discriminanteEq(int a, int b, int c) {
-        Scanner scanner = new Scanner(System.in);
-        System.out.println("Introduce el primer coeficiente:");
-        int coef1 = scanner.nextInt();
-        System.out.println("Ahora el segundo coeficiente:");
-        int coef2 = scanner.nextInt();
-        System.out.println("Ahora el tercer coeficiente:");
-        int coef3 = scanner.nextInt();
-        int discriminante = (coef2 * coef2) - (4 * coef1 * coef3);
+    public static int discriminanteEq(int discriminante) {
         if (discriminante > 0) {
             return 2;
         } else if (discriminante == 0) {
-            System.out.println("1");
-        } else if (discriminante < 0) {
-            System.out.println("No hay solución real");
+            return 1;
+        } else {
+            return 0;
         }
     }
 
-    public static int sumaNumEntero() {
-        Scanner scanner = new Scanner(System.in);
-        System.out.println("Introduce un número entero: ");
-        int num = scanner.nextInt();
-        int suma = 0;
-        while (num > 0) {
-            suma = suma + num % 10;
-            num = num / 10;
+    public static int sumaNumEntero(int num6, int suma) {
+        while (num6 > 0) {
+            suma += num6 % 10;
+            num6 /= 10;
         }
         return suma;
     }
-
-
 }
