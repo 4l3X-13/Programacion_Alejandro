@@ -29,23 +29,37 @@ public class Ejercicio10 {
 
         switch (eleccion) {
             case 1:
-                System.out.println("Perímetro del cuadrado: " + squarePerimeter());
+                System.out.println("Introduce el lado:");
+                int lado1 = scanner.nextInt();
+                System.out.println("Perímetro del cuadrado: " + squarePerimeter(lado1));
                 break;
 
             case 2:
-                System.out.println("Área del cuadrado: " + squareArea());
+                System.out.print("Inserta la longitud del lado: ");
+                double lado2 = scanner.nextDouble();
+                System.out.println("Área del cuadrado: " + squareArea(lado2));
                 break;
 
             case 3:
-                System.out.println("Perímetro del rectángulo: " + rectanglePerimeter());
+                System.out.print("Inserta la base: ");
+                double base1 = scanner.nextDouble();
+                System.out.print("Inserta la altura: ");
+                double altura1 = scanner.nextDouble();
+                System.out.println("Perímetro del rectángulo: " + rectanglePerimeter(base1, altura1));
                 break;
 
             case 4:
-                System.out.println("Área del rectángulo: " + rectangleArea());
+                System.out.print("Inserta la base: ");
+                double base2 = scanner.nextDouble();
+                System.out.print("Inserta la altura: ");
+                double altura2 = scanner.nextDouble();
+                System.out.println("Área del rectángulo: " + rectangleArea(base2,altura2));
                 break;
 
             case 5:
-                System.out.println("Perímetro del círculo: " + circlePerimeter());
+                System.out.print("Inserta el radio: ");
+                double radio = scanner.nextDouble();
+                System.out.println("Perímetro del círculo: " + circlePerimeter(radio1));
                 break;
 
             case 6:
