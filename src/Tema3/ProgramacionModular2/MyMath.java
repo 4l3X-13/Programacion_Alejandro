@@ -84,7 +84,7 @@ public class MyMath {
                 int num = scanner.nextInt();
                 int resultado = factorialRecursivo(num);
                 System.out.println("El factorial es: " + resultado);
-              
+
                 break;
 
             default:
@@ -243,6 +243,25 @@ public class MyMath {
             return num * factorialRecursivo(num - 1);
         }
 
+    }
+
+    public static void ecuacion() {
+        Scanner scanner = new Scanner(System.in);
+        System.out.println("Introduce el primer coeficiente:");
+        int coef1 = scanner.nextInt();
+        System.out.println("Ahora el segundo coeficiente:");
+        int coef2 = scanner.nextInt();
+        System.out.println("Ahora el tercer coeficiente:");
+        int coef3 = scanner.nextInt();
+        int discriminante = (coef2 * coef2) - (4 * coef1 * coef3);
+        if (discriminante > 0) {
+            System.out.println("Tiene 2 soluciones reales distintas");
+        } else if (discriminante == 0) {
+            System.out.println("Tiene 1 soluciones reales diferente");
+        } else if (discriminante < 0) {
+            System.out.println("No hay solución real");
+
+        }
     }
 }
 
