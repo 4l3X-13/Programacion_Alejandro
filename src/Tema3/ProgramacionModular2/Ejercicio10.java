@@ -58,38 +58,51 @@ public class Ejercicio10 {
 
             case 5:
                 System.out.print("Inserta el radio: ");
-                double radio = scanner.nextDouble();
+                double radio1 = scanner.nextDouble();
                 System.out.println("Perímetro del círculo: " + circlePerimeter(radio1));
                 break;
 
             case 6:
-                System.out.println("Área del círculo: " + circleArea());
+                System.out.print("Inserta el radio: ");
+                double radio2 = scanner.nextDouble();
+                System.out.println("Área del círculo: " + circleArea(radio2));
                 break;
 
             case 7:
-                boolean esPrimo1 = esPrimo1();
+                System.out.println("Introduce un número:");
+                int numero = scanner.nextInt();
+                boolean esPrimo1 = esPrimo1(numero);
                 if (esPrimo1 == true) {
                     System.out.println("Es primo");
                 }
                 break;
 
             case 8:
-                boolean noEsPrimo2 = noEsPrimo2();
+                boolean noEsPrimo2 = noEsPrimo2(numero);
                 if (noEsPrimo2 == false) {
                     System.out.println("No es primo");
                 }
                 break;
 
             case 9:
-                numDigit();
+                System.out.println("Introduce un numero:");
+                int num = scanner.nextInt();
+                int cifra = 0;
+                numDigit(num,cifra);
                 break;
 
             case 10:
-                numDigitPares();
+                System.out.println("Introduce un numero:");
+                int num2 = scanner.nextInt();
+                int par2 = 0;
+                numDigitPares(num2,par2);
                 break;
 
             case 11:
-                numDigitImpares();
+                System.out.println("Introduce un numero:");
+                int num3 = scanner.nextInt();
+                int impar3 = 0;
+                numDigitImpares(num3, impar3);
                 break;
 
             case 12:

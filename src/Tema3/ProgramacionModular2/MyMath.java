@@ -25,17 +25,13 @@ public class MyMath {
         return 2 * Math.PI * radio1;
     }
 
-    public static double circleArea() {
-        Scanner scanner = new Scanner(System.in);
-        System.out.print("Inserta el radio: ");
-        double radio = scanner.nextDouble();
-        return Math.PI * Math.pow(radio, 2);
+    public static double circleArea(double radio2) {
+
+        return Math.PI * Math.pow(radio2, 2);
     }
 
-    public static boolean esPrimo1() {
-        Scanner scanner = new Scanner(System.in);
-        System.out.println("Introduce un número:");
-        int numero = scanner.nextInt();
+    public static boolean esPrimo1(int numero) {
+
         if (numero <= 1) {
             return false;
         }
@@ -47,15 +43,11 @@ public class MyMath {
         return true;
     }
 
-    public static boolean noEsPrimo2(int num) {
-        return !esPrimo1();
+    public static boolean noEsPrimo2(int numero) {
+        return !esPrimo1(numero);
     }
 
-    public static void numDigit() {
-        Scanner scanner = new Scanner(System.in);
-        System.out.println("Introduce un numero:");
-        int num = scanner.nextInt();
-        int cifra = 0;
+    public static void numDigit(int num, int cifra) {
         if (num == 0) {
             System.out.println("Tiene 1 cifra");
         }
@@ -66,44 +58,37 @@ public class MyMath {
         System.out.println("Tiene " + cifra + " cifras");
     }
 
-    public static void numDigitPares() {
-        Scanner scanner = new Scanner(System.in);
-        System.out.println("Introduce un numero:");
-        int num = scanner.nextInt();
-        int par = 0;
-        if (num == 0) {
+    public static void numDigitPares(int num2, int par2) {
+        if (num2 == 0) {
             System.out.println("Tiene 1 cifra par");
         }
         do {
-            if (num % 2 == 0) {
-                par++;
-                num = num / 10;
+            if (num2 % 2 == 0) {
+                par2++;
+                num2 = num2 / 10;
 
-            } else if (num % 2 != 0) {
-                num = num / 10;
+            } else if (num2 % 2 != 0) {
+                num2 = num2 / 10;
             }
-        } while (num != 0);
-        System.out.println("Tiene " + par + " cifras pares");
+        } while (num2 != 0);
+        System.out.println("Tiene " + par2 + " cifras pares");
     }
 
-    public static void numDigitImpares() {
-        Scanner scanner = new Scanner(System.in);
-        System.out.println("Introduce un numero:");
-        int num = scanner.nextInt();
-        int impar = 0;
-        if (num == 0) {
+    public static void numDigitImpares(int num3, int impar3) {
+
+        if (num3 == 0) {
             System.out.println("Tiene 1 cifra par");
         }
         do {
-            if (num % 2 == 0) {
-                num = num / 10;
+            if (num3 % 2 == 0) {
+                num3 = num3 / 10;
 
-            } else if (num % 2 != 0) {
-                impar++;
-                num = num / 10;
+            } else if (num3 % 2 != 0) {
+                impar3++;
+                num3 = num3 / 10;
             }
-        } while (num != 0);
-        System.out.println("Tiene " + impar + " cifras impares");
+        } while (num3 != 0);
+        System.out.println("Tiene " + impar3 + " cifras impares");
     }
 
     public static int factorial() {
