@@ -18,6 +18,7 @@ public class MyMath {
         System.out.println("9. Sacar cuantos dígitos tiene un número.");
         System.out.println("10. Sacar cuantos digitos pares que tiene un número: ");
         System.out.println("11. Sacar cuantos digitos impares que tiene un número: ");
+        System.out.println("12. Sacar la factorial de un número:");
 
 
         int eleccion = scanner.nextInt();
@@ -71,6 +72,10 @@ public class MyMath {
 
             case 11:
                 numDigitImpares();
+                break;
+
+            case 12:
+                factorial();
                 break;
 
             default:
@@ -184,14 +189,14 @@ public class MyMath {
                 par++;
                 num = num / 10;
 
-            }else if (num % 2 != 0) {
+            } else if (num % 2 != 0) {
                 num = num / 10;
             }
         } while (num != 0);
         System.out.println("Tiene " + par + " cifras pares");
     }
 
-    public static void numDigitImpares(){
+    public static void numDigitImpares() {
         Scanner scanner = new Scanner(System.in);
         System.out.println("Introduce un numero:");
         int num = scanner.nextInt();
@@ -203,12 +208,22 @@ public class MyMath {
             if (num % 2 == 0) {
                 num = num / 10;
 
-            }else if (num % 2 != 0) {
+            } else if (num % 2 != 0) {
                 impar++;
                 num = num / 10;
             }
         } while (num != 0);
         System.out.println("Tiene " + impar + " cifras impares");
+    }
+
+    public static int factorial() {
+        Scanner scanner = new Scanner(System.in);
+        int num = scanner.nextInt();
+        int factorial = 1;
+        for (int i = 1; i <= num; i++) {
+            factorial = factorial * i;
+        }
+        return factorial;
     }
 }
 
