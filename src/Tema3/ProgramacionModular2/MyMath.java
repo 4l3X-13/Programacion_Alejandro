@@ -17,6 +17,8 @@ public class MyMath {
         System.out.println("8. Sacar si un número NO es primo.");
         System.out.println("9. Sacar cuantos dígitos tiene un número.");
         System.out.println("10. Sacar cuantos digitos pares que tiene un número: ");
+        System.out.println("11. Sacar cuantos digitos impares que tiene un número: ");
+
 
         int eleccion = scanner.nextInt();
 
@@ -65,6 +67,10 @@ public class MyMath {
 
             case 10:
                 numDigitPares();
+                break;
+
+            case 11:
+                numDigitImpares();
                 break;
 
             default:
@@ -183,6 +189,26 @@ public class MyMath {
             }
         } while (num != 0);
         System.out.println("Tiene " + par + " cifras pares");
+    }
+
+    public static void numDigitImpares(){
+        Scanner scanner = new Scanner(System.in);
+        System.out.println("Introduce un numero:");
+        int num = scanner.nextInt();
+        int impar = 0;
+        if (num == 0) {
+            System.out.println("Tiene 1 cifra par");
+        }
+        do {
+            if (num % 2 == 0) {
+                num = num / 10;
+
+            }else if (num % 2 != 0) {
+                impar++;
+                num = num / 10;
+            }
+        } while (num != 0);
+        System.out.println("Tiene " + impar + " cifras impares");
     }
 }
 
