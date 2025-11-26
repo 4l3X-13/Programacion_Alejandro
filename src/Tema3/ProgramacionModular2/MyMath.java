@@ -19,6 +19,7 @@ public class MyMath {
         System.out.println("10. Sacar cuantos digitos pares que tiene un número: ");
         System.out.println("11. Sacar cuantos digitos impares que tiene un número: ");
         System.out.println("12. Sacar la factorial de un número:");
+        System.out.println("13. Sacar el factorial recursivo de un número:");
 
 
         int eleccion = scanner.nextInt();
@@ -76,6 +77,11 @@ public class MyMath {
 
             case 12:
                 factorial();
+                break;
+
+            case 13:
+                int factorialRec = factorialRecursivo();
+                System.out.println(factorialRec);
                 break;
 
             default:
@@ -222,6 +228,19 @@ public class MyMath {
         int factorial = 1;
         for (int i = 1; i <= num; i++) {
             factorial = factorial * i;
+        }
+        return factorial;
+    }
+
+    public static int factorialRecursivo() {
+        Scanner scanner = new Scanner(System.in);
+        System.out.println("Introduce un numero:");
+        int num = scanner.nextInt();
+        int factorial;
+        if (num >= 1) {
+            factorial = 1;
+        }else{
+            factorial = num * factorialRecursivo();
         }
         return factorial;
     }
