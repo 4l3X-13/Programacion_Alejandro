@@ -80,8 +80,11 @@ public class MyMath {
                 break;
 
             case 13:
-                int factorialRec = factorialRecursivo();
-                System.out.println(factorialRec);
+                System.out.println("Introduce un numero:");
+                int num = scanner.nextInt();
+                int resultado = factorialRecursivo(num);
+                System.out.println("El factorial es: " + resultado);
+              
                 break;
 
             default:
@@ -232,17 +235,14 @@ public class MyMath {
         return factorial;
     }
 
-    public static int factorialRecursivo() {
+    public static int factorialRecursivo(int num) {
         Scanner scanner = new Scanner(System.in);
-        System.out.println("Introduce un numero:");
-        int num = scanner.nextInt();
-        int factorial;
-        if (num >= 1) {
-            factorial = 1;
-        }else{
-            factorial = num * factorialRecursivo();
+        if (num <= 1) {
+            return 1;
+        } else {
+            return num * factorialRecursivo(num - 1);
         }
-        return factorial;
+
     }
 }
 
