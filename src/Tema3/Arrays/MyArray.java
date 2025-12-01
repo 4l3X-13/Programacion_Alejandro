@@ -3,75 +3,141 @@ package Tema3.Arrays;
 import java.util.Scanner;
 
 public class MyArray {
+
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
-        int[] numeros;
-        numeros = new int[]{0,1,2,3,4,5,6,7,8,9};
 
-        System.out.println("1. Un procedimiento que imprime el array");
-        System.out.println("2. Una funcion que devuelva el número máximo del array: ");
-        System.out.println("3. Una funcion que devuelva el número mínimo del array: ");
-        System.out.println("Introduce que opción quieres hacer: ");
+        int[] numeros = {0, 1, 2, 3, 4, 5, 6, 7, 8, 9};
+        int[] numeros2 = {10, 9, 8, 7, 6, 5, 4, 3, 2, 1};
+
+        System.out.println("1. Imprimir el array");
+        System.out.println("2. Número máximo del array");
+        System.out.println("3. Número mínimo del array");
+        System.out.println("4. Media del array");
+        System.out.println("5. Comprobar si un elemento existe");
+        System.out.println("6. Suma de dos vectores");
+        System.out.println("7. Resta de dos vectores");
+        System.out.print("Introduce una opción: ");
+
         int opcion = sc.nextInt();
+
         switch (opcion) {
+
             case 1:
-                System.out.println("Quieres imprimir el array? ");
-                boolean pregunt = sc.nextBoolean();
-                if (pregunt == true) {
-                    imprimir(numeros);
-                    break;
-                } else if (pregunt == false) {
-                    System.out.println("Pues no imprimo el array crack :(");
-                    break;
-                }
+                imprimir(numeros);
+                break;
 
             case 2:
-                maxArray(numeros);
+                System.out.println("Máximo: " + maxArray(numeros));
                 break;
 
             case 3:
-                minArray(numeros);
+                System.out.println("Mínimo: " + minArray(numeros));
                 break;
+
+            case 4:
+                System.out.println("Media: " + media(numeros));
+                break;
+
+            case 5:
+                System.out.print("Introduce el número a buscar: ");
+                int elemento = sc.nextInt();
+                if (elementExis(numeros, elemento)) {
+                    System.out.println("El elemento SÍ existe.");
+                } else {
+                    System.out.println("El elemento NO existe.");
+                }
+                break;
+
+            case 6:
+                int[] suma = sumaVectores(numeros, numeros2);
+                imprimir(suma);
+                break;
+
+            case 7:
+                int[] resta = restaVectores(numeros, numeros2);
+                imprimir(resta);
+                break;
+
+            case 8:
+                productoEscalar(numeros, numeros2);
+                break;
+
+
+            default:
+                System.out.println("Opción no válida.");
         }
     }
+
 
     public static void imprimir(int[] numeros) {
-        for (int i = 0; i < numeros.length; i++) {
-            System.out.print(numeros[i] + " ");
+        for (int n : numeros) {
+            System.out.print(n + " ");
         }
+        System.out.println();
     }
 
-    public static void maxArray(int[] numeros) {
-        int max;
-        int max1 = 1;
-        for (int i = 0; i < numeros.length; i++) {
-            max = numeros[i];
-            if (max > max1) {
-                max1 = numeros[i];
+    public static int maxArray(int[] numeros) {
+        int max = numeros[0];
+        for (int n : numeros) {
+            if (n > max) {
+                max = n;
             }
         }
-        System.out.println(max1);
+        return max;
     }
 
-    public static void minArray(int[] numeros) {
-        int min;
-        int min1 = numeros[0];
-        for (int i = 0; i < numeros.length; i++) {
-            min = numeros[i];
-            if (min < min1) {
-                min1 = numeros[i];
+    public static int minArray(int[] numeros) {
+        int min = numeros[0];
+        for (int n : numeros) {
+            if (n < min) {
+                min = n;
             }
         }
-        System.out.println(min1);
+        return min;
     }
 
-    public static void media(int[] numeros) {
-        int media;
-        for (int i = 0; i < numeros.length; i++) {
-            media = numeros[i];
-
+    public static double media(int[] numeros) {
+        int suma = 0;
+        for (int n : numeros) {
+            suma += n;
         }
+        return (double) suma / numeros.length;
     }
 
+    public static boolean elementExis(int[] numeros, int elemento) {
+        for (int n : numeros) {
+            if (n == elemento) {
+                return true;
+            }
+        }
+        return false;
+    }
+
+    public static int[] sumaVectores(int[] numeros1, int[] numeros2) {
+        int[] resultado = new int[numeros1.length];
+        for (int i = 0; i < numeros1.length; i++) {
+            resultado[i] = numeros1[i] + numeros2[i];
+        }
+        return resultado;
+    }
+
+    public static int[] restaVectores(int[] numeros1, int[] numeros2) {
+        int[] resultado = new int[numeros1.length];
+        for (int i = 0; i < numeros1.length; i++) {
+            resultado[i] = numeros1[i] - numeros2[i];
+        }
+        return resultado;
+    }
+
+    public static int productoEscalar(int[] numeros, int[] numeros2) {
+        int resultado = 0;
+
+        for (int i = 0; i < numeros.length; i++) {
+            resultado += numeros[i] * numeros2[i];
+        }
+
+        return resultado;
+    }
 
 }
