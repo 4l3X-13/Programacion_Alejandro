@@ -1,0 +1,353 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Alejandro Navarro Zafra - ODS 12: Producción y Consumo Responsables</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+      /* Reset básico */
+      * { margin:0; padding:0; box-sizing:border-box; }
+      :root {
+          --color-primario: #00D4AA;
+          --color-secundario: #1E1E1E;
+          --color-terciario: #2C2C2C;
+          --color-fondo: #000000;
+          --color-texto: #FFFFFF;
+          --color-texto-secundario: #B0B0B0;
+          --sombra: 0 8px 32px rgba(0,0,0,0.5);
+          --borde-radio: 16px;
+          --transicion: all 0.3s ease;
+          --translucido: rgba(255,255,255,0.1);
+      }
+
+      body {
+          font-family: 'Poppins', sans-serif;
+          line-height: 1.6;
+          color: var(--color-texto);
+          background: linear-gradient(135deg, var(--color-fondo) 0%, var(--color-secundario) 100%);
+          position: relative;
+          overflow-x: hidden;
+      }
+
+      /* Header */
+      header {
+          background: rgba(0,0,0,0.8);
+          backdrop-filter: blur(20px);
+          padding: 1rem 2rem;
+          box-shadow: var(--sombra);
+          position: sticky;
+          top:0;
+          z-index:100;
+          border-radius:0 0 var(--borde-radio) var(--borde-radio);
+      }
+      .header-container {
+          max-width:1200px;
+          margin:0 auto;
+          display:flex;
+          justify-content:space-between;
+          align-items:center;
+      }
+      .logo { font-size:1.8rem; font-weight:700; color:var(--color-primario); }
+      nav ul { list-style:none; display:flex; gap:2rem; }
+      nav a { text-decoration:none; color:var(--color-texto); font-weight:500; transition:var(--transicion); }
+      nav a:hover { color:var(--color-primario); text-shadow:0 0 10px var(--color-primario); }
+
+      /* Hero con animación mejorada del planeta */
+      .hero {
+          background: linear-gradient(135deg, var(--color-secundario) 0%, var(--color-terciario) 100%);
+          padding: 4rem 2rem;
+          text-align:center;
+          color: var(--color-texto);
+          position:relative;
+          overflow:hidden;
+          min-height: 100vh;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+      }
+      .hero::before {
+          content:'';
+          position:absolute;
+          top:0; left:0; right:0; bottom:0;
+          background: rgba(0,0,0,0.3);
+          backdrop-filter: blur(10px);
+          z-index:1;
+      }
+
+      /* Animación mejorada del planeta */
+      .planet-container {
+          position:absolute;
+          top:50%;
+          left:50%;
+          width:400px;
+          height:400px;
+          transform:translate(-50%,-50%);
+          z-index:2;
+          filter: drop-shadow(0 0 50px #00D4AA);
+      }
+      .planet {
+          width:100%;
+          height:100%;
+          border-radius:50%;
+          background: radial-gradient(circle, #1a1a1a 0%, #000000 60%, #003326 100%);
+          border:4px solid rgba(0,212,170,0.4);
+          animation: rotatePlanet 20s linear infinite;
+          position:relative;
+          overflow:hidden;
+      }
+      .planet::before {
+          content:"";
+          position:absolute;
+          top:0; left:-30%;
+          width:200%; height:100%;
+          background: radial-gradient(circle, rgba(0,212,170,0.2) 0%, transparent 70%);
+          animation: textureShift 10s ease-in-out infinite alternate;
+      }
+      .planet::after {
+          content:"";
+          position:absolute;
+          top:20%; left:20%;
+          width:60%; height:60%;
+          background: radial-gradient(circle, rgba(255,255,255,0.1) 0%, transparent 50%);
+          border-radius:50%;
+          animation: glowPulse 4s ease-in-out infinite alternate;
+      }
+      .ring {
+          position:absolute;
+          top:50%; left:50%;
+          width:500px; height:200px;
+          transform: translate(-50%,-50%) rotateX(70deg);
+          border:3px solid rgba(0,212,170,0.35);
+          border-radius:50%;
+          animation: rotateRing 12s linear infinite;
+          backdrop-filter: blur(4px);
+      }
+      .ring::before {
+          content:"";
+          position:absolute;
+          top:50%; left:50%;
+          width:520px; height:220px;
+          transform: translate(-50%,-50%) rotateX(70deg);
+          border:1px solid rgba(0,212,170,0.2);
+          border-radius:50%;
+          animation: rotateRing 15s linear infinite reverse;
+      }
+      @keyframes rotatePlanet { 0%{transform:rotate(0deg);} 100%{transform:rotate(360deg);} }
+      @keyframes textureShift { 0%{transform:translateX(0);} 100%{transform:translateX(40px);} }
+      @keyframes rotateRing { 0%{transform:translate(-50%,-50%) rotateX(70deg) rotate(0deg);} 100%{transform:translate(-50%,-50%) rotateX(70deg) rotate(360deg);} }
+      @keyframes glowPulse { 0%{opacity:0.5;} 100%{opacity:1;} }
+
+      /* Elementos flotantes relacionados con ODS 12 */
+      .floating-elements {
+          position:absolute;
+          top:0; left:0; right:0; bottom:0;
+          z-index:3;
+          pointer-events:none;
+      }
+      .floating-elements div {
+          position:absolute;
+          animation: float 6s ease-in-out infinite;
+          opacity:0.7;
+      }
+      .recycle {
+          top:10%; left:10%;
+          font-size:2rem;
+          color:#00D4AA;
+          animation-delay:0s;
+      }
+      .energy {
+          top:20%; right:15%;
+          font-size:2rem;
+          color:#00D4AA;
+          animation-delay:2s;
+      }
+      .waste {
+          bottom:15%; left:20%;
+          font-size:2rem;
+          color:#00D4AA;
+          animation-delay:4s;
+      }
+      .sustainable {
+          bottom:10%; right:10%;
+          font-size:2rem;
+          color:#00D4AA;
+          animation-delay:1s;
+      }
+      @keyframes float {
+          0%, 100% { transform: translateY(0px) rotate(0deg); }
+          50% { transform: translateY(-30px) rotate(5deg); }
+      }
+
+      /* Estrellas de fondo */
+      .stars {
+          position:absolute;
+          top:0; left:0; right:0; bottom:0;
+          z-index:1;
+      }
+      .stars::before {
+          content:"";
+          position:absolute;
+          top:10%; left:20%;
+          width:2px; height:2px;
+          background:#FFFFFF;
+          border-radius:50%;
+          animation: twinkle 3s infinite;
+      }
+      .stars::after {
+          content:"";
+          position:absolute;
+          top:30%; right:30%;
+          width:1px; height:1px;
+          background:#FFFFFF;
+          border-radius:50%;
+          animation: twinkle 4s infinite reverse;
+      }
+      @keyframes twinkle { 0%,100%{opacity:0;} 50%{opacity:1;} }
+
+      /* Secciones generales */
+      section {
+          padding:4rem 2rem;
+          max-width:1200px;
+          margin:0 auto 2rem auto;
+          background: var(--translucido);
+          backdrop-filter: blur(15px);
+          border-radius: var(--borde-radio);
+          box-shadow: var(--sombra);
+      }
+      section h2 {
+          font-size:2.5rem;
+          font-weight:600;
+          text-align:center;
+          margin-bottom:2rem;
+          color:var(--color-primario);
+          text-shadow:0 0 10px var(--color-primario);
+      }
+      .ods12 { display:flex; align-items:center; gap:2rem; flex-wrap:wrap; }
+      .ods12-text { flex:1; color: var(--color-texto-secundario); }
+      .ods12-icon {
+          flex:0 0 200px; height:200px;
+          background:var(--translucido); backdrop-filter:blur(20px);
+          border-radius: var(--borde-radio); display:flex; align-items:center; justify-content:center;
+          font-size:4rem; color:var(--color-primario); box-shadow: var(--sombra);
+      }
+      .problemas { display:grid; grid-template-columns:repeat(auto-fit,minmax(300px,1fr)); gap:2rem; }
+      .card { background:var(--translucido); backdrop-filter:blur(15px); border-radius:var(--borde-radio); box-shadow:var(--sombra); padding:2rem; text-align:center; transition:var(--transicion); border:1px solid rgba(255,255,255,0.1); }
+      .card:hover { transform:translateY(-5px); box-shadow:0 12px 40px rgba(0,0,0,0.7); background: rgba(255,255,255,0.15); }
+      .card-icon { font-size:3rem; color:var(--color-primario); margin-bottom:1rem; }
+      .card h3 { font-size:1.5rem; margin-bottom:1rem; color:var(--color-texto); }
+      .card p { color:var(--color-texto-secundario); }
+      .soluciones ul { list-style:none; display:grid; grid-template-columns:repeat(auto-fit,minmax(250px,1fr)); gap:2rem; }
+      .soluciones li { display:flex; align-items:center; gap:1rem; background:var(--translucido); backdrop-filter:blur(10px); padding:1.5rem; border-radius:var(--borde-radio); transition:var(--transicion); border:1px solid rgba(255,255,255,0.1); }
+      .soluciones li:hover { background: rgba(255,255,255,0.2); transform:scale(1.02); }
+      .soluciones .icon { font-size:2rem; color:var(--color-primario); }
+      .soluciones strong { color:var(--color-texto); }
+      .soluciones div { color:var(--color-texto-secundario); }
+
+      /* Footer */
+      footer { background: rgba(0,0,0,0.9); backdrop-filter:blur(20px); color:var(--color-texto); padding:2rem; text-align:center; border-radius:var(--borde-radio) var(--borde-radio) 0 0; box-shadow:var(--sombra); }
+      .footer-container { max-width:1200px; margin:0 auto; }
+      .footer-links { display:flex; justify-content:center; gap:2rem; margin-bottom:1rem; }
+      .footer-links a { color:var(--color-texto); text-decoration:none; transition:var(--transicion); }
+      .footer-links a:hover { color:var(--color-primario); text-shadow:0 0 10px var(--color-primario); }
+
+      /* Carrusel de vídeos */
+      #videos { padding:4rem 2rem; background:rgba(255,255,255,0.05); backdrop-filter:blur(15px); border-radius:16px; text-align:center; box-shadow:0 8px 32px rgba(0,0,0,0.5); }
+      #videos h2 { font-size:2.5rem; margin-bottom:2rem; color:#00D4AA; text-shadow:0 0 10px #00D4AA; }
+      .video-carousel { position:relative; overflow:hidden; }
+      .carousel-track { display:flex; transition:transform 0.5s ease; }
+      .carousel-item { min-width:100%; padding:0 1rem; box-sizing:border-box; }
+      .carousel-item iframe { width:100%; height:360px; border-radius:12px; }
+      .carousel-thumbnails { display:flex; justify-content:center; margin-top:1rem; gap:10px; flex-wrap:wrap; }
+      .carousel-thumbnails img { width:120px; height:68px; cursor:pointer; opacity:0.6; border-radius:6px; border:2px solid transparent; transition:all 0.3s ease; }
+      .carousel-thumbnails img.active-thumb, .carousel-thumbnails img:hover { opacity:1; border-color:#00D4AA; }
+
+      @media(max-width:768px){
+          .hero h1{ font-size:2rem; }
+          .carousel-item iframe{ height:200px; }
+          .carousel-thumbnails img{ width:90px; height:51px; }
+      }
+  </style>
+</head>
+<body>
+<!-- Header -->
+<header>
+  <div class="header-container">
+    <div class="logo">ODS 12</div>
+    <nav>
+      <ul>
+        <li><a href="#hero">Inicio</a></li>
+        <li><a href="#ods12">ODS 12</a></li>
+        <li><a href="#problemas">Problemas</a></li>
+        <li><a href="#soluciones">Soluciones</a></li>
+        <li><a href="#videos">Videos</a></li>
+      </ul>
+    </nav>
+  </div>
+</header>
+
+<!-- Hero -->
+<section id="hero" class="hero">
+  <div class="stars"></div>
+  <div class="planet-container">
+    <div class="planet"></div>
+    <div class="ring"></div>
+  </div>
+  <div class="floating-elements">
+    <div class="recycle">♻️</div>
+    <div class="energy">⚡</div>
+    <div class="waste">🗑️</div>
+    <div class="sustainable">🌱</div>
+  </div>
+</section>
+
+<!-- ODS 12 -->
+<section id="ods12">
+  <h2>¿Qué es la ODS 12?</h2>
+  <div class="ods12">
+    <div class="ods12-text">
+      <p>La ODS 12, "Producción y Consumo Responsables", es uno de los 17 Objetivos de Desarrollo Sostenible de las Naciones Unidas...</p>
+    </div>
+    <div class="ods12-icon">🌍</div>
+  </div>
+</section>
+
+<!-- Problemas -->
+<section id="problemas">
+  <h2>Problemas Actuales</h2>
+  <div class="problemas">
+    <div class="card"><div class="card-icon">🛒</div><h3>Sobreconsumo</h3><p>El consumo excesivo de bienes genera una demanda insostenible de recursos...</p></div>
+    <div class="card"><div class="card-icon">🗑️</div><h3>Residuos y Contaminación</h3><p>La producción masiva de residuos y la contaminación ambiental afectan ecosistemas...</p></div>
+    <div class="card"><div class="card-icon">🏭</div><h3>Producción Insostenible</h3><p>Los métodos de producción tradicionales consumen grandes cantidades de energía y agua...</p></div>
+  </div>
+</section>
+
+<!-- Soluciones -->
+<section id="soluciones">
+  <h2>Soluciones y Acciones Responsables</h2>
+  <ul class="soluciones">
+    <li><div class="icon">♻️</div><div><strong>Reciclar y Reutilizar:</strong> Implementa sistemas de reciclaje...</div></li>
+    <li><div class="icon">🌱</div><div><strong>Consumo Consciente:</strong> Opta por productos locales y sostenibles...</div></li>
+    <li><div class="icon">⚡</div><div><strong>Eficiencia Energética:</strong> Adopta tecnologías verdes...</div></li>
+    <li><div class="icon">🤝</div><div><strong>Educación y Colaboración:</strong> Participa en iniciativas comunitarias...</div></li>
+  </ul>
+</section>
+
+<!-- Carrusel de vídeos -->
+<section id="videos">
+  <h2>Videos Relacionados con la ODS 12</h2>
+  <div class="video-carousel">
+    <div class="carousel-track">
+      <div class="carousel-item" data-index="0"><iframe src="https://youtu.be/mroALRHrNyk?si=nBU7BKUGGfnksMdM" title="Video 1 ODS 12" frameborder="0" allowfullscreen></iframe></div>
+      <div class="carousel-item" data-index="1"><iframe src="https://youtu.be/Y2n7xFQWOjo?si=y2fMCgi6k3h5t26a" title="Video 2 ODS 12" frameborder="0" allowfullscreen></iframe></div>
+      <div class="carousel-item" data-index="2"><iframe src="https://youtu.be/HcBxoOO2lao?si=rHzmrAz0tCHKAJuA" title="Video 3 ODS 12" frameborder="0" allowfullscreen></iframe></div>
+    </div>
+    <div class="carousel-thumbnails">
+      <img src="https://img.youtube.com/vi/0kzJ9EhDptY/0.jpg" data-index="0" class="active-thumb">
+      <img src="https://img.youtube.com/vi/1c2XLhGjqjI/0.jpg" data-index="1">
+      <img src="https://img.youtube.com/vi/7Wq1XKQdx4c/0.jpg" data-index="2">
+    </div>
+  </div>
+</section>
+
+<!-- Footer -->
