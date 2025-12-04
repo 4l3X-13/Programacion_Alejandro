@@ -10,7 +10,7 @@ public class BuscarParejas {
         Scanner scanner = new Scanner(System.in);
         Random random = new Random();
 
-        String[] animales = {"león", "mandril", "suricata", "facóquero", "jirafa", "cebra", "rinoceronte", "hipopótamo", "elefante", "mono"};
+        String[] animales = {"león", "mandril", "suricata", "pájaro", "jirafa", "cebra", "rinoceronte", "hipopótamo", "elefante", "mono"};
 
         String[] cartas = new String[20];
         for (int i = 0; i < 10; i++) {
