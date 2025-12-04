@@ -25,9 +25,9 @@ public class BuscarParejas {
         while (parejasEncontradas < 10) {
             mostrarTablero(cartas, descubiertas);
 
-            System.out.print("Primera posición: ");
+            System.out.print("Primera posición: (0-19) ");
             int p1 = scan.nextInt();
-            System.out.print("Segunda posición: ");
+            System.out.print("Segunda posición: (0-19) ");
             int p2 = scan.nextInt();
 
             System.out.println("\nCarta en " + p1 + ": " + cartas[p1]);
@@ -67,7 +67,7 @@ public class BuscarParejas {
             if (descubiertas[i]) {
                 System.out.print(cartas[i] + " ");
             } else {
-                System.out.print("? ");
+                System.out.print("?? ");
             }
             if ((i + 1) % 5 == 0) {
                 System.out.println();
