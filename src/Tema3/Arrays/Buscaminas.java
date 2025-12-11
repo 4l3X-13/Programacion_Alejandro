@@ -49,8 +49,6 @@ public class Buscaminas {
         int casillasDescubiertas = 0;
         int casillasSeguras = tamano - minas;
 
-        System.out.println("=== BIENVENIDO AL BUSCAMINAS 1D ===");
-
         while (!juegoTerminado) {
             System.out.print("Tablero: ");
             for (int i = 0; i < tamano; i++) {
