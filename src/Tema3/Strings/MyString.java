@@ -84,6 +84,8 @@ public class MyString {
         for (String p : palabras) {
             if (p.length() > mayor.length()) {
                 mayor = p;
+            } else if (p.length() == mayor.length()) {
+                System.out.println("Son iguales");
             }
         }
         return mayor;
