@@ -1,4 +1,4 @@
-package POO;
+package POO.ejercicioPrueba;
 
 public class PersonaMain {
 
