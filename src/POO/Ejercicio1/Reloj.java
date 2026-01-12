@@ -58,4 +58,14 @@ public class Reloj {
     public void setEs24h(boolean es24h) {
         this.es24h = es24h;
     }
+
+    @Override
+    public String toString() {
+        return "Reloj{" +
+                "hora=" + hora +
+                ", minutos=" + minutos +
+                ", segundos=" + segundos +
+                ", es24h=" + es24h +
+                '}';
+    }
 }
