@@ -17,6 +17,8 @@ public class MainPersona {
         System.out.println("Introduce tu edad: ");
         int edad1 = sc.nextInt();
 
+//---------------------------------------------------------//
+
         System.out.printf("Introduce tu DNI: ");
         String dni2 = sc.nextLine();
 
