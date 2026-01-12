@@ -6,6 +6,7 @@ public class MainPersona {
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
 
+        System.out.println("- PERSONA 1 -");
         System.out.print("Introduce tu DNI: ");
         String dni1 = sc.nextLine();
 
@@ -21,6 +22,7 @@ public class MainPersona {
 
         //---------------------------------------------------------//
 
+        System.out.println("- PERSONA 2 -");
         System.out.print("Introduce tu DNI: ");
         String dni2 = sc.nextLine();
 
@@ -34,5 +36,9 @@ public class MainPersona {
         int edad2 = sc.nextInt();
 
         sc.close();
+
+
+        System.out.println();
+
     }
 }
