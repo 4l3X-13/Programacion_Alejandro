@@ -41,15 +41,15 @@ public class MainPersona {
 
         //--------------------------------------------------
 
-        persona1.print();
+        persona1.mostrar();
         System.out.println("¿Mayor de edad? " + persona1.isAdult());
         System.out.println("¿Jubilado? " + persona1.isRetired());
 
-        persona2.print();
+        persona2.mostrar();
         System.out.println("¿Mayor de edad? " + persona2.isAdult());
         System.out.println("¿Jubilado? " + persona2.isRetired());
 
-        System.out.println("Diferencia de edad: " + persona1.ageDifference(persona2));
+        System.out.println("Diferencia de edad: " + persona1.edadDiferente(persona2));
 
         System.out.println("DNI persona 1 válido: " + Persona.validarDNI(dni1));
         System.out.println("DNI persona 2 válido: " + Persona.validarDNI(dni2));

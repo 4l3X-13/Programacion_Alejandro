@@ -45,10 +45,8 @@ public class Persona {
         this.edad = edad;
     }
 
-    public void print() {
-        System.out.println(nombre + " " + apellidos +
-                " | DNI: " + dni +
-                " | Edad: " + edad);
+    public void mostrar() {
+        System.out.println(nombre + " " + apellidos + " | DNI: " + dni + " | Edad: " + edad);
     }
 
     public boolean isAdult() {
@@ -59,7 +57,7 @@ public class Persona {
         return edad > edadRetiro;
     }
 
-    public int ageDifference(Persona otra) {
+    public int edadDiferente(Persona otra) {
         return Math.abs(this.edad - otra.edad);
     }
 
