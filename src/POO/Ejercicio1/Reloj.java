@@ -10,6 +10,10 @@ public class Reloj {
         System.out.println("Son las " + hora + "h " + minutos + "minutos y " + segundos + "segundos");
     }
 
+    @Override
+    public String toString() {
+        return "Son las " + hora + "h " + minutos + " minutos y " + segundos + " segundos :)";
+    }
     public void setHora(int hora) {
         if (es24h) {
             if (hora >= 0 && hora <= 23) {
@@ -45,4 +49,7 @@ public class Reloj {
     public void setEs24h(boolean es24h) {
         this.es24h = es24h;
     }
+
+
+
 }

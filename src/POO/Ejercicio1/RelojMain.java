@@ -1,7 +1,5 @@
 package POO.Ejercicio1;
 
-import POO.Ejercicio1.Reloj;
-
 public class RelojMain {
     public static void main(String[] args) {
         Reloj reloj = new Reloj();
@@ -11,6 +9,6 @@ public class RelojMain {
         reloj.setMinutos(45);
         reloj.setSegundos(23);
 
-        reloj.mostrar();
+        System.out.println(reloj);
     }
 }
