@@ -6,8 +6,15 @@ public class Persona1 {
     String apellidos1;
     int edad1;
 
-    public Persona1() {
+
+    public Persona1 (String dni1, String nombre1, String apellidos1, int edad1){
+        this.dni1 = dni1;
+        this.nombre1 = nombre1;
+        this.apellidos1 = apellidos1;
+        this.edad1 = edad1;
     }
+
+
 
     public String getDni1() {
         return dni1;
