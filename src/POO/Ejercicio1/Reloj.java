@@ -59,7 +59,6 @@ public class Reloj {
         this.es24h = es24h;
     }
 
-    @Override
     public String toString() {
         return "Reloj{" +
                 "hora=" + hora +
