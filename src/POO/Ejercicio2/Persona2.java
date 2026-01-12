@@ -6,7 +6,7 @@ public class Persona2 {
     String apellidos2;
     int edad2;
 
-    public Persona2 (String dni2, String nombre2, String apellidos2, int edad2){
+    public Persona2(String dni2, String nombre2, String apellidos2, int edad2) {
         this.dni2 = dni2;
         this.nombre2 = nombre2;
         this.apellidos2 = apellidos2;
