@@ -5,10 +5,9 @@ public class RelojMain {
         Reloj reloj = new Reloj();
 
         reloj.setEs24h(true);
-        reloj.setHora(23);
+        reloj.setHora(25);
         reloj.setMinutos(45);
         reloj.setSegundos(23);
-
         System.out.println(reloj);
     }
 }
