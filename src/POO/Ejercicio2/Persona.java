@@ -2,7 +2,7 @@ package POO.Ejercicio2;
 
 public class Persona {
 
-    private final String dni;
+    private String dni;
     private String nombre;
     private String apellidos;
     private int edad;
@@ -19,6 +19,10 @@ public class Persona {
 
     public String getDni() {
         return dni;
+    }
+
+    public void setDni(String dni) {
+        this.dni = dni;
     }
 
     public String getNombre() {
@@ -63,5 +67,25 @@ public class Persona {
 
     public static boolean validarDNI(String dni) {
         return dni.matches("\\d{8}[A-Za-z]");
+    }
+
+    public static boolean validarDNI2(String dni) {
+        if (dni == null || dni.length() != 9) {
+            return false;
+        }
+
+        for (int i = 0; i < 8; i++) {
+            char caracter = dni.charAt(i);
+            if (!Character.isDigit(caracter)) {
+                return false;
+            }
+        }
+
+        char ultimoCaracter = dni.charAt(8);
+        if (!Character.isLetter(ultimoCaracter)) {
+            return false;
+        }
+
+        return true;
     }
 }
