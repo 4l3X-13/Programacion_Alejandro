@@ -22,7 +22,7 @@ public class MainPersona {
 
         Persona persona1 = new Persona(dni1, nombre1, apellidos1, edad1);
 
-        //--------------------------------------------------
+        //--------------------------------------------------//
 
         System.out.println("\n- PERSONA 2 -");
         System.out.print("DNI: ");
@@ -39,7 +39,7 @@ public class MainPersona {
 
         Persona persona2 = new Persona(dni2, nombre2, apellidos2, edad2);
 
-        //--------------------------------------------------
+        //------------------------------------------------------//
 
         System.out.println("\n");
         persona1.mostrar();
