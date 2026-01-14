@@ -8,10 +8,10 @@ public class Combate {
     static Scanner scanner = new Scanner(System.in);
     static Random random = new Random();
 
-    static final int VELOCIDAD = 0;
-    static final int ATAQUE = 1;
-    static final int DEFENSA = 2;
-    static final int VIDA = 3;
+    static final int velocidad = 0;
+    static final int ataque = 1;
+    static final int defensa = 2;
+    static final int vida = 3;
 
     static int[] jugador1 = new int[4];
     static int[] jugador2 = new int[4];
@@ -22,8 +22,8 @@ public class Combate {
         mostrarTitulo();
         configurarJugadores();
 
-        vidaMax1 = jugador1[VIDA];
-        vidaMax2 = jugador2[VIDA];
+        vidaMax1 = jugador1[vida];
+        vidaMax2 = jugador2[vida];
 
         iniciarBucleCombate();
         anunciarGanador();
@@ -58,10 +58,10 @@ public class Combate {
 
         do {
             System.out.println("Introduce atributos (Suma máx 500, individual 1-200)");
-            atributos[VELOCIDAD] = leerEntero("Velocidad: ", 1, 200);
-            atributos[ATAQUE] = leerEntero("Ataque:    ", 1, 200);
-            atributos[DEFENSA] = leerEntero("Defensa:   ", 1, 200);
-            atributos[VIDA]  = leerEntero("Vida:      ", 1, 200);
+            atributos[velocidad] = leerEntero("Velocidad: ", 1, 200);
+            atributos[ataque] = leerEntero("Ataque:    ", 1, 200);
+            atributos[defensa] = leerEntero("Defensa:   ", 1, 200);
+            atributos[vida]  = leerEntero("Vida:      ", 1, 200);
 
             valido = validarAtributos(atributos);
 
@@ -80,15 +80,15 @@ public class Combate {
     }
 
     static boolean validarAtributos(int[] atributos) {
-        int suma = atributos[VELOCIDAD] + atributos[ATAQUE] + atributos[DEFENSA] + atributos[VIDA];
+        int suma = atributos[velocidad] + atributos[ataque] + atributos[defensa] + atributos[vida];
         return suma <= 500;
     }
 
     static void asignarPorDefecto(int[] atributos) {
-        atributos[VELOCIDAD] = 125;
-        atributos[ATAQUE] = 125;
-        atributos[DEFENSA] = 125;
-        atributos[VIDA] = 125;
+        atributos[velocidad] = 125;
+        atributos[ataque] = 125;
+        atributos[defensa] = 125;
+        atributos[vida] = 125;
     }
 
     static void seleccionarPredefinido(int numeroJugador, int[] atributos) {
@@ -97,28 +97,28 @@ public class Combate {
         int clase = leerEntero("Elige clase: ", 1, 3);
 
         if (clase == 1) {
-            atributos[VELOCIDAD] = 100; atributos[ATAQUE] = 200; atributos[DEFENSA] = 80; atributos[VIDA] = 120;
+            atributos[velocidad] = 100; atributos[ataque] = 200; atributos[defensa] = 80; atributos[vida] = 120;
         } else if (clase == 2) {
-            atributos[VELOCIDAD] = 60; atributos[ATAQUE] = 80; atributos[DEFENSA] = 200; atributos[VIDA] = 160;
+            atributos[velocidad] = 60; atributos[ataque] = 80; atributos[defensa] = 200; atributos[vida] = 160;
         } else {
-            atributos[VELOCIDAD] = 125; atributos[ATAQUE] = 125; atributos[DEFENSA] = 125; atributos[VIDA] = 125;
+            atributos[velocidad] = 125; atributos[ataque] = 125; atributos[defensa] = 125; atributos[vida] = 125;
         }
     }
 
     static void iniciarBucleCombate() {
         int ronda = 1;
-        while (jugador1[VIDA] > 0 && jugador2[VIDA] > 0) {
+        while (jugador1[vida] > 0 && jugador2[vida] > 0) {
             System.out.println("\n=== RONDA " + ronda + " ===");
             mostrarBarrasVida();
 
-            if (jugador1[VELOCIDAD] >= jugador2[VELOCIDAD]) {
+            if (jugador1[velocidad] >= jugador2[velocidad]) {
                 procesarTurno(1, jugador1, jugador2, vidaMax1);
-                if (jugador2[VIDA] > 0) {
+                if (jugador2[vida] > 0) {
                     procesarTurno(2, jugador2, jugador1, vidaMax2);
                 }
             } else {
                 procesarTurno(2, jugador2, jugador1, vidaMax2);
-                if (jugador1[VIDA] > 0) {
+                if (jugador1[vida] > 0) {
                     procesarTurno(1, jugador1, jugador2, vidaMax1);
                 }
             }
@@ -142,7 +142,7 @@ public class Combate {
 
     static void realizarAtaque(int[] atacante, int[] defensor) {
         int factorAleatorio = random.nextInt(15);
-        int danioBase = atacante[ATAQUE] - (defensor[DEFENSA] / 3);
+        int danioBase = atacante[ataque] - (defensor[defensa] / 3);
 
         if (danioBase < 5) danioBase = 5;
 
@@ -154,25 +154,25 @@ public class Combate {
 
         int danioTotal = danioBase + factorAleatorio;
 
-        defensor[VIDA] -= danioTotal;
-        if (defensor[VIDA] < 0) defensor[VIDA] = 0;
+        defensor[vida] -= danioTotal;
+        if (defensor[vida] < 0) defensor[vida] = 0;
 
         System.out.println("Ha causado " + danioTotal + " de daño.");
     }
 
     static void realizarCura(int[] jugador, int maxVida) {
         int cura = 30 + random.nextInt(21);
-        jugador[VIDA] += cura;
+        jugador[vida] += cura;
 
-        if (jugador[VIDA] > maxVida) {
-            jugador[VIDA] = maxVida;
+        if (jugador[vida] > maxVida) {
+            jugador[vida] = maxVida;
         }
         System.out.println("Se ha recuperado " + cura + " puntos de vida.");
     }
 
     static void mostrarBarrasVida() {
-        dibujarBarra(1, jugador1[VIDA], vidaMax1);
-        dibujarBarra(2, jugador2[VIDA], vidaMax2);
+        dibujarBarra(1, jugador1[vida], vidaMax1);
+        dibujarBarra(2, jugador2[vida], vidaMax2);
     }
 
     static void dibujarBarra(int numero, int vidaActual, int vidaTotal) {
@@ -189,7 +189,7 @@ public class Combate {
 
     static void anunciarGanador() {
         System.out.println("\n*********************************");
-        if (jugador1[VIDA] > 0) {
+        if (jugador1[vida] > 0) {
             System.out.println("    ¡ EL JUGADOR 1 GANA !");
         } else {
             System.out.println("    ¡ EL JUGADOR 2 GANA !");
