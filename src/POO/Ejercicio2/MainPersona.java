@@ -7,44 +7,42 @@ public class MainPersona {
         Scanner sc = new Scanner(System.in);
 
         System.out.println("- PERSONA 1 -");
+        Persona2 persona21 = new Persona2();
         System.out.print("Introduce el DNI: ");
-        String dni1 = sc.nextLine();
-
+        persona21.setDni1(sc.next());
         System.out.print("Introduce el nombre: ");
-        String nombre1 = sc.nextLine();
+        persona21.setNombre1(sc.next());
 
         System.out.print("Introduce los apellidos: ");
-        String apellidos1 = sc.nextLine();
-
+        persona21.setApellidos1(sc.next());
         System.out.print("Introduce la edad: ");
-        int edad1 = sc.nextInt();
+        persona21.setEdad1(sc.nextInt());
         sc.nextLine();
 
-        Persona persona1 = new Persona(dni1, nombre1, apellidos1, edad1);
 
         //--------------------------------------------------//
 
         System.out.println("\n- PERSONA 2 -");
+        Persona2 persona2 = new Persona2();
         System.out.print("DNI: ");
-        String dni2 = sc.nextLine();
+        persona2.setDni2(sc.next());
 
         System.out.print("Nombre: ");
-        String nombre2 = sc.nextLine();
+        persona2.setNombre2(sc.next());
+
 
         System.out.print("Apellidos: ");
-        String apellidos2 = sc.nextLine();
+        persona2.setApellidos2(sc.next());
 
         System.out.print("Edad: ");
-        int edad2 = sc.nextInt();
-
-        Persona persona2 = new Persona(dni2, nombre2, apellidos2, edad2);
+        persona2.setEdad2(sc.nextInt());
 
         //---------------------------------------------------//
 
         System.out.println("\n");
-        persona1.mostrar();
-        System.out.println("¿Mayor de edad? " + persona1.isAdult());
-        System.out.println("¿Jubilado? " + persona1.isRetired());
+        persona21.mostrar();
+        System.out.println("¿Mayor de edad? " + persona21.isAdult());
+        System.out.println("¿Jubilado? " + persona21.isRetired());
         System.out.println("\n");
 
         persona2.mostrar();
@@ -52,11 +50,11 @@ public class MainPersona {
         System.out.println("¿Jubilado? " + persona2.isRetired());
         System.out.println("\n");
 
-        System.out.println("Diferencia de edad: " + persona1.edadDiferente(persona2));
+        System.out.println("Diferencia de edad: " + persona21.edadDiferente(persona2));
         System.out.println("\n");
 
-        System.out.println("DNI persona 1 válido: " + Persona.validarDNI(dni1));
-        System.out.println("DNI persona 2 válido: " + Persona.validarDNI(dni2));
+        System.out.println("DNI persona 1 válido: " + Persona2.validarDNI(persona21.getDni1()));
+        System.out.println("DNI persona 2 válido: " + Persona2.validarDNI(persona2.getDni1()));
 
         sc.close();
     }
