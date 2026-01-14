@@ -3,116 +3,220 @@ package POO.Combate;
 import java.util.Random;
 import java.util.Scanner;
 
-public class CombateModular {
+public class Combate {
 
-    static Scanner sc = new Scanner(System.in);
+    static Scanner scanner = new Scanner(System.in);
     static Random random = new Random();
 
+    static final int VELOCIDAD = 0;
+    static final int ATAQUE = 1;
+    static final int DEFENSA = 2;
+    static final int VIDA = 3;
+
+    static int[] jugador1 = new int[4];
+    static int[] jugador2 = new int[4];
+    static int vidaMax1;
+    static int vidaMax2;
+
     public static void main(String[] args) {
+        mostrarTitulo();
+        configurarJugadores();
 
-        int[] jugador1 = readPlayerStats(1);
-        int[] jugador2 = readPlayerStats(2);
+        vidaMax1 = jugador1[VIDA];
+        vidaMax2 = jugador2[VIDA];
 
-        int vidaMax1 = jugador1[3];
-        int vidaMax2 = jugador2[3];
+        iniciarBucleCombate();
+        anunciarGanador();
 
-        int ronda = 1;
-
-        while (jugador1[3] > 0 && jugador2[3] > 0) {
-
-            System.out.println("\n****************************************");
-            System.out.println("RONDA " + ronda);
-
-            printRoundInfo(jugador1[3], vidaMax1, jugador2[3], vidaMax2);
-
-            if (jugador1[0] >= jugador2[0]) {
-                jugador2[3] -= makeAttack(jugador1, jugador2, 1, 2);
-                if (jugador2[3] > 0)
-                    jugador1[3] -= makeAttack(jugador2, jugador1, 2, 1);
-            } else {
-                jugador1[3] -= makeAttack(jugador2, jugador1, 2, 1);
-                if (jugador1[3] > 0)
-                    jugador2[3] -= makeAttack(jugador1, jugador2, 1, 2);
-            }
-
-            jugador1[3] = Math.max(jugador1[3], 0);
-            jugador2[3] = Math.max(jugador2[3], 0);
-
-            printRoundInfo(jugador1[3], vidaMax1, jugador2[3], vidaMax2);
-
-            System.out.println("Pulsa cualquier tecla para continuar");
-            sc.next();
-
-            ronda++;
-        }
-
-        System.out.println("\n========================================");
-        if (jugador1[3] > 0)
-            System.out.println("EL JUGADOR 1 HA GANADO");
-        else
-            System.out.println("EL JUGADOR 2 HA GANADO");
+        scanner.close();
     }
 
-    // ---------------- FUNCIONES ----------------
+    static void mostrarTitulo() {
+        System.out.println("======================================");
+        System.out.println("       SIMULADOR DE COMBATE");
+        System.out.println("======================================");
+    }
 
-    static int[] readPlayerStats(int numJugador) {
-        int[] stats = new int[4];
-        boolean valid;
+    static void configurarJugadores() {
+        System.out.println("1. Crear personajes manualmente");
+        System.out.println("2. Usar personajes predefinidos");
+        int opcion = leerEntero("Elige una opción: ", 1, 2);
+
+        if (opcion == 1) {
+            crearJugadorManual(1, jugador1);
+            crearJugadorManual(2, jugador2);
+        } else {
+            seleccionarPredefinido(1, jugador1);
+            seleccionarPredefinido(2, jugador2);
+        }
+    }
+
+    static void crearJugadorManual(int numeroJugador, int[] atributos) {
+        System.out.println("\n--- JUGADOR " + numeroJugador + " ---");
+        boolean valido;
+        int intentos = 0;
 
         do {
-            System.out.println("\nJUGADOR " + numJugador);
-            System.out.print("Velocidad: ");
-            stats[0] = sc.nextInt();
-            System.out.print("Ataque: ");
-            stats[1] = sc.nextInt();
-            System.out.print("Defensa: ");
-            stats[2] = sc.nextInt();
-            System.out.print("Vida: ");
-            stats[3] = sc.nextInt();
+            System.out.println("Introduce atributos (Suma máx 500, individual 1-200)");
+            atributos[VELOCIDAD] = leerEntero("Velocidad: ", 1, 200);
+            atributos[ATAQUE] = leerEntero("Ataque:    ", 1, 200);
+            atributos[DEFENSA] = leerEntero("Defensa:   ", 1, 200);
+            atributos[VIDA]  = leerEntero("Vida:      ", 1, 200);
 
-            valid = areValidPlayerStats(stats);
+            valido = validarAtributos(atributos);
 
-            if (!valid)
-                System.out.println("Valores incorrectos. Inténtalo de nuevo.");
+            if (!valido) {
+                intentos++;
+                System.out.println("La suma supera 500. Intento " + intentos + "/3");
+            }
 
-        } while (!valid);
+            if (intentos >= 3) {
+                System.out.println("Intentos agotados. Asignando valores por defecto.");
+                asignarPorDefecto(atributos);
+                valido = true;
+            }
 
-        return stats;
+        } while (!valido);
     }
 
-    static boolean areValidPlayerStats(int[] stats) {
-        int suma = 0;
-        for (int stat : stats) {
-            if (stat < 1 || stat > 200) return false;
-            suma += stat;
-        }
+    static boolean validarAtributos(int[] atributos) {
+        int suma = atributos[VELOCIDAD] + atributos[ATAQUE] + atributos[DEFENSA] + atributos[VIDA];
         return suma <= 500;
     }
 
-    static int makeAttack(int[] atacante, int[] defensor, int nAt, int nDef) {
-        int damage = calculateDamage(atacante[1], defensor[2]);
-        System.out.println("Jugador " + nAt + " golpea con " + damage + " de daño");
-        return damage;
+    static void asignarPorDefecto(int[] atributos) {
+        atributos[VELOCIDAD] = 125;
+        atributos[ATAQUE] = 125;
+        atributos[DEFENSA] = 125;
+        atributos[VIDA] = 125;
     }
 
-    static int calculateDamage(int ataque, int defensa) {
-        int randomFactor = random.nextInt(11); // 0–10
-        int damage = ataque - defensa / 2 + randomFactor;
-        return Math.max(damage, 0);
+    static void seleccionarPredefinido(int numeroJugador, int[] atributos) {
+        System.out.println("\n--- JUGADOR " + numeroJugador + " ---");
+        System.out.println("1. Ofensivo | 2. Defensivo | 3. Equilibrado");
+        int clase = leerEntero("Elige clase: ", 1, 3);
+
+        if (clase == 1) {
+            atributos[VELOCIDAD] = 100; atributos[ATAQUE] = 200; atributos[DEFENSA] = 80; atributos[VIDA] = 120;
+        } else if (clase == 2) {
+            atributos[VELOCIDAD] = 60; atributos[ATAQUE] = 80; atributos[DEFENSA] = 200; atributos[VIDA] = 160;
+        } else {
+            atributos[VELOCIDAD] = 125; atributos[ATAQUE] = 125; atributos[DEFENSA] = 125; atributos[VIDA] = 125;
+        }
     }
 
-    static void printRoundInfo(int vida1, int max1, int vida2, int max2) {
-        System.out.print("Jugador 1: ");
-        printLifeBar(vida1, max1);
-        System.out.print("Jugador 2: ");
-        printLifeBar(vida2, max2);
+    static void iniciarBucleCombate() {
+        int ronda = 1;
+        while (jugador1[VIDA] > 0 && jugador2[VIDA] > 0) {
+            System.out.println("\n=== RONDA " + ronda + " ===");
+            mostrarBarrasVida();
+
+            if (jugador1[VELOCIDAD] >= jugador2[VELOCIDAD]) {
+                procesarTurno(1, jugador1, jugador2, vidaMax1);
+                if (jugador2[VIDA] > 0) {
+                    procesarTurno(2, jugador2, jugador1, vidaMax2);
+                }
+            } else {
+                procesarTurno(2, jugador2, jugador1, vidaMax2);
+                if (jugador1[VIDA] > 0) {
+                    procesarTurno(1, jugador1, jugador2, vidaMax1);
+                }
+            }
+
+            pausa();
+            ronda++;
+        }
     }
 
-    static void printLifeBar(int vida, int max) {
-        int length = 30;
-        int filled = vida * length / max;
-        for (int i = 0; i < length; i++)
-            System.out.print(i < filled ? "-" : " ");
-        System.out.println(" " + vida);
+    static void procesarTurno(int numeroJugador, int[] atacante, int[] defensor, int maxVida) {
+        System.out.println("\nTurno del Jugador " + numeroJugador);
+        System.out.println("1. Atacar | 2. Curarse");
+        int accion = leerEntero("Acción: ", 1, 2);
+
+        if (accion == 1) {
+            realizarAtaque(atacante, defensor);
+        } else {
+            realizarCura(atacante, maxVida);
+        }
+    }
+
+    static void realizarAtaque(int[] atacante, int[] defensor) {
+        int factorAleatorio = random.nextInt(15);
+        int danioBase = atacante[ATAQUE] - (defensor[DEFENSA] / 3);
+
+        if (danioBase < 5) danioBase = 5;
+
+        boolean esCritico = random.nextInt(100) < 20;
+        if (esCritico) {
+            danioBase *= 2;
+            System.out.print("¡CRÍTICO! ");
+        }
+
+        int danioTotal = danioBase + factorAleatorio;
+
+        defensor[VIDA] -= danioTotal;
+        if (defensor[VIDA] < 0) defensor[VIDA] = 0;
+
+        System.out.println("Ha causado " + danioTotal + " de daño.");
+    }
+
+    static void realizarCura(int[] jugador, int maxVida) {
+        int cura = 30 + random.nextInt(21);
+        jugador[VIDA] += cura;
+
+        if (jugador[VIDA] > maxVida) {
+            jugador[VIDA] = maxVida;
+        }
+        System.out.println("Se ha recuperado " + cura + " puntos de vida.");
+    }
+
+    static void mostrarBarrasVida() {
+        dibujarBarra(1, jugador1[VIDA], vidaMax1);
+        dibujarBarra(2, jugador2[VIDA], vidaMax2);
+    }
+
+    static void dibujarBarra(int numero, int vidaActual, int vidaTotal) {
+        int longitud = 20;
+        int marcas = (vidaActual * longitud) / vidaTotal;
+
+        System.out.print("J" + numero + " [" + vidaActual + "] ");
+        for (int i = 0; i < longitud; i++) {
+            if (i < marcas) System.out.print("█");
+            else System.out.print("-");
+        }
+        System.out.println();
+    }
+
+    static void anunciarGanador() {
+        System.out.println("\n*********************************");
+        if (jugador1[VIDA] > 0) {
+            System.out.println("    ¡ EL JUGADOR 1 GANA !");
+        } else {
+            System.out.println("    ¡ EL JUGADOR 2 GANA !");
+        }
+        System.out.println("*********************************");
+    }
+
+    static int leerEntero(String mensaje, int min, int max) {
+        int numero;
+        while (true) {
+            System.out.print(mensaje);
+            if (scanner.hasNextInt()) {
+                numero = scanner.nextInt();
+                if (numero >= min && numero <= max) {
+                    return numero;
+                }
+            } else {
+                scanner.next();
+            }
+            System.out.println("Entrada inválida. Debe ser entre " + min + " y " + max);
+        }
+    }
+
+    static void pausa() {
+        System.out.println("(Presiona Enter para continuar...)");
+        try {
+            System.in.read();
+        } catch (Exception e) {}
     }
 }
