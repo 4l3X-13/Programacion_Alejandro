@@ -29,8 +29,6 @@ public class Persona2 {
     }
 
 
-
-
     public String getDni1() {
         return dni1;
     }
@@ -113,25 +111,5 @@ public class Persona2 {
 
     public static boolean validarDNI(String dni) {
         return dni.matches("\\d{8}[A-Za-z]");
-    }
-
-    public static boolean validarDNI2(String dni) {
-        if (dni == null || dni.length() != 9) {
-            return false;
-        }
-
-        for (int i = 0; i < 8; i++) {
-            char caracter = dni.charAt(i);
-            if (!Character.isDigit(caracter)) {
-                return false;
-            }
-        }
-
-        char ultimoCaracter = dni.charAt(8);
-        if (!Character.isLetter(ultimoCaracter)) {
-            return false;
-        }
-
-        return true;
     }
 }
