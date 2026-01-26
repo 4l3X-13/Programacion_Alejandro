@@ -1,4 +1,4 @@
-package POO.Ejercicio1;
+package POO.POO1.Ejercicio1;
 
 public class RelojMain {
     public static void main(String[] args) {

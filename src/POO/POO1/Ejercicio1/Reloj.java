@@ -1,4 +1,4 @@
-package POO.Ejercicio1;
+package POO.POO1.Ejercicio1;
 
 public class Reloj {
     private int hora;
