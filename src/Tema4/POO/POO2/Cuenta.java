@@ -1,27 +1,33 @@
 package Tema4.POO.POO2;
 
 public class Cuenta {
-    public long numCuenta= 1919191919191919191L;
-    public double saldo = 1000000000;
+    private String numeroCuenta;
+    private double saldo;
 
-    public Cuenta(long numCuenta, double saldo) {
-        this.numCuenta = numCuenta;
+    public Cuenta(String numeroCuenta, double saldo) {
+        this.numeroCuenta = numeroCuenta;
         this.saldo = saldo;
     }
 
-    public long getNumCuenta() {
-        return numCuenta;
+    public String getNumeroCuenta() { return numeroCuenta; }
+    public double getSaldo() { return saldo; }
+
+    public void recibirAbono(double cantidad) {
+        if (cantidad > 0) {
+            this.saldo += cantidad;
+        }
     }
 
-    public void setNumCuenta(long numCuenta) {
-        this.numCuenta = numCuenta;
-    }
+    // Cambiamos a boolean para avisar si se pudo realizar el pago
+    public boolean pagarRecibo(double cantidad) {
+        if (cantidad <= 0) return false;
 
-    public double getSaldo() {
-        return saldo;
-    }
-
-    public void setSaldo(double saldo) {
-        this.saldo = saldo;
+        if (this.saldo >= cantidad) {
+            this.saldo -= cantidad;
+            return true; // Pago realizado
+        } else {
+            System.out.println("Error: Saldo insuficiente en la cuenta " + numeroCuenta);
+            return false; // No hay dinero suficiente
+        }
     }
 }
