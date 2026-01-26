@@ -16,7 +16,7 @@ public class Reloj {
     }
     public void setHora(int hora) {
         if (es24h) {
-            if (hora >= 0 && hora <= 23) {
+            if (hora >= 0 && hora <= 24) {
                 this.hora = hora;
             } else {
                 System.out.println("Hora errónea en formato 24h");
