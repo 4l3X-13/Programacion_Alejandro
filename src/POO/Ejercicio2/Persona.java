@@ -1,7 +1,6 @@
 package POO.Ejercicio2;
 
 public class Persona {
-    // Atributos genéricos (valen para cualquier persona)
     private String dni;
     private String nombre;
     private String apellidos;
@@ -10,10 +9,8 @@ public class Persona {
     public static final int EDAD_ADULTA = 18;
     public static final int EDAD_RETIRO = 65;
 
-    // Constructor vacío
     public Persona() {}
 
-    // Constructor con parámetros
     public Persona(String dni, String nombre, String apellidos, int edad) {
         this.dni = dni;
         this.nombre = nombre;
@@ -21,7 +18,6 @@ public class Persona {
         this.edad = edad;
     }
 
-    // Getters y Setters únicos
     public String getDni() { return dni; }
     public void setDni(String dni) { this.dni = dni; }
 
@@ -34,7 +30,6 @@ public class Persona {
     public int getEdad() { return edad; }
     public void setEdad(int edad) { this.edad = edad; }
 
-    // Métodos de lógica
     public void mostrar() {
         System.out.println(nombre + " " + apellidos + " | DNI: " + dni + " | Edad: " + edad);
     }
