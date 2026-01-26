@@ -1,4 +1,4 @@
-package POO.POO1.Ejercicio2;
+package Tema4.POO.POO1.Ejercicio2;
 
 public class Persona {
     private String dni;

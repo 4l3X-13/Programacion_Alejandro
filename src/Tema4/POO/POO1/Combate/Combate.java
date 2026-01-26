@@ -1,4 +1,4 @@
-package POO.POO1.Combate;
+package Tema4.POO.POO1.Combate;
 
 import java.util.Random;
 import java.util.Scanner;

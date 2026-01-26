@@ -1,4 +1,4 @@
-package POO.POO1.ejercicioPrueba;
+package Tema4.POO.POO1.ejercicioPrueba;
 
 public class PersonaMain {
 
