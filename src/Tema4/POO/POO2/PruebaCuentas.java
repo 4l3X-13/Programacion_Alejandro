@@ -112,22 +112,22 @@ public class PruebaCuentas {
 
     private static void realizarTransferencia() {
         System.out.println("DATOS ORIGEN:");
-        Persona p1 = buscarPersona();
-        if (p1 == null) return;
+        Persona persona1 = buscarPersona();
+        if (persona1 == null) return;
         System.out.print("IBAN origen: ");
-        Cuenta c1 = p1.getCuenta(sc.next());
+        Cuenta cuenta1 = persona1.getCuenta(sc.next());
 
         System.out.println("DATOS DESTINO:");
-        Persona p2 = buscarPersona();
-        if (p2 == null) return;
+        Persona persona2 = buscarPersona();
+        if (persona2 == null) return;
         System.out.print("IBAN destino: ");
-        Cuenta c2 = p2.getCuenta(sc.next());
+        Cuenta cuenta2 = persona2.getCuenta(sc.next());
 
-        if (c1 != null && c2 != null) {
+        if (cuenta1 != null && cuenta2 != null) {
             System.out.print("Cantidad a transferir: ");
             double cant = sc.nextDouble();
-            c1.pagarRecibo(cant);
-            c2.recibirAbono(cant);
+            cuenta1.pagarRecibo(cant);
+            cuenta2.recibirAbono(cant);
             System.out.println("Transferencia completada.");
         } else {
             System.out.println("Error en las cuentas indicadas.");
