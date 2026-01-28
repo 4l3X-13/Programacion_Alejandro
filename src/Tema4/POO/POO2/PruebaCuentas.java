@@ -28,7 +28,7 @@ public class PruebaCuentas {
     }
 
     private static void procesarOpcion(int opcion) {
-        Persona p;
+        Persona per;
         switch (opcion) {
             case 1:
                 if (totalPersonas < personas.length) {
@@ -41,42 +41,42 @@ public class PruebaCuentas {
                 break;
 
             case 2:
-                p = buscarPersona();
-                if (p != null) {
+                per = buscarPersona();
+                if (per != null) {
                     System.out.print("Número de cuenta: ");
                     String iban = sc.next();
                     System.out.print("Saldo inicial: ");
                     double s = sc.nextDouble();
-                    if (p.añadirCuenta(new Cuenta(iban, s))) System.out.println("Cuenta añadida.");
+                    if (per.añadirCuenta(new Cuenta(iban, s))) System.out.println("Cuenta añadida.");
                     else System.out.println("Error: Ya tiene 3 cuentas.");
                 }
                 break;
 
             case 3:
-                p = buscarPersona();
-                if (p != null) p.mostrarInfo();
+                per = buscarPersona();
+                if (per != null) per.mostrarInfo();
                 break;
 
             case 4:
-                p = buscarPersona();
-                if (p != null) {
+                per = buscarPersona();
+                if (per != null) {
                     System.out.print("Número de cuenta: ");
-                    Cuenta c = p.getCuenta(sc.next());
-                    if (c != null) {
+                    Cuenta cuent = per.getCuenta(sc.next());
+                    if (cuent != null) {
                         System.out.print("Importe nómina: ");
-                        c.recibirAbono(sc.nextDouble());
+                        cuent.recibirAbono(sc.nextDouble());
                     } else System.out.println("Cuenta no encontrada.");
                 }
                 break;
 
             case 5:
-                p = buscarPersona();
-                if (p != null) {
+                per = buscarPersona();
+                if (per != null) {
                     System.out.print("Número de cuenta: ");
-                    Cuenta c = p.getCuenta(sc.next());
-                    if (c != null) {
+                    Cuenta cuen = per.getCuenta(sc.next());
+                    if (cuen != null) {
                         System.out.print("Importe recibo: ");
-                        c.pagarRecibo(sc.nextDouble());
+                        cuen.pagarRecibo(sc.nextDouble());
                     } else System.out.println("Cuenta no encontrada.");
                 }
                 break;
