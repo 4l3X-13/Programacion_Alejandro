@@ -23,6 +23,7 @@ public class PruebaCuentas {
             opcion = sc.nextInt();
 
             procesarOpcion(opcion);
+
         } while (opcion != 0);
     }
 
