@@ -11,7 +11,9 @@ public class Persona {
         this.contadorCuentas = 0;
     }
 
-    public String getDni() { return dni; }
+    public String getDni() {
+        return dni;
+    }
 
     public boolean añadirCuenta(Cuenta cuenta) {
         if (contadorCuentas < 3) {
