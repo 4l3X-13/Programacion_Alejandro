@@ -18,16 +18,15 @@ public class Cuenta {
         }
     }
 
-    // Cambiamos a boolean para avisar si se pudo realizar el pago
     public boolean pagarRecibo(double cantidad) {
         if (cantidad <= 0) return false;
 
         if (this.saldo >= cantidad) {
             this.saldo -= cantidad;
-            return true; // Pago realizado
+            return true;
         } else {
             System.out.println("Error: Saldo insuficiente en la cuenta " + numeroCuenta);
-            return false; // No hay dinero suficiente
+            return false;
         }
     }
 }
