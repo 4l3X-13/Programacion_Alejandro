@@ -9,8 +9,13 @@ public class Cuenta {
         this.saldo = saldo;
     }
 
-    public String getNumeroCuenta() { return numeroCuenta; }
-    public double getSaldo() { return saldo; }
+    public String getNumeroCuenta() {
+        return numeroCuenta;
+    }
+
+    public double getSaldo() {
+        return saldo;
+    }
 
     public void recibirAbono(double cantidad) {
         if (cantidad > 0) {
