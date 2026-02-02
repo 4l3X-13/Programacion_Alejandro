@@ -15,8 +15,9 @@ public class Ejercicio1 {
 
     public static void menu() {
         Scanner scan = new Scanner(System.in);
-        System.out.println("-------");
-        System.out.println("CREAR LISTA DE LA COMPRA");
-        System.out.println("-------");
+        System.out.println("-----------------------------------");
+        System.out.println("    CREAR LISTA DE LA COMPRA");
+        System.out.println("-----------------------------------");
+
     }
 }
