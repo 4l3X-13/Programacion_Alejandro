@@ -15,6 +15,18 @@ public class Persona {
         return dni;
     }
 
+    public void setDni(String dni) {
+        this.dni = dni;
+    }
+
+    public void setCuentas(Cuenta[] cuentas) {
+        this.cuentas = cuentas;
+    }
+
+    public void setContadorCuentas(int contadorCuentas) {
+        this.contadorCuentas = contadorCuentas;
+    }
+
     public boolean añadirCuenta(Cuenta cuenta) {
         if (contadorCuentas < 3) {
             cuentas[contadorCuentas++] = cuenta;
