@@ -5,14 +5,12 @@ import java.util.Scanner;
 
 public class Combate {
 
-    static Scanner scanner = new Scanner(System.in);
-    static Random random = new Random();
-
     static final int velocidad = 0;
     static final int ataque = 1;
     static final int defensa = 2;
     static final int vida = 3;
-
+    static Scanner scanner = new Scanner(System.in);
+    static Random random = new Random();
     static int[] jugador1 = new int[4];
     static int[] jugador2 = new int[4];
     static int vidaMax1;
@@ -61,7 +59,7 @@ public class Combate {
             atributos[velocidad] = leerEntero("Velocidad: ", 1, 200);
             atributos[ataque] = leerEntero("Ataque:    ", 1, 200);
             atributos[defensa] = leerEntero("Defensa:   ", 1, 200);
-            atributos[vida]  = leerEntero("Vida:      ", 1, 200);
+            atributos[vida] = leerEntero("Vida:      ", 1, 200);
 
             valido = validarAtributos(atributos);
 
@@ -97,11 +95,20 @@ public class Combate {
         int clase = leerEntero("Elige clase: ", 1, 3);
 
         if (clase == 1) {
-            atributos[velocidad] = 100; atributos[ataque] = 200; atributos[defensa] = 80; atributos[vida] = 120;
+            atributos[velocidad] = 100;
+            atributos[ataque] = 200;
+            atributos[defensa] = 80;
+            atributos[vida] = 120;
         } else if (clase == 2) {
-            atributos[velocidad] = 60; atributos[ataque] = 80; atributos[defensa] = 200; atributos[vida] = 160;
+            atributos[velocidad] = 60;
+            atributos[ataque] = 80;
+            atributos[defensa] = 200;
+            atributos[vida] = 160;
         } else {
-            atributos[velocidad] = 125; atributos[ataque] = 125; atributos[defensa] = 125; atributos[vida] = 125;
+            atributos[velocidad] = 125;
+            atributos[ataque] = 125;
+            atributos[defensa] = 125;
+            atributos[vida] = 125;
         }
     }
 
@@ -123,7 +130,6 @@ public class Combate {
                 }
             }
 
-            pausa();
             ronda++;
         }
     }
@@ -213,10 +219,4 @@ public class Combate {
         }
     }
 
-    static void pausa() {
-        System.out.println("(Presiona Enter para continuar...)");
-        try {
-            System.in.read();
-        } catch (Exception e) {}
-    }
 }
