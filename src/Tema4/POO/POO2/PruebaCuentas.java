@@ -93,7 +93,6 @@ public class PruebaCuentas {
                 break;
 
             case 0:
-                System.out.println("Saliendo...");
                 break;
 
             default:
@@ -121,7 +120,7 @@ public class PruebaCuentas {
         System.out.println("DATOS DESTINO:");
         Persona persona2 = buscarPersona();
         if (persona2 == null) return;
-        System.out.print("IBAN destino: ");
+        System.out.print("Número de cuenta destino: ");
         Cuenta cuenta2 = persona2.getCuenta(sc.next());
 
         if (cuenta1 != null && cuenta2 != null) {
