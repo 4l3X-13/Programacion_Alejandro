@@ -45,6 +45,7 @@ public class MainPersona {
 
         // Validación estática
         System.out.println("DNI 1 válido: " + Persona.validarDNI(p1.getDni()));
+        System.out.println("DNI 2 válido: " + Persona.validarDNI(p2.getDni()));
 
         sc.close();
     }
