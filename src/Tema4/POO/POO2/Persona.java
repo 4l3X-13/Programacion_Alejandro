@@ -1,5 +1,7 @@
 package Tema4.POO.POO2;
 
+import java.util.Arrays;
+
 public class Persona {
     private String dni;
     private Cuenta[] cuentas;
@@ -15,16 +17,34 @@ public class Persona {
         return dni;
     }
 
-    public void setDni(String dni) {
-        this.dni = dni;
+
+
+    public Cuenta getCuenta(String numCuenta) {
+        for (int i = 0; i < contadorCuentas; i++) {
+            if (cuentas[i].getNumeroCuenta().equals(numCuenta)) return cuentas[i];
+        }
+        return null;
+    }
+
+
+    public void setContadorCuentas(int contadorCuentas) {
+        this.contadorCuentas = contadorCuentas;
+    }
+
+    public int getContadorCuentas() {
+        return contadorCuentas;
+    }
+
+    public Cuenta[] getCuentas() {
+        return cuentas;
     }
 
     public void setCuentas(Cuenta[] cuentas) {
         this.cuentas = cuentas;
     }
 
-    public void setContadorCuentas(int contadorCuentas) {
-        this.contadorCuentas = contadorCuentas;
+    public void setDni(String dni) {
+        this.dni = dni;
     }
 
     public boolean añadirCuenta(Cuenta cuenta) {
@@ -42,17 +62,20 @@ public class Persona {
         return false;
     }
 
-    public Cuenta getCuenta(String numCuenta) {
-        for (int i = 0; i < contadorCuentas; i++) {
-            if (cuentas[i].getNumeroCuenta().equals(numCuenta)) return cuentas[i];
-        }
-        return null;
-    }
 
     public void mostrarInfo() {
         System.out.println("DNI: " + dni + " | Cuentas asociadas: " + contadorCuentas);
         for (int i = 0; i < contadorCuentas; i++) {
             System.out.println("  - [" + cuentas[i].getNumeroCuenta() + "] Saldo: " + cuentas[i].getSaldo() + "€");
         }
+    }
+
+    @Override
+    public String toString() {
+        return "Persona{" +
+                "dni='" + dni + '\'' +
+                ", cuentas=" + Arrays.toString(cuentas) +
+                ", contadorCuentas=" + contadorCuentas +
+                '}';
     }
 }
