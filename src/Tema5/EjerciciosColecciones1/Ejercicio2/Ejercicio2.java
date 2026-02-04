@@ -7,7 +7,7 @@ import java.util.Scanner;
 public class Ejercicio2 {
     static void main() {
         Scanner scan = new Scanner(System.in);
-        Map<String, Usuario> usuarios = new HashMap<String, Usuario>();
+        Map<String, Usuario> usuarios = new HashMap<>();
 
     }
 }
