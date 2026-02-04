@@ -61,6 +61,7 @@ public class Ejercicio1 {
 
     public static void verificarProducto(HashSet productos) {
         Scanner scan = new Scanner(System.in);
+        System.out.println("Introduce el producto que quieras verificar: ");
         if (productos.contains(scan.next())) {
             System.out.println("Este producto ya está en el carrito");
         } else {
