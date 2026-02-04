@@ -33,15 +33,12 @@ public class Ejercicio2 {
 
         } while (opcion != 0);
     }
-
-
     public static void menu() {
         System.out.println("0. Salir");
-        System.out.println("1. Añadir producto");
-        System.out.println("2. Verificar producto");
+        System.out.println("1. Añadir usuario");
+        System.out.println("2. Verificar usuario");
         System.out.println("Introduce la opción que quieres:");
 
     }
-
 }
 
