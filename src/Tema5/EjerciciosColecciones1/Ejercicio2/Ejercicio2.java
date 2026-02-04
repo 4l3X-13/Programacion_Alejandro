@@ -5,48 +5,60 @@ import java.util.Map;
 import java.util.Scanner;
 
 public class Ejercicio2 {
-    static void main() {
+    static void main() { // Nota: Normalmente debería ser public static void main(String[] args)
         Scanner scan = new Scanner(System.in);
         Map<String, Usuario> usuarios = new HashMap<>();
         int opcion;
         String dni;
+
         do {
             System.out.println("--------------------------------");
             System.out.println("         GYMTONIC");
             System.out.println("--------------------------------");
             menu();
             opcion = scan.nextInt();
+            scan.nextLine(); // <--- CORRECCIÓN IMPORTANTE: Limpiamos el buffer aquí
+
             switch (opcion) {
                 case 1:
                     System.out.println("Introduce tu DNI:");
-                    String dni1 = scan.nextLine();
-                    scan.nextLine();
+                    // Aquí ya no hace falta limpiar porque lo hicimos arriba
+                    dni = scan.nextLine();
+
                     System.out.println("Ahora tu nombre: ");
                     String nombre = scan.nextLine();
+
                     System.out.println("Y ahora por último introduce tu edad: ");
                     int edad = scan.nextInt();
-                    usuarios.put(dni1, new Usuario(nombre, edad));
-                    System.out.println(dni1 + usuarios);
+                    // scan.nextLine(); // Opcional: limpiar buffer tras leer edad si después pidieras otro String
+
+                    usuarios.put(dni, new Usuario(nombre, edad));
+                    System.out.println("Usuario guardado: " + usuarios.get(dni)); // Confirmamos que se guardó
                     break;
 
                 case 2:
                     System.out.println("Introduce el DNI de la persona que quieres quitar: ");
                     String dni2 = scan.nextLine();
-                    usuarios.remove(dni2);
-
+                    if (usuarios.containsKey(dni2)) {
+                        usuarios.remove(dni2);
+                        System.out.println("Usuario eliminado.");
+                    } else {
+                        System.out.println("El usuario no existe.");
+                    }
                     break;
 
                 case 3:
                     System.out.println("Introduce el DNI para buscar el usuario: ");
-                    dni = scan.next();
-                    scan.nextLine();
+                    // Recomiendo usar nextLine() para ser consistente, next() puede dar problemas con espacios
+                    dni = scan.nextLine();
+
                     if (usuarios.containsKey(dni)) {
-                        System.out.println("Nombre y edad de " + dni + " es: " + usuarios.get(dni).getNombre() + " " + usuarios.get(dni).getEdad());
+                        // Código simplificado para ser más legible
+                        Usuario u = usuarios.get(dni);
+                        System.out.println("Datos del usuario " + dni + ": " + u);
                     } else {
-                        System.out.println("Nombre no existe.");
+                        System.out.println("Usuario no existe.");
                     }
-
-
                     break;
 
                 case 0:
@@ -66,7 +78,5 @@ public class Ejercicio2 {
         System.out.println("2. Quitar usuario");
         System.out.println("3. Buscar usuario");
         System.out.println("Introduce la opción que quieres:");
-
     }
 }
-
