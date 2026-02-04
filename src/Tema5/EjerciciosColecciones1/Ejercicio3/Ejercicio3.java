@@ -1,13 +1,13 @@
 package Tema5.EjerciciosColecciones1.Ejercicio3;
 
-import java.util.HashMap;
-import java.util.Map;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Scanner;
 
 public class Ejercicio3 {
     static void main() {
         Scanner scan = new Scanner(System.in);
-        Map<String, Usuario> usuarios = new HashMap<>();
+        List<Usuario>usuarios = new ArrayList<>();
         int opcion;
         do {
             System.out.println("--------------------------------");
@@ -25,6 +25,8 @@ public class Ejercicio3 {
                     int edad = scan.nextInt();
                     System.out.println("Introduce tu DNI: ");
                     String dni = scan.nextLine();
+
+                    usuarios.add( new Usuario (nombre, edad, dni));
                     break;
 
                 case 2:
