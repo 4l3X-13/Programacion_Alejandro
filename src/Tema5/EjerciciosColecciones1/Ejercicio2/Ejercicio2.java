@@ -11,7 +11,7 @@ public class Ejercicio2 {
         int opcion;
         do {
             System.out.println("--------------------------------");
-            System.out.println("    GYMTONIC");
+            System.out.println("         GYMTONIC");
             System.out.println("--------------------------------");
             menu();
             opcion = scan.nextInt();
