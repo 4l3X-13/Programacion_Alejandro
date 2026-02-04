@@ -40,9 +40,9 @@ public class Ejercicio2 {
                     System.out.println("Introduce el DNI para buscar el usuario: ");
                     dni = scan.next();
                     scan.nextLine();
-                    if (usuarios.containsKey(dni)){
+                    if (usuarios.containsKey(dni)) {
                         System.out.println("Nombre y edad de " + dni + " es: " + usuarios.get(dni).getNombre() + " " + usuarios.get(dni).getEdad());
-                    }else{
+                    } else {
                         System.out.println("Nombre no existe.");
                     }
 
