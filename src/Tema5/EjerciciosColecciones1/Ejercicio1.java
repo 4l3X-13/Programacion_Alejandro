@@ -43,12 +43,15 @@ public class Ejercicio1 {
     public static void anadirProducto(HashSet productos) {
         Scanner scan = new Scanner(System.in);
         System.out.println("Añade el producto a continuación: ");
+        int seguir = 0;
         do {
             productos.add(scan.next());
             System.out.println("Desea seguir añadiendo productos?");
-            boolean seguir =
+            System.out.println("0. NO");
+            System.out.println("1. SI");
+            seguir = scan.nextInt();
 
-        }while(seguir);
+        } while (seguir == 1);
         System.out.println(productos);
 
     }
