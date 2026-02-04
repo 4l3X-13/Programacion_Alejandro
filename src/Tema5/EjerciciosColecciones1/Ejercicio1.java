@@ -7,28 +7,31 @@ public class Ejercicio1 {
     static void main() {
         Scanner scan = new Scanner(System.in);
         HashSet<String> productos = new HashSet<>();
-        System.out.println("--------------------------------");
-        System.out.println("    LISTA DE LA COMPRA");
-        System.out.println("--------------------------------");
-        menu();
-        int opcion = scan.nextInt();
-        switch (opcion) {
-            case 1:
-                anadirProducto(productos);
-                break;
+        int opcion;
+        do {
+            System.out.println("--------------------------------");
+            System.out.println("    LISTA DE LA COMPRA");
+            System.out.println("--------------------------------");
+            menu();
+            opcion = scan.nextInt();
+            switch (opcion) {
+                case 1:
+                    anadirProducto(productos);
+                    break;
 
-            case 2:
-                verificarProducto(productos);
-                break;
+                case 2:
+                    verificarProducto(productos);
+                    break;
 
-            case 0:
-                System.out.println("Saliendo...");
-                break;
+                case 0:
+                    System.out.println("Saliendo...");
+                    break;
 
-            default:
-                System.out.println("Opción incorrecta");
-        }
+                default:
+                    System.out.println("Opción incorrecta");
+            }
 
+        } while (opcion != 0);
     }
 
 
@@ -42,9 +45,9 @@ public class Ejercicio1 {
 
     public static void anadirProducto(HashSet productos) {
         Scanner scan = new Scanner(System.in);
-        System.out.println("Añade el producto a continuación: ");
         int seguir = 0;
         do {
+            System.out.println("Añade el producto a continuación: ");
             productos.add(scan.next());
             System.out.println("Desea seguir añadiendo productos?");
             System.out.println("0. NO");
@@ -57,7 +60,12 @@ public class Ejercicio1 {
     }
 
     public static void verificarProducto(HashSet productos) {
-        System.out.println((productos.size()));
+        Scanner scan = new Scanner(System.in);
+        if (productos.contains(scan.next())) {
+            System.out.println("Este producto ya está en el carrito");
+        } else {
+            System.out.println("Este producto aún no esta en el carrito");
+        }
     }
 
     public static void mostrarCarrito(HashSet productos) {
