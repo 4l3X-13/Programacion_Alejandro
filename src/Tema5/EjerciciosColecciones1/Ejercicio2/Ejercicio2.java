@@ -5,7 +5,7 @@ import java.util.Map;
 import java.util.Scanner;
 
 public class Ejercicio2 {
-    static void main() { // Nota: Normalmente debería ser public static void main(String[] args)
+    static void main() {
         Scanner scan = new Scanner(System.in);
         Map<String, Usuario> usuarios = new HashMap<>();
         int opcion;
@@ -17,12 +17,11 @@ public class Ejercicio2 {
             System.out.println("--------------------------------");
             menu();
             opcion = scan.nextInt();
-            scan.nextLine(); // <--- CORRECCIÓN IMPORTANTE: Limpiamos el buffer aquí
+            scan.nextLine();
 
             switch (opcion) {
                 case 1:
                     System.out.println("Introduce tu DNI:");
-                    // Aquí ya no hace falta limpiar porque lo hicimos arriba
                     dni = scan.nextLine();
 
                     System.out.println("Ahora tu nombre: ");
@@ -30,10 +29,9 @@ public class Ejercicio2 {
 
                     System.out.println("Y ahora por último introduce tu edad: ");
                     int edad = scan.nextInt();
-                    // scan.nextLine(); // Opcional: limpiar buffer tras leer edad si después pidieras otro String
 
                     usuarios.put(dni, new Usuario(nombre, edad));
-                    System.out.println("Usuario guardado: " + usuarios.get(dni)); // Confirmamos que se guardó
+                    System.out.println("Usuario guardado: " + usuarios.get(dni));
                     break;
 
                 case 2:
@@ -49,11 +47,9 @@ public class Ejercicio2 {
 
                 case 3:
                     System.out.println("Introduce el DNI para buscar el usuario: ");
-                    // Recomiendo usar nextLine() para ser consistente, next() puede dar problemas con espacios
                     dni = scan.nextLine();
 
                     if (usuarios.containsKey(dni)) {
-                        // Código simplificado para ser más legible
                         Usuario u = usuarios.get(dni);
                         System.out.println("Datos del usuario " + dni + ": " + u);
                     } else {
