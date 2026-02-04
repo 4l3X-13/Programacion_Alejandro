@@ -9,8 +9,6 @@ public class Ejercicio3 {
         Scanner scan = new Scanner(System.in);
         Map<String, Usuario> usuarios = new HashMap<>();
         int opcion;
-        String dni;
-
         do {
             System.out.println("--------------------------------");
             System.out.println("            BANCO ");
@@ -21,41 +19,18 @@ public class Ejercicio3 {
 
             switch (opcion) {
                 case 1:
-                    System.out.println("Introduce tu DNI:");
-                    dni = scan.nextLine();
-
-                    System.out.println("Ahora tu nombre: ");
+                    System.out.println("Introduce tu nombre: ");
                     String nombre = scan.nextLine();
-
-                    System.out.println("Y ahora por último introduce tu edad: ");
+                    System.out.println("Introduce tu edad: ");
                     int edad = scan.nextInt();
-
-                    usuarios.put(dni, new Usuario(nombre, edad, dni));
-                    System.out.println("Usuario guardado: " + usuarios.get(dni));
+                    System.out.println("Introduce tu DNI: ");
+                    String dni = scan.nextLine();
                     break;
 
                 case 2:
-                    System.out.println("Introduce el DNI de la persona que quieres quitar: ");
-                    String dni2 = scan.nextLine();
-                    if (usuarios.containsKey(dni2)) {
-                        usuarios.remove(dni2);
-                        System.out.println("Usuario eliminado.");
-                    } else {
-                        System.out.println("El usuario no existe.");
-                    }
+                    System.out.println("Di la posición del usuario");
                     break;
 
-                case 3:
-                    System.out.println("Introduce el DNI para buscar el usuario: ");
-                    dni = scan.nextLine();
-
-                    if (usuarios.containsKey(dni)) {
-                        Usuario u = usuarios.get(dni);
-                        System.out.println("Datos del usuario " + dni + ": " + u);
-                    } else {
-                        System.out.println("Usuario no existe.");
-                    }
-                    break;
 
                 case 0:
                     System.out.println("Saliendo...");
@@ -70,9 +45,8 @@ public class Ejercicio3 {
 
     public static void menu() {
         System.out.println("0. Salir");
-        System.out.println("1. Añadir usuario");
-        System.out.println("2. Quitar usuario");
-        System.out.println("3. Buscar usuario");
+        System.out.println("1. Añadir un usuario a la cola");
+        System.out.println("2. Quitar un usuario de la cola");
         System.out.println("Introduce la opción que quieres:");
     }
 }
