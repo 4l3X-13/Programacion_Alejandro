@@ -17,7 +17,15 @@ public class Ejercicio2 {
             opcion = scan.nextInt();
             switch (opcion) {
                 case 1:
-                    usuarios.put("2", new Usuario("carlos", 20));
+                    System.out.println("Introduce tu DNI:");
+                    String dni = scan.nextLine();
+                    scan.nextLine();
+                    System.out.println("Ahora tu nombre: ");
+                    String nombre = scan.nextLine();
+                    System.out.println("Y ahora por último introduce tu edad: ");
+                    int edad = scan.nextInt();
+                    usuarios.put(dni, new Usuario(nombre, edad));
+                    System.out.println(dni + usuarios);
                     break;
 
                 case 2:

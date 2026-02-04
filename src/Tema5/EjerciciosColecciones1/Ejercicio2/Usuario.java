@@ -27,6 +27,6 @@ public class Usuario {
 
     @Override
     public String toString() {
-        return "Usuario:" + "nombre=" + nombre + ", edad=" + edad;
+        return "Nombre=" + nombre + ", edad=" + edad;
     }
 }
