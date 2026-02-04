@@ -33,6 +33,7 @@ public class Ejercicio2 {
 
         } while (opcion != 0);
     }
+
     public static void menu() {
         System.out.println("0. Salir");
         System.out.println("1. Añadir usuario");
