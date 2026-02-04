@@ -50,9 +50,9 @@ public class Ejercicio1 {
             System.out.println("Añade el producto a continuación: ");
             String producto = scan.next();
             if (productos.contains(producto)){
-                System.out.println("Este producto ya está en el carrito");
+                System.out.println("Este producto ya está en la lista");
             }else{
-                System.out.println("El producto fué introducido al carrito exitosamente");
+                System.out.println("El producto fué introducido en la lista exitosamente");
                 productos.add(producto);
             }
             System.out.println("Desea seguir añadiendo productos?");
@@ -69,9 +69,9 @@ public class Ejercicio1 {
         Scanner scan = new Scanner(System.in);
         System.out.println("Introduce el producto que quieras verificar: ");
         if (productos.contains(scan.next())) {
-            System.out.println("Este producto ya está en el carrito");
+            System.out.println("Este producto ya está en la lista");
         } else {
-            System.out.println("Este producto aún no esta en el carrito");
+            System.out.println("Este producto aún no esta en la lista");
         }
     }
 }
