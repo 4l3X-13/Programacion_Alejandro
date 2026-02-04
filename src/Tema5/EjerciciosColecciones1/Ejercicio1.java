@@ -48,7 +48,13 @@ public class Ejercicio1 {
         int seguir = 0;
         do {
             System.out.println("Añade el producto a continuación: ");
-            productos.add(scan.next());
+            String producto = scan.next();
+            if (productos.contains(producto)){
+                System.out.println("Este producto ya está en el carrito");
+            }else{
+                System.out.println("El producto fué introducido al carrito exitosamente");
+                productos.add(producto);
+            }
             System.out.println("Desea seguir añadiendo productos?");
             System.out.println("0. NO");
             System.out.println("1. SI");
@@ -67,9 +73,5 @@ public class Ejercicio1 {
         } else {
             System.out.println("Este producto aún no esta en el carrito");
         }
-    }
-
-    public static void mostrarCarrito(HashSet productos) {
-        System.out.println(productos);
     }
 }
