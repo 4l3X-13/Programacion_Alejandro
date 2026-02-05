@@ -7,8 +7,9 @@ import java.util.Scanner;
 public class Ejercicio3 {
     static void main() {
         Scanner scan = new Scanner(System.in);
-        List<Usuario>usuarios = new ArrayList<>();
+        List<Usuario> usuarios = new ArrayList<>();
         int opcion;
+        int posicion;
         do {
             System.out.println("--------------------------------");
             System.out.println("            BANCO ");
@@ -26,11 +27,20 @@ public class Ejercicio3 {
                     System.out.println("Introduce tu DNI: ");
                     String dni = scan.nextLine();
 
-                    usuarios.add( new Usuario (nombre, edad, dni));
+                    usuarios.add(new Usuario(nombre, edad, dni));
                     break;
 
                 case 2:
                     System.out.println("Di la posición del usuario");
+                    posicion = scan.nextInt();
+                    System.out.println(usuarios.get(posicion) + "se ha ido de la cola");
+                    usuarios.remove(posicion);
+                    break;
+
+                case 3:
+                    for (int i = 0; i < usuarios.size(); i++) {
+                        System.out.println("Posicion" + i + usuarios.get(i));
+                    }
                     break;
 
 
@@ -40,6 +50,7 @@ public class Ejercicio3 {
 
                 default:
                     System.out.println("Opción incorrecta");
+                    break;
             }
 
         } while (opcion != 0);
