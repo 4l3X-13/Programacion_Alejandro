@@ -24,6 +24,7 @@ public class Ejercicio3 {
                     String nombre = scan.nextLine();
                     System.out.println("Introduce tu edad: ");
                     int edad = scan.nextInt();
+                    scan.nextLine();
                     System.out.println("Introduce tu DNI: ");
                     String dni = scan.nextLine();
 
@@ -38,6 +39,8 @@ public class Ejercicio3 {
                     break;
 
                 case 3:
+                    System.out.println("Introduce la posición que quieres quitar de la cola: ");
+                    posicion = scan.nextInt();
                     for (int i = 0; i < usuarios.size(); i++) {
                         System.out.println("Posicion" + i + usuarios.get(i));
                     }
@@ -60,7 +63,7 @@ public class Ejercicio3 {
         System.out.println("0. Salir");
         System.out.println("1. Crear un usuario");
         System.out.println("2. Añadir un usuario de la cola");
-        System.out.println("2. Quitar un usuario de la cola");
+        System.out.println("3. Quitar un usuario de la cola");
         System.out.println("Introduce la opción que quieres:");
     }
 }
