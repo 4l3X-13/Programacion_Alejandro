@@ -39,8 +39,6 @@ public class Ejercicio3 {
                     break;
 
                 case 3:
-                    System.out.println("Introduce la posición que quieres quitar de la cola: ");
-                    posicion = scan.nextInt();
                     for (int i = 0; i < usuarios.size(); i++) {
                         System.out.println("Posicion" + i + usuarios.get(i));
                     }
@@ -61,9 +59,9 @@ public class Ejercicio3 {
 
     public static void menu() {
         System.out.println("0. Salir");
-        System.out.println("1. Crear un usuario");
-        System.out.println("2. Añadir un usuario de la cola");
-        System.out.println("3. Quitar un usuario de la cola");
+        System.out.println("1. Crear y añadir un usuario");
+        System.out.println("2. Eliminar un usuario de la cola");
+        System.out.println("3. Mostrar la cola");
         System.out.println("Introduce la opción que quieres:");
     }
 }
