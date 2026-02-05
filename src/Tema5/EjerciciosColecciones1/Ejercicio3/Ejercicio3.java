@@ -58,7 +58,8 @@ public class Ejercicio3 {
 
     public static void menu() {
         System.out.println("0. Salir");
-        System.out.println("1. Añadir un usuario a la cola");
+        System.out.println("1. Crear un usuario");
+        System.out.println("2. Añadir un usuario de la cola");
         System.out.println("2. Quitar un usuario de la cola");
         System.out.println("Introduce la opción que quieres:");
     }
