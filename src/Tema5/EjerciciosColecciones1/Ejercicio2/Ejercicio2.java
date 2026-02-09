@@ -57,6 +57,10 @@ public class Ejercicio2 {
                     }
                     break;
 
+                case 4:
+                    System.out.println(usuarios);
+                    break;
+
                 case 0:
                     System.out.println("Saliendo...");
                     break;
@@ -73,6 +77,7 @@ public class Ejercicio2 {
         System.out.println("1. Añadir usuario");
         System.out.println("2. Quitar usuario");
         System.out.println("3. Buscar usuario");
+        System.out.println("4. Mostrar usuarios");
         System.out.println("Introduce la opción que quieres:");
     }
 }
