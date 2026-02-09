@@ -7,6 +7,8 @@ public class Ejercicio4 {
     static void main() {
         Scanner scan = new Scanner(System.in);
         HashSet<String> productos = new HashSet<>();
+        HashSet<String> carro = new HashSet<>();
+
         int opcion;
         do {
             System.out.println("--------------------------------");
@@ -23,6 +25,14 @@ public class Ejercicio4 {
                     verificarProducto(productos);
                     break;
 
+                case 3:
+                    anadirProductoCarro(productos, carro);
+                    break;
+
+                case 4:
+                    mostrarCarro(carro);
+                    break;
+
                 case 0:
                     System.out.println("Saliendo...");
                     break;
@@ -37,8 +47,11 @@ public class Ejercicio4 {
 
     public static void menu() {
         System.out.println("0. Salir");
-        System.out.println("1. Añadir producto");
-        System.out.println("2. Verificar producto");
+        System.out.println("1. Añadir producto a la lista");
+        System.out.println("2. Verificar producto de la lista");
+        System.out.println("3. Meter producto al carro");
+        System.out.println("4. Mostrar carro");
+
         System.out.println("Introduce la opción que quieres:");
 
     }
@@ -48,12 +61,12 @@ public class Ejercicio4 {
         int seguir = 0;
         do {
             System.out.println("Añade el producto a continuación: ");
-            String producto = scan.next();
-            if (productos.contains(producto)){
+            String producto1 = scan.next();
+            if (productos.contains(producto1)) {
                 System.out.println("Este producto ya está en la lista");
-            }else{
+            } else {
                 System.out.println("El producto fué introducido en la lista exitosamente");
-                productos.add(producto);
+                productos.add(producto1);
             }
             System.out.println("Desea seguir añadiendo productos?");
             System.out.println("0. NO");
@@ -73,5 +86,28 @@ public class Ejercicio4 {
         } else {
             System.out.println("Este producto aún no esta en la lista");
         }
+    }
+
+    public static void anadirProductoCarro(HashSet productos, HashSet<String> carro) {
+        Scanner scan = new Scanner(System.in);
+        int seguir;
+        do {
+            System.out.println("Introduce el producto que quieras añadir al carrito: ");
+            if (productos.contains(scan.next())) {
+                System.out.println("El producto esta en la lista de la compra");
+                String product = scan.nextLine();
+                carro.add(product);
+            } else {
+                System.out.println("El producto no esta en la lista de la compra");
+            }
+            System.out.println("Desea seguir añadiendo productos?");
+            System.out.println("0. NO");
+            System.out.println("1. SI");
+            seguir = scan.nextInt();
+        } while (seguir == 1);
+    }
+
+    public static void mostrarCarro(HashSet<String> carro){
+        System.out.println(carro);
     }
 }
