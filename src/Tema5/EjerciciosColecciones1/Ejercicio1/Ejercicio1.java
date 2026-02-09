@@ -52,8 +52,11 @@ public class Ejercicio1 {
             if (productos.contains(producto)){
                 System.out.println("Este producto ya está en la lista");
             }else{
-                System.out.println("El producto fué introducido en la lista exitosamente");
-                productos.add(producto);
+                if(productos.add(producto))
+                    System.out.println("El producto fué introducido en la lista exitosamente");
+                else
+                    System.out.println("error");
+
             }
             System.out.println("Desea seguir añadiendo productos?");
             System.out.println("0. NO");

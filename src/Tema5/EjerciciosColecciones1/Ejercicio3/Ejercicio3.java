@@ -30,7 +30,7 @@ public class Ejercicio3 {
 
                     usuarios.add(new Usuario(nombre, edad, dni));
                     break;
-
+//quitar SOLO en la última pos
                 case 2:
                     System.out.println("Di la posición del usuario");
                     posicion = scan.nextInt();
