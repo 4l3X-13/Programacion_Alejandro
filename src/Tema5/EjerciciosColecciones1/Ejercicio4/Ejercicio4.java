@@ -93,9 +93,9 @@ public class Ejercicio4 {
         int seguir;
         do {
             System.out.println("Introduce el producto que quieras añadir al carrito: ");
-            if (productos.contains(scan.next())) {
+            String product = scan.nextLine();
+            if (productos.contains(product)) {
                 System.out.println("El producto esta en la lista de la compra");
-                String product = scan.nextLine();
                 carro.add(product);
             } else {
                 System.out.println("El producto no esta en la lista de la compra");
