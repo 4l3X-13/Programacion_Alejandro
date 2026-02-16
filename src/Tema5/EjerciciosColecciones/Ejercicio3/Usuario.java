@@ -1,12 +1,14 @@
-package Tema5.EjerciciosColecciones1.Ejercicio2;
+package Tema5.EjerciciosColecciones.Ejercicio3;
 
 public class Usuario {
     private String nombre;
     private int edad;
+    private String dni;
 
-    public Usuario(String nombre, int edad) {
+    public Usuario(String nombre, int edad, String dni) {
         this.nombre = nombre;
         this.edad = edad;
+        this.dni = dni;
     }
 
     public String getNombre() {
@@ -25,8 +27,17 @@ public class Usuario {
         this.edad = edad;
     }
 
+    public String getDni() {
+        return dni;
+    }
+
+    public void setDni(String dni) {
+        this.dni = dni;
+    }
+
     @Override
     public String toString() {
-        return "Nombre=" + nombre + ", edad=" + edad;
+        return "Usuario: Nombre='" + nombre + '\'' + ", edad=" + edad + ", dni='" + dni;
     }
 }
+
