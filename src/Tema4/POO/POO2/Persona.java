@@ -12,6 +12,7 @@ public class Persona {
         this.cuentas = new Cuenta[3];
         this.contadorCuentas = 0;
     }
+    Consturctor vacio
 
     public String getDni() {
         return dni;
@@ -47,25 +48,29 @@ public class Persona {
         this.dni = dni;
     }
 
-    public boolean añadirCuenta(Cuenta cuenta) {
+    public boolean anyadirCuenta(Cuenta cuenta) {
+        boolean anyadida = false;
         if (contadorCuentas < 3) {
             cuentas[contadorCuentas++] = cuenta;
-            return true;
+            anyadida= true;
         }
-        return false;
+        return anyadida;
     }
 
     public boolean esMorosa() {
         for (int i = 0; i < contadorCuentas; i++) {
-            if (cuentas[i].getSaldo() < 0) return true;
+            if (cuentas[i].getSaldo() < 0)  true;
         }
-        return false;
+         false;
     }
 
 
     public void mostrarInfo() {
+        aquí deberías llamar al tostring de persona
+
         System.out.println("DNI: " + dni + " | Cuentas asociadas: " + contadorCuentas);
         for (int i = 0; i < contadorCuentas; i++) {
+            aquí deberías llamar al tostring de cuenta
             System.out.println("  - [" + cuentas[i].getNumeroCuenta() + "] Saldo: " + cuentas[i].getSaldo() + "€");
         }
     }

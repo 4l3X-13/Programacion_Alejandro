@@ -10,6 +10,7 @@ public class PruebaCuentas {
     public static void main(String[] args) {
         int opcion;
         do {
+            meter el menú en un  procedimeinto
             System.out.println("\n--- MENÚ ---");
             System.out.println("1. Registrar Persona");
             System.out.println("2. Añadir Cuenta a Persona");
@@ -29,6 +30,8 @@ public class PruebaCuentas {
 
     private static void procesarOpcion(int opcion) {
         Persona per;
+        String iban;
+
         switch (opcion) {
             case 1:
                 if (totalPersonas < personas.length) {
@@ -44,10 +47,10 @@ public class PruebaCuentas {
                 per = buscarPersona();
                 if (per != null) {
                     System.out.print("Número de cuenta: ");
-                    String iban = sc.next();
+                    iban = sc.next();
                     System.out.print("Saldo inicial: ");
-                    double s = sc.nextDouble();
-                    if (per.añadirCuenta(new Cuenta(iban, s))) System.out.println("Cuenta añadida.");
+                    s = sc.nextDouble();
+                    if (per.anyadirCuenta(new Cuenta(iban, s))) System.out.println("Cuenta añadida.");
                     else System.out.println("Error: Ya tiene 3 cuentas.");
                 }
                 break;
@@ -88,6 +91,7 @@ public class PruebaCuentas {
             case 7:
                 System.out.println("--- LISTA DE MOROSOS ---");
                 for (int i = 0; i < totalPersonas; i++) {
+                    llamarías al toString de persona
                     if (personas[i].esMorosa()) System.out.println("- DNI: " + personas[i].getDni());
                 }
                 break;

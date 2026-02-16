@@ -1,13 +1,16 @@
 package Tema4.POO.POO2;
 
 public class Cuenta {
-    private String numeroCuenta;
+    private final String numeroCuenta;
     private double saldo;
 
     public Cuenta(String numeroCuenta, double saldo) {
         this.numeroCuenta = numeroCuenta;
         this.saldo = saldo;
     }
+
+    constructor vacío
+            toString
 
     public String getNumeroCuenta() {
         return numeroCuenta;
