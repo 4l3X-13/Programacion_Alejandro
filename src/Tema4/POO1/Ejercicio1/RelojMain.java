@@ -1,8 +1,8 @@
-package Tema4.POO.POO1.Ejercicio1;
+package Tema4.POO1.Ejercicio1;
 
 public class RelojMain {
     public static void main(String[] args) {
-        Reloj reloj = new Reloj();
+        Tema4.POO.POO1.Ejercicio1.Reloj reloj = new Tema4.POO.POO1.Ejercicio1.Reloj();
 
         reloj.setEs24h(false);
         reloj.setHora(22);

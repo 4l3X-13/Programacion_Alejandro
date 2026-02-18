@@ -6,8 +6,8 @@ public class MainPersona {
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
 
-        Persona p1 = new Persona();
-        Persona p2 = new Persona();
+        Tema4.POO.POO1.Ejercicio2.Persona p1 = new Tema4.POO.POO1.Ejercicio2.Persona();
+        Tema4.POO.POO1.Ejercicio2.Persona p2 = new Tema4.POO.POO1.Ejercicio2.Persona();
 
         System.out.println("- PERSONA 1 -");
         System.out.print("Introduce el DNI: ");
@@ -39,8 +39,8 @@ public class MainPersona {
 
         System.out.println("\nDiferencia de edad: " + p1.diferenciaEdad(p2));
 
-        System.out.println("DNI 1 válido: " + Persona.validarDNI(p1.getDni()));
-        System.out.println("DNI 2 válido: " + Persona.validarDNI(p2.getDni()));
+        System.out.println("DNI 1 válido: " + Tema4.POO.POO1.Ejercicio2.Persona.validarDNI(p1.getDni()));
+        System.out.println("DNI 2 válido: " + Tema4.POO.POO1.Ejercicio2.Persona.validarDNI(p2.getDni()));
 
         sc.close();
     }

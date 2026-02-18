@@ -1,10 +1,17 @@
-package Tema4.POO.POO1.Ejercicio1;
+package Tema4.POO1.Ejercicio1;
 
 public class Reloj {
     private int hora;
     private int minutos;
     private int segundos;
     private boolean es24h;
+
+    public Reloj(int hora, int minutos, int segundos, boolean es24h) {
+        this.hora = hora;
+        this.minutos = minutos;
+        this.segundos = segundos;
+        this.es24h = es24h;
+    }
 
     public void mostrar() {
         System.out.println("Son las " + hora + "h " + minutos + "minutos y " + segundos + "segundos");

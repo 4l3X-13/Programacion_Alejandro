@@ -1,4 +1,4 @@
-package Tema4.POO.POO3.Ejercicio1;
+package Tema4.POO3.Ejercicio1;
 
 public class Vehiculo {
     private int plazas;
