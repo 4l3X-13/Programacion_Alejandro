@@ -1,4 +1,4 @@
-/*package Tema4.POO.POO2;
+package Tema4.POO2;
 
 import Tema4.POO.POO1.Ejercicio2.Persona;
 
@@ -12,7 +12,7 @@ public class PruebaCuentas {
     public static void main(String[] args) {
         int opcion;
         do {
-            mostrarMenu(); // Procedimiento para el menú
+            mostrarMenu();
             opcion = sc.nextInt();
             procesarOpcion(opcion);
         } while (opcion != 0);
@@ -143,4 +143,4 @@ public class PruebaCuentas {
             System.out.println("Error: Una de las cuentas no existe.");
         }
     }
-}*/
+}

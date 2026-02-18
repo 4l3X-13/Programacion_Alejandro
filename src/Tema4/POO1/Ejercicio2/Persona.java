@@ -1,4 +1,4 @@
-package Tema4.POO.POO1.Ejercicio2;
+/*package Tema4.POO2.Persona;
 
 import java.util.Scanner;
 
@@ -87,3 +87,4 @@ public class Persona {
 
 
 }
+*/
