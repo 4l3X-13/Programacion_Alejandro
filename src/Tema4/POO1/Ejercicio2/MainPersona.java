@@ -1,4 +1,4 @@
-package Tema4.POO.POO1.Ejercicio2;
+/*package Tema4.POO.POO1.Ejercicio2;
 
 import java.util.Scanner;
 
@@ -44,4 +44,4 @@ public class MainPersona {
 
         sc.close();
     }
-}
+}*/

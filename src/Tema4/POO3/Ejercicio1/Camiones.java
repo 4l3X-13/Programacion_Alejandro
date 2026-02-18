@@ -14,6 +14,10 @@ public class Camiones extends Vehiculo {
         this.esPeligroso = esPeligroso;
     }
 
+    public Camiones() {
+        this("82844a","Benz","Mercedes","negro",400, Peligroso.peligroso);
+    }
+
     public double getPesoMax() {
         return pesoMax;
     }
@@ -28,5 +32,13 @@ public class Camiones extends Vehiculo {
 
     public void setEsPeligroso(Peligroso esPeligroso) {
         this.esPeligroso = esPeligroso;
+    }
+
+    @Override
+    public String toString() {
+        return "Camiones{" +
+                "pesoMax=" + pesoMax +
+                ", esPeligroso=" + esPeligroso +
+                '}';
     }
 }

@@ -45,5 +45,13 @@ public class Vehiculo {
         this.color = color;
     }
 
-
+    @Override
+    public String toString() {
+        return "Vehiculo{" +
+                "matricula='" + matricula + '\'' +
+                ", modelo='" + modelo + '\'' +
+                ", marca='" + marca + '\'' +
+                ", color='" + color + '\'' +
+                '}';
+    }
 }

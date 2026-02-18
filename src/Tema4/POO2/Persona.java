@@ -1,6 +1,6 @@
-package Tema4.POO2;
+/*package Tema4.POO2;
 
-import Tema4.POO.POO1.Ejercicio2.Persona;
+import Tema4.POO1.Persona;
 
 import java.util.Scanner;
 
@@ -143,4 +143,4 @@ public class PruebaCuentas {
             System.out.println("Error: Una de las cuentas no existe.");
         }
     }
-}
+}*/
