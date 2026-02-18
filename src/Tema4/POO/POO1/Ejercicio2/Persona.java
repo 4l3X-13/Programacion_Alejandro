@@ -84,4 +84,6 @@ public class Persona {
     public int diferenciaEdad(Persona otra) {
         return Math.abs(this.edad - otra.getEdad());
     }
+
+
 }

@@ -1,19 +1,26 @@
-package Tema4.POO.POO2;
+/*package Tema4.POO.POO2;
 
 public class Cuenta {
     private final String numeroCuenta;
     private double saldo;
+
+    public String getNumeroCuenta() {
+        return numeroCuenta;
+    }
 
     public Cuenta(String numeroCuenta, double saldo) {
         this.numeroCuenta = numeroCuenta;
         this.saldo = saldo;
     }
 
-    constructor vacío
-            toString
+    public Cuenta() {
+        this.numeroCuenta = "0000";
+        this.saldo = 0.0;
+    }
 
-    public String getNumeroCuenta() {
-        return numeroCuenta;
+    @Override
+    public String toString() {
+        return "Cuenta [IBAN=" + numeroCuenta + ", Saldo=" + saldo + "€]";
     }
 
     public double getSaldo() {
@@ -37,4 +44,4 @@ public class Cuenta {
             return false;
         }
     }
-}
+}*/

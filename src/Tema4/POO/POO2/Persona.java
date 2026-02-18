@@ -1,86 +1,146 @@
-package Tema4.POO.POO2;
+/*package Tema4.POO.POO2;
 
-import java.util.Arrays;
+import Tema4.POO.POO1.Ejercicio2.Persona;
 
-public class Persona {
-    private String dni;
-    private Cuenta[] cuentas;
-    private int contadorCuentas;
+import java.util.Scanner;
 
-    public Persona(String dni) {
-        this.dni = dni;
-        this.cuentas = new Cuenta[3];
-        this.contadorCuentas = 0;
+public class PruebaCuentas {
+    private static Persona[] personas = new Persona[100];
+    private static int totalPersonas = 0;
+    private static Scanner sc = new Scanner(System.in);
+
+    public static void main(String[] args) {
+        int opcion;
+        do {
+            mostrarMenu(); // Procedimiento para el menú
+            opcion = sc.nextInt();
+            procesarOpcion(opcion);
+        } while (opcion != 0);
     }
-    Consturctor vacio
 
-    public String getDni() {
-        return dni;
+    private static void mostrarMenu() {
+        System.out.println("\n--- MENÚ ---");
+        System.out.println("1. Registrar Persona");
+        System.out.println("2. Añadir Cuenta a Persona");
+        System.out.println("3. Consultar Persona");
+        System.out.println("4. Recibir Nómina");
+        System.out.println("5. Pagar Recibo");
+        System.out.println("6. Transferencia entre cuentas");
+        System.out.println("7. Listar Morosos");
+        System.out.println("0. Salir");
+        System.out.print("Introduce la opción: ");
     }
 
+    private static void procesarOpcion(int opcion) {
+        Persona per;
+        String iban;
 
+        switch (opcion) {
+            case 1:
+                if (totalPersonas < personas.length) {
+                    System.out.print("Introduce DNI: ");
+                    personas[totalPersonas++] = new Persona(sc.next());
+                    System.out.println("Persona registrada.");
+                } else {
+                    System.out.println("Base de datos llena.");
+                }
+                break;
 
-    public Cuenta getCuenta(String numCuenta) {
-        for (int i = 0; i < contadorCuentas; i++) {
-            if (cuentas[i].getNumeroCuenta().equals(numCuenta)) return cuentas[i];
+            case 2:
+                per = buscarPersona();
+                if (per != null) {
+                    System.out.print("Número de cuenta: ");
+                    iban = sc.next();
+                    System.out.print("Saldo inicial: ");
+                    double s = sc.nextDouble(); // Se agregó la declaración de 'double'
+                    if (per.anyadirCuenta(new Cuenta(iban, s))) System.out.println("Cuenta añadida.");
+                    else System.out.println("Error: Ya tiene 3 cuentas.");
+                }
+                break;
+
+            case 3:
+                per = buscarPersona();
+                if (per != null) per.mostrarInfo();
+                break;
+
+            case 4:
+                per = buscarPersona();
+                if (per != null) {
+                    System.out.print("Número de cuenta: ");
+                    Cuenta cuent = per.getCuenta(sc.next());
+                    if (cuent != null) {
+                        System.out.print("Importe nómina: ");
+                        cuent.recibirAbono(sc.nextDouble());
+                    } else System.out.println("Cuenta no encontrada.");
+                }
+                break;
+
+            case 5:
+                per = buscarPersona();
+                if (per != null) {
+                    System.out.print("Número de cuenta: ");
+                    Cuenta cuen = per.getCuenta(sc.next());
+                    if (cuen != null) {
+                        System.out.print("Importe recibo: ");
+                        cuen.pagarRecibo(sc.nextDouble());
+                    } else System.out.println("Cuenta no encontrada.");
+                }
+                break;
+
+            case 6:
+                realizarTransferencia();
+                break;
+
+            case 7:
+                System.out.println("--- LISTA DE MOROSOS ---");
+                for (int i = 0; i < totalPersonas; i++) {
+                    if (personas[i].esMorosa()) {
+                        System.out.println(personas[i].toString());
+                    }
+                }
+                break;
+
+            case 0:
+                System.out.println("Saliendo...");
+                break;
+
+            default:
+                System.out.println("Opción no válida.");
         }
+    }
+
+    private static Persona buscarPersona() {
+        System.out.print("DNI de la persona: ");
+        String dniBusqueda = sc.next();
+        for (int i = 0; i < totalPersonas; i++) {
+            if (personas[i].getDni().equals(dniBusqueda)) return personas[i];
+        }
+        System.out.println("Persona no encontrada.");
         return null;
     }
 
+    private static void realizarTransferencia() {
+        System.out.println("--- DATOS ORIGEN ---");
+        Persona persona1 = buscarPersona();
+        if (persona1 == null) return;
+        System.out.print("IBAN origen: ");
+        Cuenta cuenta1 = persona1.getCuenta(sc.next());
 
-    public void setContadorCuentas(int contadorCuentas) {
-        this.contadorCuentas = contadorCuentas;
-    }
+        System.out.println("--- DATOS DESTINO ---");
+        Persona persona2 = buscarPersona();
+        if (persona2 == null) return;
+        System.out.print("IBAN destino: ");
+        Cuenta cuenta2 = persona2.getCuenta(sc.next());
 
-    public int getContadorCuentas() {
-        return contadorCuentas;
-    }
-
-    public Cuenta[] getCuentas() {
-        return cuentas;
-    }
-
-    public void setCuentas(Cuenta[] cuentas) {
-        this.cuentas = cuentas;
-    }
-
-    public void setDni(String dni) {
-        this.dni = dni;
-    }
-
-    public boolean anyadirCuenta(Cuenta cuenta) {
-        boolean anyadida = false;
-        if (contadorCuentas < 3) {
-            cuentas[contadorCuentas++] = cuenta;
-            anyadida= true;
-        }
-        return anyadida;
-    }
-
-    public boolean esMorosa() {
-        for (int i = 0; i < contadorCuentas; i++) {
-            if (cuentas[i].getSaldo() < 0)  true;
-        }
-         false;
-    }
-
-
-    public void mostrarInfo() {
-        aquí deberías llamar al tostring de persona
-
-        System.out.println("DNI: " + dni + " | Cuentas asociadas: " + contadorCuentas);
-        for (int i = 0; i < contadorCuentas; i++) {
-            aquí deberías llamar al tostring de cuenta
-            System.out.println("  - [" + cuentas[i].getNumeroCuenta() + "] Saldo: " + cuentas[i].getSaldo() + "€");
+        if (cuenta1 != null && cuenta2 != null) {
+            System.out.print("Cantidad a transferir: ");
+            double cant = sc.nextDouble();
+            if (cuenta1.pagarRecibo(cant)) { // Solo abona si el origen pudo pagar
+                cuenta2.recibirAbono(cant);
+                System.out.println("Transferencia completada.");
+            }
+        } else {
+            System.out.println("Error: Una de las cuentas no existe.");
         }
     }
-
-    @Override
-    public String toString() {
-        return "Persona{" +
-                "dni='" + dni + '\'' +
-                ", cuentas=" + Arrays.toString(cuentas) +
-                ", contadorCuentas=" + contadorCuentas +
-                '}';
-    }
-}
+}*/

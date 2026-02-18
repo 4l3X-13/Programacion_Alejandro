@@ -1,4 +1,6 @@
-package Tema4.POO.POO2;
+/*package Tema4.POO.POO2;
+
+import Tema4.POO.POO1.Ejercicio2.Persona;
 
 import java.util.Scanner;
 
@@ -137,4 +139,4 @@ public class PruebaCuentas {
             System.out.println("Error en las cuentas indicadas.");
         }
     }
-}
+}*/
