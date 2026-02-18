@@ -12,4 +12,7 @@ public class Animal {
         this.raza = raza;
         this.color = color;
     }
+    public Animal() {
+        this("Akila",3,"Perro","blanco");
+    }
 }
