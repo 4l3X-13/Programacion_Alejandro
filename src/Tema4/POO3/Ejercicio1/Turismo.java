@@ -12,5 +12,6 @@ public class Turismo extends Vehiculo {
         super(matricula,modelo,marca,color);
         this.plazas = plazas;
         this.uso = uso;
+
     }
 }
