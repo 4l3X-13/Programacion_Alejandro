@@ -16,4 +16,23 @@ public class Perro extends Animal {
     public Perro() {
         this("Akila", 3, "Perro", "blanco", tieneCalle.deCasa);
     }
+
+    public void Guau(){
+        System.out.println("Guau!!!!");
+    }
+
+    public tieneCalle getCalle() {
+        return calle;
+    }
+
+    public void setCalle(tieneCalle calle) {
+        this.calle = calle;
+    }
+
+    @Override
+    public String toString() {
+        return "Perro{" +
+                "calle=" + calle +
+                '}';
+    }
 }
