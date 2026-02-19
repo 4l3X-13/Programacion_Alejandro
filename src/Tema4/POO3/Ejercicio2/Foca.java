@@ -10,7 +10,7 @@ public class Foca extends Animal {
     }
 
     public Foca() {
-        this("Akila", 3, "Perro", "blanco", true);
+        this("Mateo", 3, "Perro", "blanco", true);
     }
 
     public void Ough() {
