@@ -17,5 +17,18 @@ public class Foca extends Animal {
         System.out.println("Ough!!!!");
     }
 
+    public boolean isAplaude() {
+        return aplaude;
+    }
 
+    public void setAplaude(boolean aplaude) {
+        this.aplaude = aplaude;
+    }
+
+    @Override
+    public String toString() {
+        return "Foca{" +
+                "aplaude=" + aplaude +
+                '}';
+    }
 }
