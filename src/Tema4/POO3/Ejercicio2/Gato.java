@@ -15,7 +15,7 @@ public class Gato extends Animal {
     }
 
 
-    public void miau(){
+    public void miau() {
         System.out.println("Miau!!!!");
     }
 

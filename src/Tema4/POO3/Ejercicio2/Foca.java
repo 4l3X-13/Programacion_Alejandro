@@ -6,7 +6,7 @@ public class Foca extends Animal {
 
     public Foca(String nombre, int edad, String raza, String color, boolean aplaude) {
         super(nombre, edad, raza, color);
-        this.aplaude = aplaude ;
+        this.aplaude = aplaude;
     }
 
     public Foca() {

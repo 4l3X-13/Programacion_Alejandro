@@ -7,13 +7,14 @@ public class Animal {
     private String color;
 
     public Animal(String nombre, int edad, String raza, String color) {
-        this.nombre= nombre;
+        this.nombre = nombre;
         this.edad = edad;
         this.raza = raza;
         this.color = color;
     }
+
     public Animal() {
-        this("Akila",3,"Perro","blanco");
+        this("Akila", 3, "Perro", "blanco");
     }
 
     public String getNombre() {

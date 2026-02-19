@@ -1,6 +1,6 @@
 package Tema4.POO3.Ejercicio2;
 
-enum tieneCalle{
+enum tieneCalle {
     deCalle, deCasa;
 }
 
@@ -17,7 +17,7 @@ public class Perro extends Animal {
         this("Akila", 3, "Perro", "blanco", tieneCalle.deCasa);
     }
 
-    public void Guau(){
+    public void Guau() {
         System.out.println("Guau!!!!");
     }
 
