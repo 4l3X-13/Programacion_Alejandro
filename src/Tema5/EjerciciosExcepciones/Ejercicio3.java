@@ -24,7 +24,7 @@ public class Ejercicio3 {
             }
         }
 
-        System.out.println("\nVector completado con éxito:");
+        System.out.println("Vector completado con éxito:");
         for (double valor : vector) {
             System.out.print("[" + valor + "] ");
         }
