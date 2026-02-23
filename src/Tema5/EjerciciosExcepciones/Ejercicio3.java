@@ -6,7 +6,7 @@ import java.util.Scanner;
 
 public class Ejercicio3 {
     public static void main(String[] args) {
-        Scanner teclado = new Scanner(System.in);
+        Scanner scanner = new Scanner(System.in);
         double[] vector = new double[5];
         int i = 0;
 
@@ -15,12 +15,12 @@ public class Ejercicio3 {
         while (i < vector.length) {
             try {
                 System.out.print("Valor para la posición [" + i + "]: ");
-                vector[i] = teclado.nextDouble();
+                vector[i] = scanner.nextDouble();
                 i++;
 
             } catch (InputMismatchException e) {
                 System.out.println("Error: El valor introducido no es un número válido. Inténtalo de nuevo.");
-                teclado.next();
+                scanner.next();
             }
         }
 
@@ -29,7 +29,7 @@ public class Ejercicio3 {
             System.out.print("[" + valor + "] ");
         }
 
-        teclado.close();
+        scanner.close();
     }
 }
 
