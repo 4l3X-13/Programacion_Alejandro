@@ -14,7 +14,7 @@ public class RedSocialMain {
 
         for (PublicacionConReaccion p : muro) {
             p.publicar();
-            p.comentar("¡Qué buen contenido!"); // Probamos el nuevo método
+            p.comentar("¡Qué buen contenido!");
             p.compartir();
 
             if (p instanceof AbrirPublicacion) {
