@@ -1,7 +1,5 @@
 package Tema4.POO3.Ejercicio1;
 
-import Tema4.POO.POO3.Ejercicio1.Vehiculo;
-
 enum tipo{
     profesional,particular
 }
