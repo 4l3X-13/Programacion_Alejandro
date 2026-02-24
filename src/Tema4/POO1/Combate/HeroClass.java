@@ -8,7 +8,7 @@ public class HeroClass {
     private int attack;
     private int defense;
 
-    //cuidado con final que no se puede cambiar que ponemos oomo final?
+    //cuidado con final que no se puede cambiar que ponemos como final?
     //nombre, nivel base, vida maxima porque asi sgun la logica
     //aumenta nivel personaje asi que necesita cambiar la experencia da mas ataque y mas def y la vida varia
     private final String BASE_NAME = "pepe";
