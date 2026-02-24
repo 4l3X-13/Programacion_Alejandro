@@ -10,7 +10,6 @@ public class BibliotecaMain {
         inventario.add(new Revista(205, "National Geographic", 542, 2023));
         inventario.add(new DVD(309, "Inception", "Christopher Nolan", 2010, "Ciencia Ficción"));
 
-        System.out.println("CATÁLOGO DE LA BIBLIOTECA");
         for (Ficha f : inventario) {
             f.imprimirDetalles();
         }

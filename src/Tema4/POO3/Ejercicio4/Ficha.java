@@ -9,8 +9,13 @@ public abstract class Ficha {
         this.titulo = titulo;
     }
 
-    public int getNumero() { return numero; }
-    public String getTitulo() { return titulo; }
+    public int getNumero() {
+        return numero;
+    }
+
+    public String getTitulo() {
+        return titulo;
+    }
 
     public abstract void imprimirDetalles();
 
