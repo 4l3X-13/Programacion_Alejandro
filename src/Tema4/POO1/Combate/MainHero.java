@@ -10,7 +10,7 @@ public class MainHero {
         Random dado = new Random();
 
         // 2. Creamos a nuestro héroe (usa tu constructor)
-        HeroClass miHeroe = new HeroClass("Diana", 1, 100, 100, 0, 30, 10);
+        HeroClass miHeroe = new HeroClass("Alex", 1, 100, 100, 0, 30, 10);
 
         // 3. Creamos la estructura para los enemigos
         ArrayList<HeroClass> horda = new ArrayList<>();
