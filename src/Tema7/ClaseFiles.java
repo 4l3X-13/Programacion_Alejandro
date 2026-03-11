@@ -15,7 +15,7 @@ public class ClaseFiles {
 
         //COPY
         File from = new File("datosAna.txt");
-        File to = new File("dest.txt");
+        File to = new File("test.txt");
 
         try {
             Files.copy(from.toPath(), to.toPath(), StandardCopyOption.REPLACE_EXISTING);
