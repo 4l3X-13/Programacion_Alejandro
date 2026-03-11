@@ -24,8 +24,8 @@ public class OperacionesPath {
         System.out.println(unDir.resolve(unFile.getFileName()));
 
         // Relativizar una ruta respecto a otra
-        Path otroFile = Path.of("/a/b/c/d.txt");
-        Path otroDir = Path.of("/a/b/");
+        Path otroFile = Path.of("/home/alenavzaf/IdeaProjects/Programacion_Alejandro_GITHUB_COMPLETO/Hola/GG/d.txt");
+        Path otroDir = Path.of("/home/alenavzaf/IdeaProjects/Programacion_Alejandro_GITHUB_COMPLETO/Hola");
         // obtener c/d.txt
         System.out.println(otroDir.relativize(otroFile));
 
@@ -33,16 +33,16 @@ public class OperacionesPath {
         // sobre ficheros y directorios
 
         // Crear un directorio y sus ascendentes
-        Files.createDirectories(Path.of("/some/non/existing/directories"));
+        Files.createDirectories(Path.of("/home/alenavzaf/IdeaProjects/Programacion_Alejandro_GITHUB_COMPLETO/Hola/prueba/"));
 
         // Imprimir el contenido de un directorio
-        Files.list(Path.of("/some/directory")).forEach(System.out::println);
+        Files.list(Path.of("/home/alenavzaf/IdeaProjects/Programacion_Alejandro_GITHUB_COMPLETO/Hola")).forEach(System.out::println);
 
         // Obtener la lista de los contenidos anidados de un directorio
-        List<Path> list = Files.walk(Paths.get("/this/directory")).toList();
+        List<Path> list = Files.walk(Paths.get("/home/alenavzaf/IdeaProjects/Programacion_Alejandro_GITHUB_COMPLETO/Hola")).toList();
 
         // Imprimir los ficheros regulares de un directorio ordenados por tamaño
-        Files.list(Path.of("/another/directory"))
+        Files.list(Path.of("/home/alenavzaf/IdeaProjects/Programacion_Alejandro_GITHUB_COMPLETO/"))
                 .filter(Files::isRegularFile)
                 .sorted(Comparator.comparingLong(path -> {
                     try {
@@ -54,7 +54,7 @@ public class OperacionesPath {
                 .forEach(System.out::println);
 
         //imprimir los ficheros regulares de un directorio ordenados por tamaño sin programación funcional
-        Path directorio = Path.of("/another/directory");
+        Path directorio = Path.of("/home/alenavzaf/IdeaProjects/Programacion_Alejandro_GITHUB_COMPLETO/Hola");
         // Lista para almacenar los archivos regulares
         List<Path> archivos = new ArrayList<>();
 
@@ -84,7 +84,7 @@ public class OperacionesPath {
         }
 
         // Obtener el año, mes y día de la fecha de la última modificación
-        Path file = Path.of("/one/more/file");
+        Path file = Path.of("/home/alenavzaf/IdeaProjects/Programacion_Alejandro_GITHUB_COMPLETO/Hola/");
         LocalDate time = LocalDate.parse(Files.getLastModifiedTime(file).toString(), DateTimeFormatter.ISO_DATE_TIME);
         System.out.println(time.getYear());
         System.out.println(time.getMonthValue());
