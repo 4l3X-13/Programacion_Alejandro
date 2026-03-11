@@ -15,12 +15,11 @@ public class OperacionesPath {
     public static void main(String[] args) throws IOException {
 
         // Para obtener un objeto Path utilizamos el método Path.of() o Paths.get()
-        Path unPath = Path.of("/ruta/al/fichero/o/directorio");
-        Path otroPath = Paths.get("/ruta/al/fichero/o/directorio2");
+        Path unPath = Path.of("/home/alenavzaf/IdeaProjects/Programacion_Alejandro_GITHUB_COMPLETO/Hola/GG/");
+        Path otroPath = Paths.get("/home/alenavzaf/IdeaProjects/Programacion_Alejandro_GITHUB_COMPLETO/Hola/F/");
 
-        // Obtener el nombre de un fichero y unirlo a la ruta de otro directorio
-        Path unFile = Path.of("/usr/local/file.txt");
-        Path unDir = Path.of("/home/user");
+        Path unFile = Path.of("/home/alenavzaf/IdeaProjects/Programacion_Alejandro_GITHUB_COMPLETO/Hola/GG/file.txt");
+        Path unDir = Path.of("/home/alenavzaf/IdeaProjects/Programacion_Alejandro_GITHUB_COMPLETO/Hola");
         // /home/user/file.txt
         System.out.println(unDir.resolve(unFile.getFileName()));
 
