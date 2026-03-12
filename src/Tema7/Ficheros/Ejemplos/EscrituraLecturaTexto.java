@@ -8,7 +8,6 @@ import java.nio.file.StandardOpenOption;
 import java.util.List;
 
 
-
 public class EscrituraLecturaTexto {
     public static void main(String[] args) {
         String fileName = "prueba.txt";
@@ -37,7 +36,7 @@ public class EscrituraLecturaTexto {
             String content = Files.readString(filePath);
 
             System.out.println(content);
-        }catch (IOException e) {
+        } catch (IOException e) {
             System.out.println(e.getMessage());
         }
 
@@ -57,19 +56,18 @@ public class EscrituraLecturaTexto {
             //Guardamos los cambios del fichero
             fileWriter.flush();
             //Leemos el fichero y lo mostramos por pantalla
-            FileReader fReader=new FileReader("prueba.txt");
-            int valor=fReader.read();
-            while(valor!=-1){
-                System.out.print((char)valor);
-                valor=fReader.read();
+            FileReader fReader = new FileReader("prueba.txt");
+            int valor = fReader.read();
+            while (valor != -1) {
+                System.out.print((char) valor);
+                valor = fReader.read();
             }
             //String content = Files.readString(filePath);
             //System.out.println(content);
 
         } catch (Exception e) {
             e.printStackTrace();
-        }
-        finally {
+        } finally {
             try {
                 if (fileWriter != null) {
                     fileWriter.flush();
@@ -104,8 +102,7 @@ public class EscrituraLecturaTexto {
                 while ((line = br.readLine()) != null) {
                     System.out.println(line);
                 }
-            }
-            catch (IOException e) {
+            } catch (IOException e) {
                 e.printStackTrace();
             }
         } catch (Exception e) {
@@ -113,7 +110,7 @@ public class EscrituraLecturaTexto {
         }
 
         //PrintWriter
-        PrintWriter writerObj1 =null;
+        PrintWriter writerObj1 = null;
         try {
             writerObj1 = new PrintWriter(new File("prueba.txt"));
 
@@ -125,8 +122,7 @@ public class EscrituraLecturaTexto {
 
             List<String> lines = Files.readAllLines(Paths.get(fileName));
             System.out.println(lines);
-        }
-        catch (Exception e) {
+        } catch (Exception e) {
             e.getStackTrace();
         }
 
@@ -135,21 +131,21 @@ public class EscrituraLecturaTexto {
 
         //FileOutputStream
         //si no existe, lo crea
-        try(FileOutputStream fos=new FileOutputStream("fichero_bin2.ddr")){
+        try (FileOutputStream fos = new FileOutputStream("fichero_bin2.ddr")) {
 
-            String texto="Esto es una prueba para ficheros binariosssss";
+            String texto = "Esto es una prueba para ficheros binariosssss";
 
             //Copiamos el texto en un array de bytes
-            byte codigos[]=texto.getBytes();
+            byte codigos[] = texto.getBytes();
 
             fos.write(codigos);
 
-        }catch(IOException e){
+        } catch (IOException e) {
             System.out.println(e.getMessage());
         }
 
         //DataOutputStream
-        try(DataOutputStream dos=new DataOutputStream(new FileOutputStream("fich_binarioDataOutputStream.ddr"));){
+        try (DataOutputStream dos = new DataOutputStream(new FileOutputStream("fich_binarioDataOutputStream.ddr"));) {
             System.out.println("Escribiendo fichero binario con DataOutputStream");
             //Escribimos un numero
             dos.writeInt(23);
@@ -160,7 +156,7 @@ public class EscrituraLecturaTexto {
             //Escribimos un numero
             dos.writeInt(1990);
 
-        }catch(IOException e){
+        } catch (IOException e) {
             System.out.println("Error E/S");
         }
 
@@ -179,9 +175,7 @@ public class EscrituraLecturaTexto {
             // Writes data to the output stream
             output.write(array);
             output.close();
-        }
-
-        catch (Exception e) {
+        } catch (Exception e) {
             e.getStackTrace();
         }
 
