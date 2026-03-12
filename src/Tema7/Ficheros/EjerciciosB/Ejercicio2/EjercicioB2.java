@@ -1,4 +1,4 @@
-package Tema7.Ficheros.EjerciciosB;
+package Tema7.Ficheros.EjerciciosB.Ejercicio2;
 
 import java.io.File;
 import java.io.FileNotFoundException;
@@ -9,7 +9,7 @@ import java.util.Scanner;
 public class EjercicioB2 {
     public static void main(String[] args) {
         List<Alumno> lista = new ArrayList<>();
-        try (Scanner sc = new Scanner(new File("alumnos_notas.txt"))) {
+        try (Scanner sc = new Scanner(new File("/home/alenavzaf/IdeaProjects/Programacion_Alejandro_GITHUB_COMPLETO/Archivos_De_Ficheros/alumnos_notas.txt"))) {
             while (sc.hasNextLine()) {
                 String[] datos = sc.nextLine().split(" ");
                 String nombreCompleto = datos[0] + " " + datos[1];
@@ -22,19 +22,5 @@ public class EjercicioB2 {
         } catch (FileNotFoundException e) {
             System.out.println("Archivo no encontrado.");
         }
-    }
-}
-
-class Alumno {
-    String nombre;
-    double media;
-
-    Alumno(String n, double m) {
-        nombre = n;
-        media = m;
-    }
-
-    public String toString() {
-        return String.format("%s: %.2f", nombre, media);
     }
 }
