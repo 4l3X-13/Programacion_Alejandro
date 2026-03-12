@@ -1,4 +1,4 @@
-package Tema7;
+package Tema7.Ficheros.Ejemplos;
 
 import java.io.File;
 import java.io.IOException;
