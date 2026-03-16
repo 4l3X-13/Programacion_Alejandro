@@ -1,6 +1,6 @@
 package Tema7.Ficheros.EjerciciosB.Ejercicio3;
 
-import java.io.IOException;
+import java.io.*;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
@@ -13,17 +13,32 @@ public class EjercicioB3 {
         Path filePath = Paths.get("usa_personas_sorted.txt");
 
         try {
-            //Escribe contenido al fichero, borrando todo lo que haya
-            Files.writeString(filePath, "Aquí escribo borrando todo el contendio anterior");
-            //Escribe contenido al fichero, añadiendolo al final del mismo
-            Files.writeString(filePath, "Aquí escribo añadiendo al final", StandardOpenOption.APPEND);
+            //De esta manera cada vez que escribimos, se machaca toda la info que había dentro del fichero
+            FileWriter file = new FileWriter("usa_personas_sorted.txt");
+            //De esta manera, lo estamos AÑADIENDO al final del fichero
+            FileWriter fileAppend = new FileWriter("usa_personas_sorted.txt", true);
 
-            //Verify file content
-            String content = Files.readString(filePath);
+            BufferedWriter output = new BufferedWriter(file);
+            BufferedWriter outputAppend = new BufferedWriter(fileAppend);
+            // Escribimos el String en el fichero
+            //Escribimos
+            output.write("escribimos con Buffered");
+            outputAppend.write("añadimos con Buffered");
+            // Cerramos el writer
+            output.close();
+            outputAppend.close();
+            //Leemos
 
-            System.out.println(content);
-        } catch (IOException e) {
-            e.printStackTrace();
+            try (BufferedReader br = new BufferedReader(new FileReader(fileName))) {
+                String line;
+                while ((line = br.readLine()) != null) {
+                    System.out.println(line);
+                }
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        } catch (Exception e) {
+            e.getStackTrace();
         }
     }
 }
