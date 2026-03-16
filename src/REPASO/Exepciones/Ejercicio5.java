@@ -1,33 +1,40 @@
 package REPASO.Exepciones;
 
+import java.util.InputMismatchException;
 import java.util.Scanner;
 
 public class Ejercicio5 {
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
-        while (true) {
-            try {
-                System.out.print("Introduce un número (o -999 para terminar el progama): ");
-                int valor = sc.nextInt();
-                if (valor == -999) break;
+        int valor = 0;
 
-                imprimePositivo(valor);
-                imprimeNegativo(valor);
-            } catch (Exception e) {
+        while (valor != -999) {
+            try {
+                System.out.print("Introduce un número (-999 para salir): ");
+                valor = sc.nextInt();
+
+                if (valor != -999) {
+                    imprimePositivo(valor);
+                    imprimeNegativo(valor);
+                }
+            } catch (InputMismatchException e) {
+                System.out.println("Error: Debes introducir un número entero.");
+                sc.nextLine(); // Limpiar el buffer
+            } catch (IllegalArgumentException e) {
                 System.out.println("Error: " + e.getMessage());
-                sc.nextLine();
             }
         }
+        System.out.println("Programa finalizado.");
         sc.close();
     }
 
-    static void imprimePositivo(int p) throws Exception {
-        if (p < 0) throw new Exception("El valor " + p + " no es un numero positivo");
+    static void imprimePositivo(int p) {
+        if (p < 0) throw new IllegalArgumentException("El número " + p + " no es positivo.");
         System.out.println("Positivo: " + p);
     }
 
-    static void imprimeNegativo(int n) throws Exception {
-        if (n >= 0) throw new Exception("El valor " + n + " no es un numero negativo");
+    static void imprimeNegativo(int n) {
+        if (n >= 0) throw new IllegalArgumentException("El número " + n + " no es negativo.");
         System.out.println("Negativo: " + n);
     }
 }
