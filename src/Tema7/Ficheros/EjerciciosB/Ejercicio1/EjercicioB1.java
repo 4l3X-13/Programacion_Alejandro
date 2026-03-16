@@ -1,4 +1,4 @@
-package Tema7.Ficheros.EjerciciosB;
+package Tema7.Ficheros.EjerciciosB.Ejercicio1;
 
 import java.io.BufferedReader;
 import java.io.FileReader;
