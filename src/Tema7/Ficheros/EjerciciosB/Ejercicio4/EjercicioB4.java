@@ -19,13 +19,13 @@ public class EjercicioB4 {
         System.out.println("Introduce el nombre del archivo de destino:");
         String usa_nombres = scan.nextLine();
         PrintWriter out = new PrintWriter(new FileWriter(usa_nombres, true));
-        List<String> listaNombres = Files.readAllLines(Paths.get("usa_nombres.txt"));
-        List<String> listaApellidos = Files.readAllLines(Paths.get("usa_apellidos.txt"));
+        List<String> listaNombres = Files.readAllLines(Paths.get("Archivos De Ficheros/usa_nombres.txt"));
+        List<String> listaApellidos = Files.readAllLines(Paths.get("Archivos De Ficheros/usa_apellidos.txt"));
         for (int i = 0; i < numNom; i++) {
             String nombreRandom = listaNombres.get(rand.nextInt(listaNombres.size()));
-            String apellidoRandom = listaNombres.get(rand.nextInt(listaNombres.size()));
+            String apellidoRandom = listaApellidos.get(rand.nextInt(listaApellidos.size()));
             out.println(nombreRandom + " " + apellidoRandom);
-            out.close();
         }
+        out.close();
     }
 }
