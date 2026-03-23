@@ -10,7 +10,7 @@ import java.util.Random;
 import java.util.Scanner;
 
 public class EjercicioB4 {
-    static void main() throws IOException {
+    static void main(String[] args) throws IOException {
         Scanner scan = new Scanner(System.in);
         Random rand = new Random();
         System.out.println("Ingresa el número de nombres deseas generar: ");
