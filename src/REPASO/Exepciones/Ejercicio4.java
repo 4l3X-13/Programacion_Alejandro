@@ -1,22 +1,25 @@
 package REPASO.Exepciones;
 
-import java.util.Random;
-import java.util.Scanner;
+import java.util.*;
 
 public class Ejercicio4 {
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
-        int n = new Random().nextInt(100) + 1;
+        Random rnd = new Random();
+        int n = rnd.nextInt(100) + 1;
         int[] vector = new int[n];
-        for (int i = 0; i < n; i++) vector[i] = new Random().nextInt(10) + 1;
-        while (true) {
+        for (int i = 0; i < n; i++) vector[i] = rnd.nextInt(10) + 1;
+
+        int posicion = 0;
+        while (posicion >= 0) {
             try {
-                System.out.print("Indice (pon un numero negativo para salir): ");
-                int posicion = sc.nextInt();
-                if (posicion < 0) break;
-                System.out.println("Valor: " + vector[posicion]);
-            } catch (Exception e) {
-                System.out.println("Error: entrada no válida o índice inexistente");
+                System.out.print("Indice (negativo para salir): ");
+                posicion = sc.nextInt();
+                if (posicion >= 0) {
+                    System.out.println("Valor: " + vector[posicion]);
+                }
+            } catch (InputMismatchException | ArrayIndexOutOfBoundsException e) {
+                System.out.println("Error: Introduce un índice válido entre 0 y " + (n - 1));
                 sc.nextLine();
             }
         }
