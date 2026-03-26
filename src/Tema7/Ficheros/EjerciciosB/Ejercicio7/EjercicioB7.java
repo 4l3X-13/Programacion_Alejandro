@@ -6,7 +6,7 @@ import java.util.*;
 
 public class EjercicioB7 {
     public static void main(String[] args) throws IOException {
-        File archivo = new File("C:\\Users\\alecssss\\IdeaProjects\\Programacion_Alejandro\\Archivos_De_Ficheros\\Libros\\quijote_cervantes.txt");
+        File archivo = new File("/home/alenavzaf/IdeaProjects/Programacion_Alejandro_GITHUB_COMPLETO/Archivos_De_Ficheros/Libros/quijote_cervantes.txt");
         Scanner lector = new Scanner(archivo);
 
         int nLineas = 0;
