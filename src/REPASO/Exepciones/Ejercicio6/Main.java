@@ -5,7 +5,7 @@ public class Main {
         try {
             Gato g1 = new Gato("Gatillo", 3);
             g1.imprimir();
-            g1.setEdad(-5); // Lanza excepción
+            g1.setEdad(-5);
         } catch (Exception e) {
             System.out.println(e.getMessage());
         }

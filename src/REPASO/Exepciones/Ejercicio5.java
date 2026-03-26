@@ -19,7 +19,7 @@ public class Ejercicio5 {
                 }
             } catch (InputMismatchException e) {
                 System.out.println("Error: Debes introducir un número entero.");
-                sc.nextLine(); // Limpiar el buffer
+                sc.nextLine();
             } catch (IllegalArgumentException e) {
                 System.out.println("Error: " + e.getMessage());
             }

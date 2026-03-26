@@ -9,23 +9,23 @@ public class Gato {
         setEdad(edad);
     }
 
+    public String getNombre() {
+        return nombre;
+    }
+
     public void setNombre(String nombre) throws Exception {
         if (nombre == null || nombre.length() < 3)
             throw new Exception("Error, el nombre debe tener al menos 3 caracteres");
         this.nombre = nombre;
     }
 
+    public int getEdad() {
+        return edad;
+    }
+
     public void setEdad(int edad) throws Exception {
         if (edad < 0) throw new Exception("Error, la edad no puede ser menor a 0");
         this.edad = edad;
-    }
-
-    public String getNombre() {
-        return nombre;
-    }
-
-    public int getEdad() {
-        return edad;
     }
 
     public void imprimir() {

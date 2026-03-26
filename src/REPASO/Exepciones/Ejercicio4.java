@@ -1,6 +1,7 @@
 package REPASO.Exepciones;
 
-import java.util.*;
+import java.util.Random;
+import java.util.Scanner;
 
 public class Ejercicio4 {
     public static void main(String[] args) {
