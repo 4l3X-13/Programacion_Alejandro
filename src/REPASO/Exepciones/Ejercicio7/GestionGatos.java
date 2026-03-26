@@ -26,7 +26,7 @@ public class GestionGatos {
             }
         }
 
-        System.out.println("\n--- Listado Final de Gatos ---");
+        System.out.println("\nListado Final de Gatos");
         for (Gato gato : listaGatos) gato.imprimir();
         sc.close();
     }
