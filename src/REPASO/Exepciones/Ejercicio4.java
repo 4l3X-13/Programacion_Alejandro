@@ -21,8 +21,10 @@ public class Ejercicio4 {
             } catch (InputMismatchException | ArrayIndexOutOfBoundsException e) {
                 System.out.println("Error: Introduce un índice válido entre 0 y " + (n - 1));
                 sc.nextLine();
+            }finally {
+                sc.close();
             }
         }
-        sc.close();
+
     }
 }
