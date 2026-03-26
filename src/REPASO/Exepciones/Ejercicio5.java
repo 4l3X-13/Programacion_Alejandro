@@ -22,19 +22,19 @@ public class Ejercicio5 {
                 sc.nextLine();
             } catch (IllegalArgumentException e) {
                 System.out.println("Error: " + e.getMessage());
+            } finally {
+                sc.close();
             }
         }
-        System.out.println("Programa finalizado.");
-        sc.close();
     }
 
     static void imprimePositivo(int p) {
-        if (p < 0) throw new IllegalArgumentException("El número " + p + " no es positivo.");
+        if (p < 0) throw new IllegalArgumentException("El numero " + p + " es negativo.");
         System.out.println("Positivo: " + p);
     }
 
     static void imprimeNegativo(int n) {
-        if (n >= 0) throw new IllegalArgumentException("El número " + n + " no es negativo.");
+        if (n >= 0) throw new IllegalArgumentException("El numero " + n + " no es negativo.");
         System.out.println("Negativo: " + n);
     }
 }
