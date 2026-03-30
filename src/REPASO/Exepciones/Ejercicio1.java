@@ -11,7 +11,7 @@ public class Ejercicio1 {
             int num = sc.nextInt();
             System.out.println("Numero insertado: " + num);
         } catch (InputMismatchException e) {
-            System.out.println("Numero insertado incorrecto");
+            System.out.println("Numero insertado invalido");
         } finally {
             sc.close();
         }
