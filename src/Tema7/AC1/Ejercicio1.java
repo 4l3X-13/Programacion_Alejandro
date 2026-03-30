@@ -15,7 +15,7 @@ public class Ejercicio1 {
             bw.newLine();
             bw.write("Edad: " + edad);
         } catch (IOException e) {
-            e.printStackTrace();
+            System.out.println("Error: " + e.getMessage());;
         }
     }
 }
