@@ -18,7 +18,7 @@ public class Ejercicio5 {
                     imprimeNegativo(valor);
                 }
             } catch (InputMismatchException e) {
-                System.out.println("Error: Debes introducir un número entero.");
+                System.out.println("Debes introducir un número entero.");
                 sc.nextLine();
             } catch (IllegalArgumentException e) {
                 System.out.println("Error: " + e.getMessage());
