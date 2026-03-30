@@ -1,6 +1,8 @@
 package REPASO.Exepciones;
 
-import java.util.*;
+import java.util.InputMismatchException;
+import java.util.Random;
+import java.util.Scanner;
 
 public class Ejercicio4 {
     public static void main(String[] args) {
@@ -14,14 +16,17 @@ public class Ejercicio4 {
         while (posicion >= 0) {
             try {
                 System.out.print("Indice (negativo para salir): ");
-//                posicion = sc.nextInt();
+//posicion = sc.nextInt();
                 if (posicion >= 0) {
                     System.out.println("Valor: " + vector[posicion]);
                 }
-            } catch (InputMismatchException | ArrayIndexOutOfBoundsException e) {
+            } catch (InputMismatchException e) {
                 System.out.println("Error: Introduce un índice válido entre 0 y " + (n - 1));
                 sc.nextLine();
-            }finally {
+            } catch (ArrayIndexOutOfBoundsException e) {
+                System.out.println("Error: Introduce un índice válido entre 0 y " + (n - 1));
+                sc.nextLine();
+            } finally {
                 sc.close();
             }
         }

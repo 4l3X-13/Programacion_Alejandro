@@ -17,6 +17,9 @@ public class Ejercicio3 {
             } catch (InputMismatchException e) {
                 System.out.println("Debes insertar un numero valido");
                 sc.nextLine();
+            } catch (ArrayIndexOutOfBoundsException e) {
+                System.out.println("Error: Introduce un índice válido");
+                sc.nextLine();
             }
             //meter otro catch con el error del Array, como en ejer4
         }
