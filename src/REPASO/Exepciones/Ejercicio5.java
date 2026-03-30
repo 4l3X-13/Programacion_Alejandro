@@ -21,6 +21,8 @@ public class Ejercicio5 {
                 sc.nextLine();
             } catch (IllegalArgumentException e) {
                 System.out.println("Error: " + e.getMessage());
+            } catch (IllegalStateException e) {
+                System.out.println("Error: " + e.getMessage());
             } finally {
                 sc.close();
             }
