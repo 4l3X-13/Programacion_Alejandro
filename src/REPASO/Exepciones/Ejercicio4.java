@@ -14,7 +14,7 @@ public class Ejercicio4 {
         while (posicion >= 0) {
             try {
                 System.out.print("Indice (negativo para salir): ");
-                posicion = sc.nextInt();
+//                posicion = sc.nextInt();
                 if (posicion >= 0) {
                     System.out.println("Valor: " + vector[posicion]);
                 }
@@ -25,6 +25,6 @@ public class Ejercicio4 {
                 sc.close();
             }
         }
-
+//un catch para cada error
     }
 }

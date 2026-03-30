@@ -18,6 +18,7 @@ public class Ejercicio3 {
                 System.out.println("Debes insertar un numero valido");
                 sc.nextLine();
             }
+            //meter otro catch con el error del Array, como en ejer4
         }
         System.out.println("Vector hecho correctamente");
         sc.close();
