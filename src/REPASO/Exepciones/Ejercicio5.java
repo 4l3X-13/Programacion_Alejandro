@@ -12,7 +12,6 @@ public class Ejercicio5 {
             try {
                 System.out.print("Introduce un número (-999 para salir): ");
                 valor = sc.nextInt();
-
                 if (valor != -999) {
                     imprimePositivo(valor);
                     imprimeNegativo(valor);
