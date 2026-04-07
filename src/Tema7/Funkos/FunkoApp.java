@@ -37,8 +37,8 @@ public class FunkoApp {
 
 
     public void guardarBinario() {
-        try (ObjectOutputStream oos = new ObjectOutputStream(new FileOutputStream(ARCHIVO_BIN))) {
-            oos.writeObject(listaFunkos);
+        try (ObjectOutputStream objectOutputStream = new ObjectOutputStream(new FileOutputStream(ARCHIVO_BIN))) {
+            objectOutputStream.writeObject(listaFunkos);
         } catch (IOException e) {
             System.out.println("Error al serializar.");
         }
@@ -48,7 +48,7 @@ public class FunkoApp {
         try (ObjectInputStream ois = new ObjectInputStream(new FileInputStream(ARCHIVO_BIN))) {
             listaFunkos = (ArrayList<Funko>) ois.readObject();
         } catch (Exception e) {
-            System.out.println("No se pudo cargar el archivo binario.");
+            System.out.println("No se ha podido cargar el archivo binario.");
         }
     }
 
