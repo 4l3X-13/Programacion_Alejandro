@@ -23,7 +23,7 @@ public class FunkoApp {
         int opcion = scanner1.nextInt();
         switch (opcion) {
             case 1:
-                anadirFunko();
+                anadirFunko(listaFunkos);
         }
 
 
@@ -48,7 +48,21 @@ public class FunkoApp {
         return listaFunkos;
     }
 
-    public static void anadirFunko() throws IOException {
+    public static void anadirFunko(ArrayList<Funko> listaFunkos) throws IOException {
+        Scanner scan = new Scanner(System.in);
+        System.out.println("AÑADIR FUNKO:");
+        System.out.println("Introduce el código del Funko: ");
+        String codigoUsu = scan.nextLine();
+        System.out.println("Introduce el nombre del Funko: ");
+        String nombreUsu = scan.nextLine();
+        System.out.println("Introduce el modelo del Funko: ");
+        String modeloUsu = scan.nextLine();
+        System.out.println("Introduce el precio del Funko: ");
+        double precioUsu = scan.nextDouble();
+        System.out.println("Introduce la fecha de lanzamiento del Funko: (AAAA-MM--DD)");
+        String fechaUsu = scan.nextLine();
+        Funko funko = new Funko(codigoUsu, nombreUsu, modeloUsu, precioUsu, fechaUsu);
+        listaFunkos.add(funko);
 
     }
 }
