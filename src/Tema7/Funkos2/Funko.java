@@ -57,12 +57,6 @@ public class Funko {
 
     @Override
     public String toString() {
-        return "Funko{" +
-                "code='" + code + '\'' +
-                ", nombre='" + nombre + '\'' +
-                ", modelo='" + modelo + '\'' +
-                ", precio=" + precio +
-                ", fecha_lanzamiento='" + fecha_lanzamiento + '\'' +
-                '}';
+        return code + ", " + nombre + ", " + modelo + ", " + precio + ", " + fecha_lanzamiento;
     }
 }
