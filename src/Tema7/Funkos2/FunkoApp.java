@@ -5,6 +5,7 @@ import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
 import java.lang.reflect.Array;
+import java.sql.SQLOutput;
 import java.text.BreakIterator;
 import java.util.ArrayList;
 import java.util.Scanner;
@@ -27,10 +28,17 @@ public class FunkoApp {
             opcion = scanner1.nextInt();
             switch (opcion) {
                 case 1:
+                    System.out.println("AÑADIR FUNKO: ");
                     anadirFunko(listaFunkos);
                     break;
                 case 2:
-                    mostrarFunko(listaFunkos);
+                    System.out.println("BORRAR FUNKO: ");
+                    borrarfunko(listaFunkos);
+                    break;
+
+                case 3:
+                    System.out.println("MOSTRAR TODOS LOS FUNKOS: ");
+                    mostrarTodosFunkos(listaFunkos);
                     break;
 
 
@@ -41,7 +49,7 @@ public class FunkoApp {
     }
 
     public static ArrayList<Funko> cargarFunkos() throws IOException {
-        BufferedReader br = new BufferedReader(new FileReader("C:\\Users\\alecssss\\IdeaProjects\\Programacion_Alejandro\\src\\Tema7\\Funkos2\\funkos.csv"));
+        BufferedReader br = new BufferedReader(new FileReader("/home/alenavzaf/IdeaProjects/Programacion_Alejandro/src/Tema7/Funkos2/funkos.csv"));
         ArrayList<Funko> listaFunkos = new ArrayList<>();
         String linea;
         br.readLine();
@@ -61,7 +69,6 @@ public class FunkoApp {
 
     public static void anadirFunko(ArrayList<Funko> listaFunkos) throws IOException {
         Scanner scan = new Scanner(System.in);
-        System.out.println("AÑADIR FUNKO:");
         System.out.println("Introduce el código del Funko: ");
         String codigoUsu = scan.nextLine();
         System.out.println("Introduce el nombre del Funko: ");
@@ -78,8 +85,11 @@ public class FunkoApp {
 
     }
 
-    public static void mostrarFunko(ArrayList<Funko> listaFunkos) {
+    public static void borrarfunko(ArrayList<Funko> listaFunkos) throws IOException {
+        Scanner scan = new Scanner(System.in);
+    } //NO ESTÁ ACABADO, TERMINAR EN CASA
 
+    public static void mostrarTodosFunkos(ArrayList<Funko> listaFunkos) {
         for (int i = 0; i < listaFunkos.size(); i++) {
             System.out.println(listaFunkos.get(i));
         }
