@@ -9,10 +9,10 @@ public class FunkoApp {
     private final String ARCHIVO_BIN = "funkos.dat";
 
 
-    public void loadFunkos() {
+    public void cargarFunkos() {
         listaFunkos.clear();
         try (Scanner sc = new Scanner(new File(ARCHIVO_CSV))) {
-            if (sc.hasNextLine()) sc.nextLine(); // Saltamos el encabezado
+            if (sc.hasNextLine()) sc.nextLine();
             while (sc.hasNextLine()) {
                 String linea = sc.nextLine();
                 String[] datos = linea.split(",");
