@@ -1,2 +1,0 @@
-Nombre: Alex
-Edad: 19

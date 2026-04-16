@@ -10,7 +10,7 @@ public class Ejercicio1 {
         String nombre = sc.nextLine();
         System.out.println("Introduce tu edad: ");
         int edad = sc.nextInt();
-        try (BufferedWriter bw = new BufferedWriter(new FileWriter("/home/alenavzaf/IdeaProjects/Programacion_Alejandro_GITHUB_COMPLETO/src/Tema7/AC1/Ficheros/usuario.txt"))) {
+        try (BufferedWriter bw = new BufferedWriter(new FileWriter("/home/alenavzaf/IdeaProjects/Programacion_Alejandro/src/Tema7/AC1/Ficheros/usuario.txt"))) {
             bw.write("Nombre: " + nombre);
             bw.newLine();
             bw.write("Edad: " + edad);
