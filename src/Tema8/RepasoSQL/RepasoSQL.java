@@ -160,6 +160,23 @@ public class RepasoSQL {
             throw new RuntimeException(e);
         }
 
+        //SENTENCIA  10
+        String sentenciaSQL10 = "SELECT nombre, apellido FROM Estudiantes JOIN casa ON id_casa.Estudiantes WHERE anyo_curso = 5 AND nombre_casa = 'Gryffindor' OR 'Slytherin'  ";
+        try (Connection con2 = DriverManager.getConnection("jdbc:postgresql://localhost:5432/anavicianofabregat");
+             PreparedStatement sentencia = con2.prepareStatement(sentenciaSQL10)) {
+
+            //no hace falta meterlo en el try, porque se cierra automáticamente al cerrarse el PreparedStatement
+            ResultSet resultados = sentencia.executeQuery();
+
+            while (resultados.next()) {
+                String nombre = resultados.getString("nombre");
+                String apellido = resultados.getString("apellido");
+                System.out.println("nombre: " + nombre + ", apellido: " + apellido);
+            }
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+
 
 
 
