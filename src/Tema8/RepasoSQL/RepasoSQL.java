@@ -59,7 +59,7 @@ public class RepasoSQL {
         }
 
 
-        String sentenciaSQL4 = "SELECT * estudiantes FROM estudiantes GROUP BY casa ";
+        String sentenciaSQL4 = "SELECT count(id_estudiantes) as cantidad, nombre.estudiantes, apellido.estudiantes, id_casa.estudiantes, nombre_casa.estudiantes* estudiantes FROM estudiantes GROUP BY casa ";
         //opcion 2: PreparedStatement
         try (Connection con2 = DriverManager.getConnection("jdbc:postgresql://localhost:5432/anavicianofabregat");
              PreparedStatement sentencia = con2.prepareStatement(sentenciaSQL4)) {
@@ -68,9 +68,9 @@ public class RepasoSQL {
             ResultSet resultados = sentencia.executeQuery();
 
             while (resultados.next()) {
-                String dni = resultados.getString("dni");
-                String nombre = resultados.getString("nombre");
-                System.out.println("personas: " + dni + ", " + nombre);
+                String id_estudiantes = resultados.getString("id_estudiantes");
+                String nombre_casa = resultados.getString("nombre_casa");
+                System.out.println("estudiantes: " + id_estudiantes + ", " + nombre_casa);
             }
         } catch (SQLException e) {
             throw new RuntimeException(e);
