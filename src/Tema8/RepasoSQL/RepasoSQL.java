@@ -77,9 +77,27 @@ public class RepasoSQL {
         }
 
         //SENTENCIA  5
-        String sentenciaSQL5 = "SELECT * AVG(calificacion), Max(calificacion) FROM Estudiante_Asignatura WHERE ";
+        String sentenciaSQL5 = "SELECT * AVG(calificacion), Max(calificacion) FROM Estudiante_Asignatura JOIN Asignatura ON id_asignatura.Estudiante_Asignatura = id.asignatura.Asignatura WHERE nombre_asignatura = 'Pociones' ";
         try (Connection con2 = DriverManager.getConnection("jdbc:postgresql://localhost:5432/anavicianofabregat");
              PreparedStatement sentencia = con2.prepareStatement(sentenciaSQL5)) {
+
+            //no hace falta meterlo en el try, porque se cierra automáticamente al cerrarse el PreparedStatement
+            ResultSet resultados = sentencia.executeQuery();
+
+            while (resultados.next()) {
+                String media = resultados.getString("media");
+                String maxima = resultados.getString("maxima");
+                System.out.println("nota media: " + media + ", nota maxima: " + maxima);
+            }
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+
+
+        //SENTENCIA  6
+        String sentenciaSQL6 = "SELECT * AVG(calificacion), Max(calificacion) FROM Estudiante_Asignatura JOIN Asignatura ON id_asignatura.Estudiante_Asignatura = id.asignatura.Asignatura WHERE nombre_asignatura = 'Pociones' ";
+        try (Connection con2 = DriverManager.getConnection("jdbc:postgresql://localhost:5432/anavicianofabregat");
+             PreparedStatement sentencia = con2.prepareStatement(sentenciaSQL6)) {
 
             //no hace falta meterlo en el try, porque se cierra automáticamente al cerrarse el PreparedStatement
             ResultSet resultados = sentencia.executeQuery();
@@ -92,6 +110,8 @@ public class RepasoSQL {
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }
+
+
 
 
     }
