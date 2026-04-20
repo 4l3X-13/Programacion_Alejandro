@@ -135,8 +135,26 @@ public class RepasoSQL {
             ResultSet resultados = sentencia.executeQuery();
 
             while (resultados.next()) {
-                String anyo_curso = resultados.getString("anyo_curso");
-                System.out.println("año_curso: " + anyo_curso);
+                String nombre = resultados.getString("nombre");
+                String apellido = resultados.getString("apellido");
+                System.out.println("nombre: " + nombre + ", apellido: " + apellido);
+            }
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+
+        //SENTENCIA  9
+        String sentenciaSQL9 = "SELECT nombres AND apellidos FROM estudiantes WHERE anyo_curso IN (5) ";
+        try (Connection con2 = DriverManager.getConnection("jdbc:postgresql://localhost:5432/anavicianofabregat");
+             PreparedStatement sentencia = con2.prepareStatement(sentenciaSQL9)) {
+
+            //no hace falta meterlo en el try, porque se cierra automáticamente al cerrarse el PreparedStatement
+            ResultSet resultados = sentencia.executeQuery();
+
+            while (resultados.next()) {
+                String nombre = resultados.getString("nombre");
+                String apellido = resultados.getString("apellido");
+                System.out.println("nombre: " + nombre + ", apellido: " + apellido);
             }
         } catch (SQLException e) {
             throw new RuntimeException(e);
