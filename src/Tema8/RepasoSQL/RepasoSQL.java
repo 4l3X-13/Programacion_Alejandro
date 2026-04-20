@@ -95,7 +95,7 @@ public class RepasoSQL {
 
 
         //SENTENCIA  6
-        String sentenciaSQL6 = "SELECT * AVG(calificacion), Max(calificacion) FROM Estudiante_Asignatura JOIN Asignatura ON id_asignatura.Estudiante_Asignatura = id.asignatura.Asignatura WHERE nombre_asignatura = 'Pociones' ";
+        String sentenciaSQL6 = "SELECT DISTINCT anyo_curso FROM Estudiante  ";
         try (Connection con2 = DriverManager.getConnection("jdbc:postgresql://localhost:5432/anavicianofabregat");
              PreparedStatement sentencia = con2.prepareStatement(sentenciaSQL6)) {
 
@@ -103,13 +103,29 @@ public class RepasoSQL {
             ResultSet resultados = sentencia.executeQuery();
 
             while (resultados.next()) {
-                String id_estudiantes = resultados.getString("id_estudiantes");
-                String nombre_casa = resultados.getString("nombre_casa");
-                System.out.println("estudiantes: " + id_estudiantes + ", " + nombre_casa);
+                String anyo_curso = resultados.getString("anyo_curso");
+                System.out.println("año_curso: " + anyo_curso);
             }
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }
+
+        //SENTENCIA  7
+        String sentenciaSQL7 = "SELECT nombre,apellido FROM Estudiante WHERE apellido LIKE 'P%' ";
+        try (Connection con2 = DriverManager.getConnection("jdbc:postgresql://localhost:5432/anavicianofabregat");
+             PreparedStatement sentencia = con2.prepareStatement(sentenciaSQL7)) {
+
+            //no hace falta meterlo en el try, porque se cierra automáticamente al cerrarse el PreparedStatement
+            ResultSet resultados = sentencia.executeQuery();
+
+            while (resultados.next()) {
+                String anyo_curso = resultados.getString("anyo_curso");
+                System.out.println("año_curso: " + anyo_curso);
+            }
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+
 
 
 
