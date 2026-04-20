@@ -144,7 +144,7 @@ public class RepasoSQL {
         }
 
         //SENTENCIA  9
-        String sentenciaSQL9 = "SELECT nombre, apellido FROM Estudiantes JOIN casa ON id_casa.Estudiantes WHERE anyo_curso (5)  ";
+        String sentenciaSQL9 = "SELECT nombre, apellido FROM Estudiantes JOIN casa ON id_casa.Estudiantes WHERE anyo_curso = 5 AND nombre_casa = 'Gryffindor' OR 'Slytherin'  ";
         try (Connection con2 = DriverManager.getConnection("jdbc:postgresql://localhost:5432/anavicianofabregat");
              PreparedStatement sentencia = con2.prepareStatement(sentenciaSQL9)) {
 
