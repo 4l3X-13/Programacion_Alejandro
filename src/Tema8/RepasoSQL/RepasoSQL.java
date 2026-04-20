@@ -77,7 +77,7 @@ public class RepasoSQL {
         }
 
         //SENTENCIA  5
-        String sentenciaSQL5 = "SELECT *";
+        String sentenciaSQL5 = "SELECT * AVG(calificacion), Max(calificacion) FROM Estudiante_Asignatura WHERE ";
         try (Connection con2 = DriverManager.getConnection("jdbc:postgresql://localhost:5432/anavicianofabregat");
              PreparedStatement sentencia = con2.prepareStatement(sentenciaSQL5)) {
 
