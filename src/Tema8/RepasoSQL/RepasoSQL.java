@@ -233,7 +233,7 @@ public class RepasoSQL {
         }
 
         //SENTENCIA  14
-        String sentenciaSQL14 = ("DELETE FROM estudiante WHERE nombre = 'Tom Riddle' ");
+        String sentenciaSQL14 = ("DELETE FROM estudiante WHERE nombre = 'Tom' AND apellido = 'Riddle' ");
         try (Connection con2 = DriverManager.getConnection("jdbc:postgresql://localhost:5432/anavicianofabregat");
              PreparedStatement sentencia = con2.prepareStatement(sentenciaSQL14)) {
 
@@ -243,7 +243,7 @@ public class RepasoSQL {
             while (resultados.next()) {
                 String nombre = resultados.getString("nombre");
                 String apellido = resultados.getString("apellido");
-                System.out.println("nombre: " + nombre + "apellido: " + apellido);
+                System.out.println("nombre eliminado: " + nombre);
             }
         } catch (SQLException e) {
             throw new RuntimeException(e);
