@@ -161,7 +161,7 @@ public class RepasoSQL {
         }
 
         //SENTENCIA  10
-        String sentenciaSQL10 = "SELECT nombre, apellido FROM Estudiantes JOIN casa ON id_casa.Estudiantes WHERE anyo_curso = 5 AND nombre_casa = 'Gryffindor' OR 'Slytherin'  ";
+        String sentenciaSQL10 = "SELECT * FROM estudiantes ORDER BY fecha_nacimiento LIMIT 5";
         try (Connection con2 = DriverManager.getConnection("jdbc:postgresql://localhost:5432/anavicianofabregat");
              PreparedStatement sentencia = con2.prepareStatement(sentenciaSQL10)) {
 
@@ -171,7 +171,26 @@ public class RepasoSQL {
             while (resultados.next()) {
                 String nombre = resultados.getString("nombre");
                 String apellido = resultados.getString("apellido");
-                System.out.println("nombre: " + nombre + ", apellido: " + apellido);
+                String fecha_nacimiento = resultados.getString("fecha_nacimiento");
+                System.out.println("nombre: " + nombre + ", apellido: " + apellido +  ", fecha_nacimiento: " + fecha_nacimiento);
+            }
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+
+        //SENTENCIA  11
+        String sentenciaSQL11 = "SELECT * FROM estudiantes ORDER BY fecha_nacimiento LIMIT 5";
+        try (Connection con2 = DriverManager.getConnection("jdbc:postgresql://localhost:5432/anavicianofabregat");
+             PreparedStatement sentencia = con2.prepareStatement(sentenciaSQL11)) {
+
+            //no hace falta meterlo en el try, porque se cierra automáticamente al cerrarse el PreparedStatement
+            ResultSet resultados = sentencia.executeQuery();
+
+            while (resultados.next()) {
+                String nombre = resultados.getString("nombre");
+                String apellido = resultados.getString("apellido");
+                String fecha_nacimiento = resultados.getString("fecha_nacimiento");
+                System.out.println("nombre: " + nombre + ", apellido: " + apellido +  ", fecha_nacimiento: " + fecha_nacimiento);
             }
         } catch (SQLException e) {
             throw new RuntimeException(e);
