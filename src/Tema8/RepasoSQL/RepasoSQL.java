@@ -179,7 +179,7 @@ public class RepasoSQL {
         }
 
         //SENTENCIA  11
-        String sentenciaSQL11 = "SELECT * FROM estudiantes ORDER BY fecha_nacimiento LIMIT 5";
+        String sentenciaSQL11 = "SELECT nombres FROM estudiantes_Asignatura JOIN Asignatura ON id_asignatura.Estudiante_asignatura = id_asignatura.Asignatura WHERE nombre_asignatura = 'Vuelo' AND calificacion >= 8";
         try (Connection con2 = DriverManager.getConnection("jdbc:postgresql://localhost:5432/anavicianofabregat");
              PreparedStatement sentencia = con2.prepareStatement(sentenciaSQL11)) {
 
@@ -188,9 +188,23 @@ public class RepasoSQL {
 
             while (resultados.next()) {
                 String nombre = resultados.getString("nombre");
-                String apellido = resultados.getString("apellido");
-                String fecha_nacimiento = resultados.getString("fecha_nacimiento");
-                System.out.println("nombre: " + nombre + ", apellido: " + apellido +  ", fecha_nacimiento: " + fecha_nacimiento);
+                System.out.println("nombre: " + nombre );
+            }
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+
+        //SENTENCIA  12
+        String sentenciaSQL12 = "INSERT estudiante 'Nymphadora Tonks' FROM id_casa = 4";
+        try (Connection con2 = DriverManager.getConnection("jdbc:postgresql://localhost:5432/anavicianofabregat");
+             PreparedStatement sentencia = con2.prepareStatement(sentenciaSQL12)) {
+
+            //no hace falta meterlo en el try, porque se cierra automáticamente al cerrarse el PreparedStatement
+            ResultSet resultados = sentencia.executeQuery();
+
+            while (resultados.next()) {
+                String nombre = resultados.getString("nombre");
+                System.out.println("nombre: " + nombre );
             }
         } catch (SQLException e) {
             throw new RuntimeException(e);
