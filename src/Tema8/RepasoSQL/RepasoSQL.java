@@ -267,7 +267,7 @@ public class RepasoSQL {
         }
 
         //SENTENCIA  16
-        String sentenciaSQL16 = ("");
+        String sentenciaSQL16 = ("SELECT nombre.Estudiante, nombre.Mascota, nombre.Asignatura ");
         try (Connection con2 = DriverManager.getConnection("jdbc:postgresql://localhost:5432/anavicianofabregat");
              PreparedStatement sentencia = con2.prepareStatement(sentenciaSQL16)) {
 
