@@ -243,14 +243,14 @@ public class RepasoSQL {
             while (resultados.next()) {
                 String nombre = resultados.getString("nombre");
                 String apellido = resultados.getString("apellido");
-                System.out.println("nombre eliminado: " + nombre);
+                System.out.println("nombre eliminado: " + nombre +  "apellido: " + apellido);
             }
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }
 
         //SENTENCIA  15
-        String sentenciaSQL15 = ("DELETE FROM estudiante WHERE nombre = 'Tom' AND apellido = 'Riddle' ");
+        String sentenciaSQL15 = ("SELECT nombre.Estudiante, apellidos.Estudiante, nombre.Casa FROM Estudiante JOIN Casa ON id_casa.Estudiante = id_casa.Casa");
         try (Connection con2 = DriverManager.getConnection("jdbc:postgresql://localhost:5432/anavicianofabregat");
              PreparedStatement sentencia = con2.prepareStatement(sentenciaSQL15)) {
 
@@ -260,7 +260,7 @@ public class RepasoSQL {
             while (resultados.next()) {
                 String nombre = resultados.getString("nombre");
                 String apellido = resultados.getString("apellido");
-                System.out.println("nombre eliminado: " + nombre);
+                System.out.println("nombre eliminado: " + nombre +  "apellido: " + apellido);
             }
         } catch (SQLException e) {
             throw new RuntimeException(e);
