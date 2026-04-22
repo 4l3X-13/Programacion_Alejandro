@@ -172,7 +172,7 @@ public class RepasoSQL {
                 String nombre = resultados.getString("nombre");
                 String apellido = resultados.getString("apellido");
                 String fecha_nacimiento = resultados.getString("fecha_nacimiento");
-                System.out.println("nombre: " + nombre + ", apellido: " + apellido +  ", fecha_nacimiento: " + fecha_nacimiento);
+                System.out.println("nombre: " + nombre + ", apellido: " + apellido + ", fecha_nacimiento: " + fecha_nacimiento);
             }
         } catch (SQLException e) {
             throw new RuntimeException(e);
@@ -188,14 +188,14 @@ public class RepasoSQL {
 
             while (resultados.next()) {
                 String nombre = resultados.getString("nombre");
-                System.out.println("nombre: " + nombre );
+                System.out.println("nombre: " + nombre);
             }
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }
 
         //SENTENCIA  12
-        String sentenciaSQL12 = "INSERT estudiante 'Nymphadora Tonks' FROM id_casa = 4";
+        String sentenciaSQL12 = "INSERT INTO estudiante (nombre, apellido, id_casa, anyo_curso, fecha_nacimiento) VALUES (Nymphadora, Tonks, 4, 7,1973-11-25) ";
         try (Connection con2 = DriverManager.getConnection("jdbc:postgresql://localhost:5432/anavicianofabregat");
              PreparedStatement sentencia = con2.prepareStatement(sentenciaSQL12)) {
 
@@ -204,14 +204,36 @@ public class RepasoSQL {
 
             while (resultados.next()) {
                 String nombre = resultados.getString("nombre");
-                System.out.println("nombre: " + nombre );
+                String apellido = resultados.getString("apellido");
+                int id_casa = resultados.getInt("id_casa");
+                int anyo_curso = resultados.getInt("anyo_curso");
+                String fecha_nacimiento = resultados.getString("fecha_nacimiento");
+                System.out.println("nombre: " + nombre + "apellido: " + apellido + "id_casa: " + id_casa + "anyo_curso: " + anyo_curso + "fecha_nacimiento: " + fecha_nacimiento);
             }
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }
 
 
+        //SENTENCIA  13
+        String sentenciaSQL13 = ("UPDATE Casa ");
+        try (Connection con2 = DriverManager.getConnection("jdbc:postgresql://localhost:5432/anavicianofabregat");
+             PreparedStatement sentencia = con2.prepareStatement(sentenciaSQL13)) {
 
+            //no hace falta meterlo en el try, porque se cierra automáticamente al cerrarse el PreparedStatement
+            ResultSet resultados = sentencia.executeQuery();
+
+            while (resultados.next()) {
+                String nombre = resultados.getString("nombre");
+                String apellido = resultados.getString("apellido");
+                int id_casa = resultados.getInt("id_casa");
+                int anyo_curso = resultados.getInt("anyo_curso");
+                String fecha_nacimiento = resultados.getString("fecha_nacimiento");
+                System.out.println("nombre: " + nombre + "apellido: " + apellido + "id_casa: " + id_casa + "anyo_curso: " + anyo_curso + "fecha_nacimiento: " + fecha_nacimiento);
+            }
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
 
 
     }
