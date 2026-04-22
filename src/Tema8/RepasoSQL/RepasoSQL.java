@@ -216,7 +216,7 @@ public class RepasoSQL {
 
 
         //SENTENCIA  13
-        String sentenciaSQL13 = ("UPDATE Casa ");
+        String sentenciaSQL13 = ("UPDATE casa SET id_jefe = (SELECT id_profesor FROM Profesor WHERE nombre = 'Pomona' AND apellido = 'Sprout') WHERE nombre_casa = 'Hufflepuff' ");
         try (Connection con2 = DriverManager.getConnection("jdbc:postgresql://localhost:5432/anavicianofabregat");
              PreparedStatement sentencia = con2.prepareStatement(sentenciaSQL13)) {
 
@@ -226,10 +226,7 @@ public class RepasoSQL {
             while (resultados.next()) {
                 String nombre = resultados.getString("nombre");
                 String apellido = resultados.getString("apellido");
-                int id_casa = resultados.getInt("id_casa");
-                int anyo_curso = resultados.getInt("anyo_curso");
-                String fecha_nacimiento = resultados.getString("fecha_nacimiento");
-                System.out.println("nombre: " + nombre + "apellido: " + apellido + "id_casa: " + id_casa + "anyo_curso: " + anyo_curso + "fecha_nacimiento: " + fecha_nacimiento);
+                System.out.println("nombre: " + nombre + "apellido: " + apellido);
             }
         } catch (SQLException e) {
             throw new RuntimeException(e);
