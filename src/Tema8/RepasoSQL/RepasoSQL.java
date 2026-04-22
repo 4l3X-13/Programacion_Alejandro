@@ -266,6 +266,23 @@ public class RepasoSQL {
             throw new RuntimeException(e);
         }
 
+        //SENTENCIA  16
+        String sentenciaSQL16 = ("");
+        try (Connection con2 = DriverManager.getConnection("jdbc:postgresql://localhost:5432/anavicianofabregat");
+             PreparedStatement sentencia = con2.prepareStatement(sentenciaSQL16)) {
+
+            //no hace falta meterlo en el try, porque se cierra automáticamente al cerrarse el PreparedStatement
+            ResultSet resultados = sentencia.executeQuery();
+
+            while (resultados.next()) {
+                String nombre = resultados.getString("nombre");
+                String apellido = resultados.getString("apellido");
+                System.out.println("nombre eliminado: " + nombre +  "apellido: " + apellido);
+            }
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+
     }
 }
 
