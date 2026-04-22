@@ -249,6 +249,23 @@ public class RepasoSQL {
             throw new RuntimeException(e);
         }
 
+        //SENTENCIA  15
+        String sentenciaSQL15 = ("DELETE FROM estudiante WHERE nombre = 'Tom' AND apellido = 'Riddle' ");
+        try (Connection con2 = DriverManager.getConnection("jdbc:postgresql://localhost:5432/anavicianofabregat");
+             PreparedStatement sentencia = con2.prepareStatement(sentenciaSQL15)) {
+
+            //no hace falta meterlo en el try, porque se cierra automáticamente al cerrarse el PreparedStatement
+            ResultSet resultados = sentencia.executeQuery();
+
+            while (resultados.next()) {
+                String nombre = resultados.getString("nombre");
+                String apellido = resultados.getString("apellido");
+                System.out.println("nombre eliminado: " + nombre);
+            }
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+
     }
 }
 
