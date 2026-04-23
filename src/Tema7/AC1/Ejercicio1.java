@@ -14,6 +14,7 @@ public class Ejercicio1 {
             bw.write("Nombre: " + nombre);
             bw.newLine();
             bw.write("Edad: " + edad);
+            bw.newLine();
         } catch (IOException e) {
             System.out.println("Error: " + e.getMessage());;
         }
