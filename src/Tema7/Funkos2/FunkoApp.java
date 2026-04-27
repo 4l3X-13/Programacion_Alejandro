@@ -131,6 +131,7 @@ public class FunkoApp {
                                                     //Lo pasamos a String y el %.2f es para caparlo a solo 2 decimales.
     }
 
+    //TODO: como indica en el enunciado
     //Filtra y muestra por modelos listaFunkos
     public static void mostrarPorModelos(ArrayList<Funko> listaFunkos) {
         Scanner scan = new Scanner(System.in);
@@ -142,7 +143,11 @@ public class FunkoApp {
 
     //Muestra todos los funkos con el filtro del año de 2023
     public static void mostrarFunkos2023(ArrayList<Funko> listaFunkos) {
-        for (Funko f : listaFunkos) if (f.getFecha_lanzamiento().startsWith("2023")) System.out.println(f);
+        for (Funko f : listaFunkos){
+            if (f.getFecha_lanzamiento().startsWith("2023")) {
+                System.out.println(f);
+            }
+        }
         //Recorre listaFunkos y si "Fecha_lanzamiento" empieza por 2023 muestra el funko
     }
 }
