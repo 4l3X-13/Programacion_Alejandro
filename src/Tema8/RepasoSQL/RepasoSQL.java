@@ -108,7 +108,7 @@ public class RepasoSQL {
 
 
         //SENTENCIA  6
-        String sentenciaSQL6 = "SELECT DISTINCT anyo_curso FROM Estudiante  ";
+        String sentenciaSQL6 = "SELECT DISTINCT anyo_curso FROM Estudiante";
         try (Connection con2 = DriverManager.getConnection("jdbc:postgresql://ad-postgres.ceuozunrvsdu.us-east-1.rds.amazonaws.com:5432/hogwarts",
                 "postgres",
                 "12345678");
@@ -126,7 +126,7 @@ public class RepasoSQL {
         }
 
         //SENTENCIA  7
-        String sentenciaSQL7 = "SELECT nombre,apellido FROM Estudiante WHERE apellido LIKE 'P%' ";
+        String sentenciaSQL7 = "SELECT nombre, apellido FROM Estudiante WHERE apellido LIKE 'P%';";
         try (Connection con2 = DriverManager.getConnection("jdbc:postgresql://ad-postgres.ceuozunrvsdu.us-east-1.rds.amazonaws.com:5432/hogwarts",
                 "postgres",
                 "12345678");
@@ -144,7 +144,7 @@ public class RepasoSQL {
         }
 
         //SENTENCIA  8
-        String sentenciaSQL8 = "SELECT nombre, apellido FROM Estudiante WHERE anyo_curso IN (4,5)";
+        String sentenciaSQL8 = "SELECT nombre, apellido FROM Estudiante WHERE anyo_curso IN (4, 5)";
         try (Connection con2 = DriverManager.getConnection("jdbc:postgresql://ad-postgres.ceuozunrvsdu.us-east-1.rds.amazonaws.com:5432/hogwarts",
                 "postgres",
                 "12345678");
