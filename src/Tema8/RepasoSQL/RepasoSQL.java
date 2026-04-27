@@ -220,7 +220,7 @@ public class RepasoSQL {
         }
 
         //SENTENCIA  12
-        String sentenciaSQL12 = "INSERT INTO estudiante (nombre, apellido, id_casa, anyo_curso, fecha_nacimiento) VALUES (Nymphadora, Tonks, 4, 7,1973-11-25) ";
+        String sentenciaSQL12 = "INSERT INTO Estudiante (nombre, apellido, id_casa, anyo_curso, fecha_nacimiento) VALUES ('Nymphadora', 'Tonks', 4, 7, '1973-11-25');";
         try (Connection con2 = DriverManager.getConnection("jdbc:postgresql://ad-postgres.ceuozunrvsdu.us-east-1.rds.amazonaws.com:5432/hogwarts",
                 "postgres",
                 "12345678");
@@ -243,7 +243,7 @@ public class RepasoSQL {
 
 
         //SENTENCIA  13
-        String sentenciaSQL13 = ("UPDATE casa SET id_jefe = (SELECT id_profesor FROM Profesor WHERE nombre = 'Pomona' AND apellido = 'Sprout') WHERE nombre_casa = 'Hufflepuff' ");
+        String sentenciaSQL13 = ("UPDATE Casa SET id_jefe = (SELECT id_profesor FROM Profesor WHERE nombre = 'Pomona' AND apellido = 'Sprout') WHERE nombre_casa = 'Hufflepuff'");
         try (Connection con2 = DriverManager.getConnection("jdbc:postgresql://ad-postgres.ceuozunrvsdu.us-east-1.rds.amazonaws.com:5432/hogwarts",
                 "postgres",
                 "12345678");
@@ -262,7 +262,7 @@ public class RepasoSQL {
         }
 
         //SENTENCIA  14
-        String sentenciaSQL14 = ("DELETE FROM estudiante WHERE nombre = 'Tom' AND apellido = 'Riddle' ");
+        String sentenciaSQL14 = ("DELETE FROM Estudiante WHERE nombre = 'Tom' AND apellido = 'Riddle';");
         try (Connection con2 = DriverManager.getConnection("jdbc:postgresql://ad-postgres.ceuozunrvsdu.us-east-1.rds.amazonaws.com:5432/hogwarts",
                 "postgres",
                 "12345678");
