@@ -281,7 +281,7 @@ public class RepasoSQL {
         }
 
         //SENTENCIA  15
-        String sentenciaSQL15 = ("SELECT nombre.Estudiante, apellidos.Estudiante, nombre.Casa FROM Estudiante JOIN Casa ON id_casa.Estudiante = id_casa.Casa");
+        String sentenciaSQL15 = ("SELECT Estudiante.nombre, Estudiante.apellido, Casa.nombre_casa FROM Estudiante JOIN Casa ON Estudiante.id_casa = Casa.id_casa");
         try (Connection con2 = DriverManager.getConnection("jdbc:postgresql://ad-postgres.ceuozunrvsdu.us-east-1.rds.amazonaws.com:5432/hogwarts",
                 "postgres",
                 "12345678");
