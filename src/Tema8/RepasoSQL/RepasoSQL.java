@@ -69,7 +69,7 @@ public class RepasoSQL {
 
         //SENTENCIA 4
         System.out.println("\n SENTENCIA 4: \n");
-        String sentenciaSQL4 = "SELECT COUNT(id_estudiante) AS cantidad, nombre_casa FROM Estudiante JOIN Casa ON Estudiante.id_casa = Casa.id_casa GROUP BY nombre_casa";
+        String sentenciaSQL4 = "SELECT COUNT(id_estudiante) AS cantidad, nombre FROM Estudiante JOIN Casa ON Estudiante.id_casa = Casa.id_casa GROUP BY nombre";
         try (Connection con2 = DriverManager.getConnection("jdbc:postgresql://ad-postgres.ceuozunrvsdu.us-east-1.rds.amazonaws.com:5432/hogwarts",
                 "postgres",
                 "12345678");
@@ -80,8 +80,8 @@ public class RepasoSQL {
 
             while (resultados.next()) {
                 String id_estudiantes = resultados.getString("id_estudiantes");
-                String nombre_casa = resultados.getString("nombre_casa");
-                System.out.println("estudiantes: " + id_estudiantes + ", " + nombre_casa);
+                String nombre = resultados.getString("nombre_casa");
+                System.out.println("estudiantes: " + id_estudiantes + ", " + nombre);
             }
         } catch (SQLException e) {
             throw new RuntimeException(e);
@@ -281,6 +281,7 @@ public class RepasoSQL {
         }
 
         //SENTENCIA  15
+        System.out.println("\n SENTENCIA 15 \n");
         String sentenciaSQL15 = ("SELECT Estudiante.nombre, Estudiante.apellido, Casa.nombre_casa FROM Estudiante JOIN Casa ON Estudiante.id_casa = Casa.id_casa");
         try (Connection con2 = DriverManager.getConnection("jdbc:postgresql://ad-postgres.ceuozunrvsdu.us-east-1.rds.amazonaws.com:5432/hogwarts",
                 "postgres",
