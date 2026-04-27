@@ -37,15 +37,19 @@ public class FunkoApp {
                     mostrarTodosFunkos(listaFunkos);
                     break;
                 case 4:
+                    System.out.println("MOSTRAR FUNKO MAS CARO: ");
                     mostrarFunkoMasCaro(listaFunkos);
                     break;
                 case 5:
+                    System.out.println("MOSTRAR MEDIA PRECIOS: ");
                     mostrarMediaPrecios(listaFunkos);
                     break;
                 case 6:
+                    System.out.println("MOSTRAR LOS FUNKOS POR MODELOS: ");
                     mostrarPorModelos(listaFunkos);
                     break;
                 case 7:
+                    System.out.println("MOSTRAR LOS FUNKOS DE 2023: ");
                     mostrarFunkos2023(listaFunkos);
                     break;
             }
