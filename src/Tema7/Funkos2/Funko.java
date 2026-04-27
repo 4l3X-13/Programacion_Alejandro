@@ -1,6 +1,8 @@
 package Tema7.Funkos2;
 
-public class Funko {
+import java.io.Serializable;
+
+public class Funko implements Serializable {
     private String code;
     private String nombre;
     private String modelo;
