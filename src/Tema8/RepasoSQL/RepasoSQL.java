@@ -262,7 +262,7 @@ public class RepasoSQL {
         }
 
         //SENTENCIA  14
-        String sentenciaSQL14 = ("DELETE FROM Estudiante WHERE nombre = 'Tom' AND apellido = 'Riddle';");
+        String sentenciaSQL14 = ("DELETE FROM Estudiante WHERE nombre = 'Tom' AND apellido = 'Riddle'");
         try (Connection con2 = DriverManager.getConnection("jdbc:postgresql://ad-postgres.ceuozunrvsdu.us-east-1.rds.amazonaws.com:5432/hogwarts",
                 "postgres",
                 "12345678");
