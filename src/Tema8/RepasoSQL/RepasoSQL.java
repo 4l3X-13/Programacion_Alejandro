@@ -163,7 +163,7 @@ public class RepasoSQL {
         }
 
         //SENTENCIA  9
-        String sentenciaSQL9 = "SELECT nombre, apellido FROM Estudiantes JOIN casa ON id_casa.Estudiantes WHERE anyo_curso = 5 AND nombre_casa = 'Gryffindor' OR 'Slytherin'  ";
+        String sentenciaSQL9 = "SELECT nombre, apellido FROM Estudiante JOIN Casa ON Estudiante.id_casa = Casa.id_casa WHERE anyo_curso = 5 AND nombre_casa IN ('Gryffindor', 'Slytherin');";
         try (Connection con2 = DriverManager.getConnection("jdbc:postgresql://ad-postgres.ceuozunrvsdu.us-east-1.rds.amazonaws.com:5432/hogwarts",
                 "postgres",
                 "12345678");
