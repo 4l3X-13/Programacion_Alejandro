@@ -315,6 +315,25 @@ public class RepasoSQL {
             throw new RuntimeException(e);
         }
 
+        //SENTENCIA  17
+        String sentenciaSQL17 = ("SELECT nombre, apellido FROM Estudiante JOIN Estudiante_Asignatura ON id_estudiante.Estudiante = id_estudiante.Estudiante_Asignatura JOIN Asignatura ON id_asignatura.Estudiante_Asignatura = id_asignatura.Asignatura WHERE nombre_asignatura = 'Encantamientos' AND calificacion > (SELECT AVG (calificacion) FROM Estudiante_Asignatura)");
+        try (Connection con2 = DriverManager.getConnection("jdbc:postgresql://ad-postgres.ceuozunrvsdu.us-east-1.rds.amazonaws.com:5432/hogwarts",
+                "postgres",
+                "12345678");
+             PreparedStatement sentencia = con2.prepareStatement(sentenciaSQL17)) {
+
+            //no hace falta meterlo en el try, porque se cierra automáticamente al cerrarse el PreparedStatement
+            ResultSet resultados = sentencia.executeQuery();
+
+            while (resultados.next()) {
+                String nombre = resultados.getString("nombre");
+                String apellido = resultados.getString("apellido");
+                System.out.println("nombre eliminado: " + nombre + "apellido: " + apellido);
+            }
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+
     }
 }
 
