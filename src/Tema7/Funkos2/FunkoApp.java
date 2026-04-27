@@ -54,7 +54,7 @@ public class FunkoApp {
 
     //Lee un csv donde cada línea es un funko y los guarda en un arrayList<Funko>
     public static ArrayList<Funko> cargarFunkos() throws IOException {
-        BufferedReader br = new BufferedReader(new FileReader("C:\\Users\\alecssss\\IdeaProjects\\Programacion_Alejandro\\src\\Tema7\\Funkos2\\funkos.csv"));
+        BufferedReader br = new BufferedReader(new FileReader("/home/alenavzaf/IdeaProjects/Programacion_Alejandro/src/Tema7/Funkos2/funkos.csv"));
         ArrayList<Funko> listaFunkos = new ArrayList<>();
         String linea;
         br.readLine(); //Consumimos la primera línea (cabecera)
