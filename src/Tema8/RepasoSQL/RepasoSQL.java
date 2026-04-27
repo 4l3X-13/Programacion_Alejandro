@@ -6,7 +6,8 @@ public class RepasoSQL {
     public static void main(String[] args) {
 
         //SENTENCIA 1
-        String sentenciaSQL1 = "SELECT nombres, apellidos FROM profesores";
+        System.out.println("SENTENCIA 1: \n");
+        String sentenciaSQL1 = "SELECT nombre, apellido FROM Profesor";
         try (Connection con2 = DriverManager.getConnection("jdbc:postgresql://ad-postgres.ceuozunrvsdu.us-east-1.rds.amazonaws.com:5432/hogwarts",
                 "postgres",
                 "12345678");
@@ -16,9 +17,8 @@ public class RepasoSQL {
             ResultSet resultados = sentencia.executeQuery();
 
             while (resultados.next()) {
-                String dni = resultados.getString("dni");
                 String nombre = resultados.getString("nombre");
-                System.out.println("personas: " + dni + ", " + nombre);
+                System.out.println("personas: " + nombre);
             }
         } catch (SQLException e) {
             throw new RuntimeException(e);
@@ -26,7 +26,8 @@ public class RepasoSQL {
 
 
         //SENTENCIA 2
-        String sentenciaSQL2 = "SELECT nombres, apellidos FROM profesores WHERE fecha_nacimiento > 1-01-1980";
+        System.out.println("SENTENCIA 2: \n");
+        String sentenciaSQL2 = "SELECT * FROM Estudiante WHERE fecha_nacimiento > '1-1-1980' ";
         try (Connection con2 = DriverManager.getConnection("jdbc:postgresql://ad-postgres.ceuozunrvsdu.us-east-1.rds.amazonaws.com:5432/hogwarts",
                 "postgres",
                 "12345678");
@@ -45,6 +46,7 @@ public class RepasoSQL {
         }
 
         //SENTENCIA 3
+        System.out.println("SENTENCIA 3: \n");
         String sentenciaSQL3 = "SELECT nombres, apellidos FROM estudiantes ORDER BY fecha_nacimiento ASCENDENT";
         try (Connection con2 = DriverManager.getConnection("jdbc:postgresql://ad-postgres.ceuozunrvsdu.us-east-1.rds.amazonaws.com:5432/hogwarts",
                 "postgres",
