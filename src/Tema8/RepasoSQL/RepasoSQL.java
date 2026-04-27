@@ -6,7 +6,7 @@ public class RepasoSQL {
     public static void main(String[] args) {
 
         //SENTENCIA 1
-        System.out.println("SENTENCIA 1: \n");
+        System.out.println("\n SENTENCIA 1: \n");
         String sentenciaSQL1 = "SELECT nombre, apellido FROM Profesor";
         try (Connection con2 = DriverManager.getConnection("jdbc:postgresql://ad-postgres.ceuozunrvsdu.us-east-1.rds.amazonaws.com:5432/hogwarts",
                 "postgres",
@@ -26,8 +26,8 @@ public class RepasoSQL {
 
 
         //SENTENCIA 2
-        System.out.println("SENTENCIA 2: \n");
-        String sentenciaSQL2 = "SELECT * FROM Estudiante WHERE fecha_nacimiento > '1-1-1980' ";
+        System.out.println("\n SENTENCIA 2: \n");
+        String sentenciaSQL2 = "SELECT * FROM Estudiante WHERE fecha_nacimiento > '1980-01-01'";
         try (Connection con2 = DriverManager.getConnection("jdbc:postgresql://ad-postgres.ceuozunrvsdu.us-east-1.rds.amazonaws.com:5432/hogwarts",
                 "postgres",
                 "12345678");
@@ -46,8 +46,8 @@ public class RepasoSQL {
         }
 
         //SENTENCIA 3
-        System.out.println("SENTENCIA 3: \n");
-        String sentenciaSQL3 = "SELECT nombres, apellidos FROM estudiantes ORDER BY fecha_nacimiento ASCENDENT";
+        System.out.println("\n SENTENCIA 3: \n");
+        String sentenciaSQL3 = "SELECT * FROM Estudiante ORDER BY fecha_nacimiento ASC";
         try (Connection con2 = DriverManager.getConnection("jdbc:postgresql://ad-postgres.ceuozunrvsdu.us-east-1.rds.amazonaws.com:5432/hogwarts",
                 "postgres",
                 "12345678");
@@ -68,7 +68,8 @@ public class RepasoSQL {
 
 
         //SENTENCIA 4
-        String sentenciaSQL4 = "SELECT count(id_estudiantes) as cantidad, nombre.estudiantes, apellido.estudiantes, id_casa.estudiantes, nombre_casa.estudiantes* estudiantes FROM estudiantes GROUP BY casa ";
+        System.out.println("\n SENTENCIA 4: \n");
+        String sentenciaSQL4 = "SELECT COUNT(id_estudiante) AS cantidad, nombre_casa FROM Estudiante JOIN Casa ON Estudiante.id_casa = Casa.id_casa GROUP BY nombre_casa";
         try (Connection con2 = DriverManager.getConnection("jdbc:postgresql://ad-postgres.ceuozunrvsdu.us-east-1.rds.amazonaws.com:5432/hogwarts",
                 "postgres",
                 "12345678");
@@ -87,7 +88,7 @@ public class RepasoSQL {
         }
 
         //SENTENCIA  5
-        String sentenciaSQL5 = "SELECT * AVG(calificacion), Max(calificacion) FROM Estudiante_Asignatura JOIN Asignatura ON id_asignatura.Estudiante_Asignatura = id.asignatura.Asignatura WHERE nombre_asignatura = 'Pociones' ";
+        String sentenciaSQL5 = "SELECT AVG(calificacion) AS media, MAX(calificacion) AS maxima FROM Estudiante_Asignatura JOIN Asignatura ON Estudiante_Asignatura.id_asignatura = Asignatura.id_asignatura WHERE nombre_asignatura = 'Pociones';";
         try (Connection con2 = DriverManager.getConnection("jdbc:postgresql://ad-postgres.ceuozunrvsdu.us-east-1.rds.amazonaws.com:5432/hogwarts",
                 "postgres",
                 "12345678");
