@@ -54,6 +54,7 @@ public class FunkoApp {
                     break;
             }
         } while (opcion != 0);
+        //Meter aquí el añadir la ArrayList al CSV
     }
 
     //Lee un csv donde cada línea es un funko y los guarda en un arrayList<Funko>
