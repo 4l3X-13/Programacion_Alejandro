@@ -5,7 +5,7 @@ import java.sql.*;
 public class Conexion3 {
     static void main() {
         String sentenciaSQL = ("SELECT * FROM Profesor");
-        try (Connection con2 = DriverManager.getConnection("jdbc:postgresql://localhost:5432/anavicianofabregat");
+        try (Connection con2 = DriverManager.getConnection("jdbc:postgresql://ad-postgres.ceuozunrvsdu.us-east-1.rds.amazonaws.com:5432/postgres");
              PreparedStatement sentencia = con2.prepareStatement(sentenciaSQL)) {
 
             //no hace falta meterlo en el try, porque se cierra automáticamente al cerrarse el PreparedStatement
