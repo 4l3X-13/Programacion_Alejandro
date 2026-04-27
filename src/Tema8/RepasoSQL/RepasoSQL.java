@@ -182,7 +182,7 @@ public class RepasoSQL {
         }
 
         //SENTENCIA  10
-        String sentenciaSQL10 = "SELECT * FROM estudiantes ORDER BY fecha_nacimiento LIMIT 5";
+        String sentenciaSQL10 = "SELECT * FROM Estudiante ORDER BY fecha_nacimiento ASC LIMIT 5";
         try (Connection con2 = DriverManager.getConnection("jdbc:postgresql://ad-postgres.ceuozunrvsdu.us-east-1.rds.amazonaws.com:5432/hogwarts",
                 "postgres",
                 "12345678");
@@ -202,7 +202,7 @@ public class RepasoSQL {
         }
 
         //SENTENCIA  11
-        String sentenciaSQL11 = "SELECT nombres FROM estudiantes_Asignatura JOIN Asignatura ON id_asignatura.Estudiante_asignatura = id_asignatura.Asignatura WHERE nombre_asignatura = 'Vuelo' AND calificacion >= 8";
+        String sentenciaSQL11 = "SELECT nombre FROM Estudiante JOIN Estudiante_Asignatura ON Estudiante.id_estudiante = Estudiante_Asignatura.id_estudiante JOIN Asignatura ON Estudiante_Asignatura.id_asignatura = Asignatura.id_asignatura WHERE nombre_asignatura = 'Vuelo' AND calificacion >= 8;";
         try (Connection con2 = DriverManager.getConnection("jdbc:postgresql://ad-postgres.ceuozunrvsdu.us-east-1.rds.amazonaws.com:5432/hogwarts",
                 "postgres",
                 "12345678");
