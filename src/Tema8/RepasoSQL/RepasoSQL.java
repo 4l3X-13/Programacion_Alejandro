@@ -67,21 +67,21 @@ public class RepasoSQL {
         }
 
 
-        //SENTENCIA 4
+//SENTENCIA 4
         System.out.println("\n SENTENCIA 4: \n");
-        String sentenciaSQL4 = "SELECT COUNT(id_estudiante) AS cantidad, nombre FROM Estudiante JOIN Casa ON Estudiante.id_casa = Casa.id_casa GROUP BY nombre";
+        String sentenciaSQL4 = "SELECT Casa.nombre, COUNT(id_estudiante) AS cantidad FROM Estudiante JOIN Casa ON Estudiante.id_casa = Casa.id_casa GROUP BY Casa.nombre";
+
         try (Connection con2 = DriverManager.getConnection("jdbc:postgresql://ad-postgres.ceuozunrvsdu.us-east-1.rds.amazonaws.com:5432/hogwarts",
                 "postgres",
                 "12345678");
              PreparedStatement sentencia = con2.prepareStatement(sentenciaSQL4)) {
 
-            //no hace falta meterlo en el try, porque se cierra automáticamente al cerrarse el PreparedStatement
             ResultSet resultados = sentencia.executeQuery();
 
             while (resultados.next()) {
-                String id_estudiantes = resultados.getString("id_estudiantes");
-                String nombre = resultados.getString("nombre_casa");
-                System.out.println("estudiantes: " + id_estudiantes + ", " + nombre);
+                int cantidad = resultados.getInt("cantidad");
+                String nombreCasa = resultados.getString("nombre"); 
+                System.out.println("Casa: " + nombreCasa + ", Número de estudiantes: " + cantidad);
             }
         } catch (SQLException e) {
             throw new RuntimeException(e);
