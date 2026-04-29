@@ -80,7 +80,7 @@ public class RepasoSQL {
 
             while (resultados.next()) {
                 int cantidad = resultados.getInt("cantidad");
-                String nombreCasa = resultados.getString("nombre"); 
+                String nombreCasa = resultados.getString("nombre");
                 System.out.println("Casa: " + nombreCasa + ", Número de estudiantes: " + cantidad);
             }
         } catch (SQLException e) {
@@ -88,7 +88,8 @@ public class RepasoSQL {
         }
 
         //SENTENCIA  5
-        String sentenciaSQL5 = "SELECT AVG(calificacion) AS media, MAX(calificacion) AS maxima FROM Estudiante_Asignatura JOIN Asignatura ON Estudiante_Asignatura.id_asignatura = Asignatura.id_asignatura WHERE nombre_asignatura = 'Pociones';";
+        System.out.println("\n SENTENCIA 5: \n");
+        String sentenciaSQL5 = "SELECT AVG(calificacion) AS media, MAX(calificacion) AS maxima FROM Estudiante_Asignatura JOIN Asignatura ON Estudiante_Asignatura.id_asignatura = Asignatura.id_asignatura WHERE Asignatura.nombre = 'Pociones';";
         try (Connection con2 = DriverManager.getConnection("jdbc:postgresql://ad-postgres.ceuozunrvsdu.us-east-1.rds.amazonaws.com:5432/hogwarts",
                 "postgres",
                 "12345678");
