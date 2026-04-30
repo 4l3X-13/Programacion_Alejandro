@@ -109,6 +109,7 @@ public class RepasoSQL {
 
 
         //SENTENCIA  6
+        System.out.println("\n SENTENCIA 6: \n");
         String sentenciaSQL6 = "SELECT DISTINCT anyo_curso FROM Estudiante";
         try (Connection con2 = DriverManager.getConnection("jdbc:postgresql://ad-postgres.ceuozunrvsdu.us-east-1.rds.amazonaws.com:5432/hogwarts",
                 "postgres",
@@ -127,6 +128,7 @@ public class RepasoSQL {
         }
 
         //SENTENCIA  7
+        System.out.println("\n SENTENCIA 7: \n");
         String sentenciaSQL7 = "SELECT nombre, apellido FROM Estudiante WHERE apellido LIKE 'P%';";
         try (Connection con2 = DriverManager.getConnection("jdbc:postgresql://ad-postgres.ceuozunrvsdu.us-east-1.rds.amazonaws.com:5432/hogwarts",
                 "postgres",
@@ -137,14 +139,16 @@ public class RepasoSQL {
             ResultSet resultados = sentencia.executeQuery();
 
             while (resultados.next()) {
-                String anyo_curso = resultados.getString("anyo_curso");
-                System.out.println("año_curso: " + anyo_curso);
+                String nombre = resultados.getString("nombre");
+                String apellido = resultados.getString("apellido");
+                System.out.println("nombre: " + nombre + ", apellido: " + apellido);
             }
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }
 
         //SENTENCIA  8
+        System.out.println("\n SENTENCIA 8: \n");
         String sentenciaSQL8 = "SELECT nombre, apellido FROM Estudiante WHERE anyo_curso IN (4, 5)";
         try (Connection con2 = DriverManager.getConnection("jdbc:postgresql://ad-postgres.ceuozunrvsdu.us-east-1.rds.amazonaws.com:5432/hogwarts",
                 "postgres",
@@ -164,7 +168,8 @@ public class RepasoSQL {
         }
 
         //SENTENCIA  9
-        String sentenciaSQL9 = "SELECT nombre, apellido FROM Estudiante JOIN Casa ON Estudiante.id_casa = Casa.id_casa WHERE anyo_curso = 5 AND nombre_casa IN ('Gryffindor', 'Slytherin');";
+        System.out.println("\n SENTENCIA 9: \n");
+        String sentenciaSQL9 = "SELECT Estudiante.nombre, apellido FROM Estudiante JOIN Casa ON Estudiante.id_casa = Casa.id_casa WHERE anyo_curso = 5 AND Casa.nombre IN ('Gryffindor', 'Slytherin');";
         try (Connection con2 = DriverManager.getConnection("jdbc:postgresql://ad-postgres.ceuozunrvsdu.us-east-1.rds.amazonaws.com:5432/hogwarts",
                 "postgres",
                 "12345678");
@@ -183,6 +188,7 @@ public class RepasoSQL {
         }
 
         //SENTENCIA  10
+        System.out.println("\n SENTENCIA 10: \n");
         String sentenciaSQL10 = "SELECT * FROM Estudiante ORDER BY fecha_nacimiento ASC LIMIT 5";
         try (Connection con2 = DriverManager.getConnection("jdbc:postgresql://ad-postgres.ceuozunrvsdu.us-east-1.rds.amazonaws.com:5432/hogwarts",
                 "postgres",
@@ -203,7 +209,8 @@ public class RepasoSQL {
         }
 
         //SENTENCIA  11
-        String sentenciaSQL11 = "SELECT nombre FROM Estudiante JOIN Estudiante_Asignatura ON Estudiante.id_estudiante = Estudiante_Asignatura.id_estudiante JOIN Asignatura ON Estudiante_Asignatura.id_asignatura = Asignatura.id_asignatura WHERE nombre_asignatura = 'Vuelo' AND calificacion >= 8;";
+        System.out.println("\n SENTENCIA 11: \n");
+        String sentenciaSQL11 = "SELECT Estudiante.nombre FROM Estudiante JOIN Estudiante_Asignatura ON Estudiante.id_estudiante = Estudiante_Asignatura.id_estudiante JOIN Asignatura ON Estudiante_Asignatura.id_asignatura = Asignatura.id_asignatura WHERE Asignatura.nombre = 'Vuelo' AND calificacion >= 8;";
         try (Connection con2 = DriverManager.getConnection("jdbc:postgresql://ad-postgres.ceuozunrvsdu.us-east-1.rds.amazonaws.com:5432/hogwarts",
                 "postgres",
                 "12345678");
