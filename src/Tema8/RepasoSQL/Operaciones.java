@@ -14,7 +14,6 @@ public class Operaciones {
              ResultSet rs = pstmt.executeQuery()) {
 
             while (rs.next()) {
-                // Instanciamos el objeto con los datos de la fila actual
                 Asignatura asignatura = new Asignatura(
                         rs.getInt("id"),
                         rs.getString("nombre"),
