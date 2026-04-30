@@ -1,21 +1,21 @@
 package Tema8.RepasoSQL;
 
 public class Asignatura {
-    public String id;
+    public int id;
     public String nombre;
     public int aula;
 
-    public Asignatura(String id, String nombre, int aula) {
+    public Asignatura(int id, String nombre, int aula) {
         this.id = id;
         this.nombre = nombre;
         this.aula = aula;
     }
 
-    public String getId() {
+    public int getId() {
         return id;
     }
 
-    public void setId(String id) {
+    public void setId(int id) {
         this.id = id;
     }
 
@@ -35,12 +35,15 @@ public class Asignatura {
         this.aula = aula;
     }
 
+
     @Override
     public String toString() {
         return "Asignatura{" +
-                "id='" + id + '\'' +
+                "id=" + id +
                 ", nombre='" + nombre + '\'' +
                 ", aula=" + aula +
                 '}';
     }
 }
+
+
