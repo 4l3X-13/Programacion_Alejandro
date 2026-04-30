@@ -228,7 +228,8 @@ public class RepasoSQL {
         }
 
         //SENTENCIA  12
-        String sentenciaSQL12 = "INSERT INTO Estudiante (nombre, apellido, id_casa, anyo_curso, fecha_nacimiento) VALUES ('Nymphadora', 'Tonks', 4, 7, '1973-11-25');";
+        System.out.println("\n SENTENCIA 12: \n");
+        String sentenciaSQL12 = "INSERT INTO Estudiante (nombre, apellido, id_casa, anyo_curso, fecha_nacimiento) VALUES ('Nymphadora', 'Tonks', 4, 7, '1973-11-25')";
         try (Connection con2 = DriverManager.getConnection("jdbc:postgresql://ad-postgres.ceuozunrvsdu.us-east-1.rds.amazonaws.com:5432/hogwarts",
                 "postgres",
                 "12345678");
@@ -240,18 +241,22 @@ public class RepasoSQL {
             while (resultados.next()) {
                 String nombre = resultados.getString("nombre");
                 String apellido = resultados.getString("apellido");
-                int id_casa = resultados.getInt("id_casa");
                 int anyo_curso = resultados.getInt("anyo_curso");
                 String fecha_nacimiento = resultados.getString("fecha_nacimiento");
-                System.out.println("nombre: " + nombre + "apellido: " + apellido + "id_casa: " + id_casa + "anyo_curso: " + anyo_curso + "fecha_nacimiento: " + fecha_nacimiento);
+                System.out.println("nombre: " + nombre + "apellido: " + apellido + "anyo_curso: " + anyo_curso + "fecha_nacimiento: " + fecha_nacimiento);
             }
         } catch (SQLException e) {
-            throw new RuntimeException(e);
+            if ("23505".equals(e.getSQLState())) {
+                System.out.println("El registro ya existe, no se ha insertado");
+            } else {
+                e.printStackTrace();
+            }
         }
 
 
         //SENTENCIA  13
-        String sentenciaSQL13 = ("UPDATE Casa SET id_jefe = (SELECT id_profesor FROM Profesor WHERE nombre = 'Pomona' AND apellido = 'Sprout') WHERE nombre_casa = 'Hufflepuff'");
+        System.out.println("\n SENTENCIA 13: \n");
+        String sentenciaSQL13 = ("UPDATE Casa SET id_jefe = (SELECT id_profesor FROM Profesor WHERE nombre = 'Pomona' AND apellido = 'Sprout') WHERE nombre = 'Hufflepuff'");
         try (Connection con2 = DriverManager.getConnection("jdbc:postgresql://ad-postgres.ceuozunrvsdu.us-east-1.rds.amazonaws.com:5432/hogwarts",
                 "postgres",
                 "12345678");
@@ -266,10 +271,17 @@ public class RepasoSQL {
                 System.out.println("nombre: " + nombre + "apellido: " + apellido);
             }
         } catch (SQLException e) {
-            throw new RuntimeException(e);
+            if (e.getMessage().contains("more than one row")) {
+                System.out.println("ERROR: hay mas de un profesor con ese nombre.");
+            } else if (e.getMessage().contains("violates")) {
+                System.out.println("Error de integridad (posiblemente ya estaba asignado).");
+            } else {
+                System.out.println("ERROR SQL controlado: " + e.getMessage());
+            }
         }
 
         //SENTENCIA  14
+        System.out.println("\n SENTENCIA 14: \n");
         String sentenciaSQL14 = ("DELETE FROM Estudiante WHERE nombre = 'Tom' AND apellido = 'Riddle'");
         try (Connection con2 = DriverManager.getConnection("jdbc:postgresql://ad-postgres.ceuozunrvsdu.us-east-1.rds.amazonaws.com:5432/hogwarts",
                 "postgres",
