@@ -280,29 +280,31 @@ public class RepasoSQL {
             }
         }
 
-        //SENTENCIA  14
+        // SENTENCIA 14
         System.out.println("\n SENTENCIA 14: \n");
-        String sentenciaSQL14 = ("DELETE FROM Estudiante WHERE nombre = 'Tom' AND apellido = 'Riddle'");
+        String sentenciaSQL14 = "DELETE FROM Estudiante WHERE nombre = 'Tom' AND apellido = 'Riddle'";
+
         try (Connection con2 = DriverManager.getConnection("jdbc:postgresql://ad-postgres.ceuozunrvsdu.us-east-1.rds.amazonaws.com:5432/hogwarts",
                 "postgres",
                 "12345678");
              PreparedStatement sentencia = con2.prepareStatement(sentenciaSQL14)) {
 
-            //no hace falta meterlo en el try, porque se cierra automáticamente al cerrarse el PreparedStatement
-            ResultSet resultados = sentencia.executeQuery();
+            // Cambiado a executeUpdate() ya que no devuelve un ResultSet
+            int filasBorradas = sentencia.executeUpdate();
 
-            while (resultados.next()) {
-                String nombre = resultados.getString("nombre");
-                String apellido = resultados.getString("apellido");
-                System.out.println("nombre eliminado: " + nombre + "apellido: " + apellido);
+            if (filasBorradas > 0) {
+                System.out.println("El estudiante Tom Riddle ha sido eliminado correctamente.");
+            } else {
+                System.out.println("No se encontró ningún estudiante con ese nombre.");
             }
+
         } catch (SQLException e) {
-            throw new RuntimeException(e);
+            System.err.println("Error al eliminar: " + e.getMessage());
         }
 
         //SENTENCIA  15
-        System.out.println("\n SENTENCIA 15 \n");
-        String sentenciaSQL15 = ("SELECT Estudiante.nombre, Estudiante.apellido, Casa.nombre_casa FROM Estudiante JOIN Casa ON Estudiante.id_casa = Casa.id_casa");
+        System.out.println("\n SENTENCIA 15: \n");
+        String sentenciaSQL15 = ("SELECT Estudiante.nombre, Estudiante.apellido, Casa.nombre FROM Estudiante JOIN Casa ON Estudiante.id_casa = Casa.id_casa");
         try (Connection con2 = DriverManager.getConnection("jdbc:postgresql://ad-postgres.ceuozunrvsdu.us-east-1.rds.amazonaws.com:5432/hogwarts",
                 "postgres",
                 "12345678");
@@ -314,14 +316,15 @@ public class RepasoSQL {
             while (resultados.next()) {
                 String nombre = resultados.getString("nombre");
                 String apellido = resultados.getString("apellido");
-                System.out.println("nombre eliminado: " + nombre + "apellido: " + apellido);
+                System.out.println("nombre eliminado: " + nombre + ", apellido: " + apellido);
             }
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }
 
         //SENTENCIA  16
-        String sentenciaSQL16 = ("SELECT nombre.Estudiante, nombre.Mascota, nombre.Asignatura ");
+        System.out.println("\n SENTENCIA 16: \n");
+        String sentenciaSQL16 = "SELECT Estudiante.nombre, Mascota.nombre, Asignatura.nombre FROM Estudiante left join Mascota on Mascota.id_estudiante = Estudiante.id_estudiante inner join Estudiante_Asignatura on Estudiante_Asignatura.id_estudiante = Estudiante.id_estudiante inner join Asignatura on Estudiante_Asignatura.id_asignatura = Asignatura.id_asignatura";
         try (Connection con2 = DriverManager.getConnection("jdbc:postgresql://ad-postgres.ceuozunrvsdu.us-east-1.rds.amazonaws.com:5432/hogwarts",
                 "postgres",
                 "12345678");
@@ -331,9 +334,10 @@ public class RepasoSQL {
             ResultSet resultados = sentencia.executeQuery();
 
             while (resultados.next()) {
-                String nombre = resultados.getString("nombre");
-                String apellido = resultados.getString("apellido");
-                System.out.println("nombre eliminado: " + nombre + "apellido: " + apellido);
+                String nombre_estudiante = resultados.getString("nombre_estudiante");
+                String nombre_mascota = resultados.getString("nombre_mascota");
+                String nombre_asignatura = resultados.getString("nombre_asignatura");
+                System.out.println("nombre_estudiante: " + nombre_estudiante + "nombre_mascota: " + nombre_mascota + "nombre_asignatura: " + nombre_asignatura);
             }
         } catch (SQLException e) {
             throw new RuntimeException(e);
