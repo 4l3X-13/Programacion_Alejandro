@@ -18,11 +18,11 @@ public class Operaciones {
                 Asignatura asignatura = new Asignatura(
                         rs.getInt("id"),
                         rs.getString("nombre"),
-                        rs.getString("aula")
+                        rs.getInt("aula")
                 );
                 lista.add(asignatura);
             }
-        } catch (SQLException | SQLException e) {
+        } catch (SQLException e) {
             System.out.println("Error al listar asignaturas: " + e.getMessage());
         }
         return lista;
