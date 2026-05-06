@@ -7,7 +7,7 @@ import java.util.List;
 public class Operaciones {
     public List<Asignatura> listarAsignaturas() {
         List<Asignatura> lista = new ArrayList<>();
-        String sql = "SELECT id, nombre, aula FROM Asignatura";
+        String sql = "SELECT * FROM Asignatura";
 
         try (Connection conn = DriverManager.getConnection("jdbc:postgresql://ad-postgres.ceuozunrvsdu.us-east-1.rds.amazonaws.com:5432/hogwarts", "postgres", String.valueOf(12345678));
              PreparedStatement pstmt = conn.prepareStatement(sql);
