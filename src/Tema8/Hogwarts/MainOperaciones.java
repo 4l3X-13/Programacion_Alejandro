@@ -1,4 +1,4 @@
-package Tema8.RepasoSQL;
+package Tema8.Hogwarts;
 
 public class MainOperaciones {
     static void main() {
