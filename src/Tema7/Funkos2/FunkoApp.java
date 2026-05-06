@@ -1,10 +1,8 @@
 package Tema7.Funkos2;
 
-import java.io.BufferedReader;
-import java.io.FileReader;
-import java.io.IOException;
-import java.util.ArrayList;
-import java.util.Scanner;
+import java.io.*;
+import java.util.ArrayList;         // Para usar la estructura de datos ArrayList
+import java.util.Scanner;           // Para leer la entrada del usuario por teclado
 
 public class FunkoApp {
     public static void main(String[] args) throws IOException {
@@ -22,133 +20,150 @@ public class FunkoApp {
             System.out.println("7. MOSTRAR LOS FUNKOS DE 2023");
             System.out.println("0. SALIR");
             System.out.print("Introduce la opción que quieras: ");
-            opcion = scanner1.nextInt();
+            opcion = scanner1.nextInt();    // Leemos la opción que elige el usuario
             switch (opcion) {
                 case 1:
                     System.out.println("AÑADIR FUNKO: ");
-                    anadirFunko(listaFunkos);
+                    anadirFunko(listaFunkos);           // Llama al método que añade un funko a la lista
                     break;
                 case 2:
                     System.out.println("BORRAR FUNKO: ");
-                    borrarfunko(listaFunkos);
+                    borrarfunko(listaFunkos);           // Llama al método que borra un funko de la lista
                     break;
                 case 3:
                     System.out.println("MOSTRAR TODOS LOS FUNKOS: ");
-                    mostrarTodosFunkos(listaFunkos);
+                    mostrarTodosFunkos(listaFunkos);    // Llama al método que imprime todos los funkos
                     break;
                 case 4:
                     System.out.println("MOSTRAR FUNKO MAS CARO: ");
-                    mostrarFunkoMasCaro(listaFunkos);
+                    mostrarFunkoMasCaro(listaFunkos);   // Llama al método que muestra el funko más caro
                     break;
                 case 5:
                     System.out.println("MOSTRAR MEDIA PRECIOS: ");
-                    mostrarMediaPrecios(listaFunkos);
+                    mostrarMediaPrecios(listaFunkos);   // Llama al método que calcula y muestra la media de precios
                     break;
                 case 6:
                     System.out.println("MOSTRAR LOS FUNKOS POR MODELOS: ");
-                    mostrarPorModelos(listaFunkos);
+                    mostrarPorModelos(listaFunkos);     // Llama al método que filtra los funkos por modelo
                     break;
                 case 7:
                     System.out.println("MOSTRAR LOS FUNKOS DE 2023: ");
-                    mostrarFunkos2023(listaFunkos);
+                    mostrarFunkos2023(listaFunkos);     // Llama al método que muestra los funkos del año 2023
                     break;
             }
         } while (opcion != 0);
-        //Meter aquí el añadir la ArrayList al CSV
+
+        guardarFunkos(listaFunkos); // Al salir, guardamos el estado actual de la lista en el CSV
+        System.out.println("¡Datos guardados correctamente en el CSV!");
     }
 
-    //Lee un csv donde cada línea es un funko y los guarda en un arrayList<Funko>
+    // Lee un CSV donde cada línea es un funko y los guarda en un ArrayList<Funko>
     public static ArrayList<Funko> cargarFunkos() throws IOException {
+        // Abrimos el archivo CSV con BufferedReader para leerlo línea a línea
         BufferedReader br = new BufferedReader(new FileReader("/home/alenavzaf/IdeaProjects/Programacion_Alejandro/src/Tema7/Funkos2/funkos.csv"));
-        ArrayList<Funko> listaFunkos = new ArrayList<>();
-        String linea;
-        br.readLine(); //Consumimos la primera línea (cabecera)
-        while ((linea = br.readLine()) != null) {
-            String[] partes = linea.split(","); //Guardamos en un array cada propiedad del funko
-            String codigo = partes[0];
-            String nombre = partes[1];
-            String modelo = partes[2];
-            double precio = Double.parseDouble(partes[3]);
-            String fecha_lanzamiento = partes[4];
-            listaFunkos.add(new Funko(codigo, nombre, modelo, precio, fecha_lanzamiento)); //Creamos el funko y lo añadimos al arrayList
+        ArrayList<Funko> listaFunkos = new ArrayList<>();   // Creamos la lista vacía donde guardaremos los funkos
+        String linea;                                        // Variable auxiliar para almacenar cada línea leída
+        br.readLine();  // Consumimos la primera línea (cabecera) para no procesarla como un funko
+        while ((linea = br.readLine()) != null) {           // Leemos línea a línea hasta llegar al final del archivo
+            String[] partes = linea.split(",");             // Separamos cada campo del funko usando la coma como delimitador
+            String codigo = partes[0];                      // El primer campo es el código del funko
+            String nombre = partes[1];                      // El segundo campo es el nombre del funko
+            String modelo = partes[2];                      // El tercer campo es el modelo del funko
+            double precio = Double.parseDouble(partes[3]);  // El cuarto campo es el precio (lo convertimos a double)
+            String fecha_lanzamiento = partes[4];           // El quinto campo es la fecha de lanzamiento
+            listaFunkos.add(new Funko(codigo, nombre, modelo, precio, fecha_lanzamiento)); // Creamos el funko y lo añadimos a la lista
         }
-        br.close();
-        return listaFunkos;
+        br.close();         // Cerramos el BufferedReader para liberar recursos
+        return listaFunkos; // Devolvemos la lista con todos los funkos cargados
     }
 
-    //Pide al usuario que escriba los parametros del funko que quiere añadir y lo añade a listaFunkos
+    // Guarda el contenido actual de listaFunkos en el CSV, sobreescribiendo los datos anteriores
+    public static void guardarFunkos(ArrayList<Funko> listaFunkos) throws IOException {
+        // Abrimos el archivo CSV con BufferedWriter (false = sobreescribir, no añadir al final)
+        BufferedWriter bw = new BufferedWriter(new FileWriter("/home/alenavzaf/IdeaProjects/Programacion_Alejandro/src/Tema7/Funkos2/funkos.csv", false));
+        bw.write("codigo,nombre,modelo,precio,fecha_lanzamiento"); // Escribimos la cabecera del CSV
+        bw.newLine();                                               // Saltamos a la siguiente línea tras la cabecera
+        for (Funko f : listaFunkos) {                              // Recorremos cada funko de la lista
+            // Construimos la línea CSV con los campos separados por comas
+            bw.write(f.getCode() + "," + f.getNombre() + "," + f.getModelo() + "," + f.getPrecio() + "," + f.getFecha_lanzamiento());
+            bw.newLine();   // Saltamos a la siguiente línea tras cada funko
+        }
+        bw.close(); // Cerramos el BufferedWriter para asegurarnos de que se escriben todos los datos
+    }
+
+    // Pide al usuario que escriba los parámetros del funko que quiere añadir y lo añade a listaFunkos
     public static void anadirFunko(ArrayList<Funko> listaFunkos) {
-        Scanner scan = new Scanner(System.in);
+        Scanner scan = new Scanner(System.in);  // Scanner local para leer los datos del nuevo funko
         System.out.println("Introduce el código del Funko: ");
-        String codigoUsu = scan.nextLine();
+        String codigoUsu = scan.nextLine();     // Leemos el código que introduce el usuario
         System.out.println("Introduce el nombre del Funko: ");
-        String nombreUsu = scan.nextLine();
+        String nombreUsu = scan.nextLine();     // Leemos el nombre que introduce el usuario
         System.out.println("Introduce el modelo del Funko: ");
-        String modeloUsu = scan.nextLine();
+        String modeloUsu = scan.nextLine();     // Leemos el modelo que introduce el usuario
         System.out.println("Introduce el precio del Funko: ");
-        double precioUsu = scan.nextDouble();
-        scan.nextLine();    //Para liberar el buffer
+        double precioUsu = scan.nextDouble();   // Leemos el precio que introduce el usuario (como double)
+        scan.nextLine();                        // Consumimos el salto de línea que queda en el buffer tras nextDouble()
         System.out.println("Introduce la fecha de lanzamiento (AAAA-MM-DD): ");
-        String fechaUsu = scan.nextLine();
-        listaFunkos.add(new Funko(codigoUsu, nombreUsu, modeloUsu, precioUsu, fechaUsu));   //Crea un Funko con los parametros que ha puesto el usuario y lo añade a listaFunkos
+        String fechaUsu = scan.nextLine();      // Leemos la fecha que introduce el usuario
+        listaFunkos.add(new Funko(codigoUsu, nombreUsu, modeloUsu, precioUsu, fechaUsu)); // Creamos el funko con los datos del usuario y lo añadimos a la lista
     }
 
-    //Pide al usuario el codigo del funko que quiere borrar y lo borra de listaFunkos
+    // Pide al usuario el código del funko que quiere borrar y lo elimina de listaFunkos
     public static void borrarfunko(ArrayList<Funko> listaFunkos) {
-        Scanner scan = new Scanner(System.in);
+        Scanner scan = new Scanner(System.in);  // Scanner local para leer el código del funko a borrar
         System.out.println("Introduce el código del Funko a borrar: ");
-        String codigo = scan.nextLine();
-        //removeIf recorre todos los elementos de un arrayList y si se da la condición después de ->, entonces elimina el elemento
-        listaFunkos.removeIf(f -> f.getCode().equals(codigo));  //Quita el funko de la lista si el hay algun funko que tiene el mismo codigo que le ha puesto el usuario
+        String codigo = scan.nextLine();        // Leemos el código introducido por el usuario
+        // removeIf recorre todos los elementos del ArrayList y elimina aquellos que cumplan la condición lambda (->)
+        listaFunkos.removeIf(f -> f.getCode().equals(codigo)); // Elimina el funko cuyo código coincide con el introducido por el usuario
     }
 
-    //Printea toda la listaFunkos
+    // Imprime por pantalla todos los funkos de listaFunkos
     public static void mostrarTodosFunkos(ArrayList<Funko> listaFunkos) {
-        for (Funko f : listaFunkos) System.out.println(f);
+        for (Funko f : listaFunkos) System.out.println(f); // Recorre la lista e imprime cada funko (usa su toString())
     }
 
-    //Muestra el funko mas caro de listaFunkos
+    // Busca y muestra el funko más caro de listaFunkos
     public static void mostrarFunkoMasCaro(ArrayList<Funko> listaFunkos) {
-        if (listaFunkos.isEmpty()) return;
-        Funko caro = listaFunkos.get(0); //Coge el funko de la primera posicion como el mas caro (temporalmente)
-        for (Funko f : listaFunkos) if (f.getPrecio() > caro.getPrecio()) caro = f; //Recorre toda la lista y si encuentra uno mas caro lo actualiza
-        System.out.println("El más caro es: " + caro);
+        if (listaFunkos.isEmpty()) return;          // Si la lista está vacía, salimos sin hacer nada
+        Funko caro = listaFunkos.get(0);            // Tomamos el primer funko como el más caro provisionalmente
+        for (Funko f : listaFunkos)                 // Recorremos toda la lista comparando precios
+            if (f.getPrecio() > caro.getPrecio())   // Si encontramos uno más caro que el actual "campeón"...
+                caro = f;                           // ...lo actualizamos como el nuevo más caro
+        System.out.println("El más caro es: " + caro); // Mostramos el funko más caro encontrado
     }
 
-    //Saca la media de todos los funkos de listaFunkos
+    // Calcula y muestra la media de precios de todos los funkos de listaFunkos
     public static void mostrarMediaPrecios(ArrayList<Funko> listaFunkos) {
         double suma = 0;
-        for (Funko f : listaFunkos) suma += f.getPrecio();  //Recorre listaFunkos y va sumando los precios y los pone en la variable suma
+        for (Funko f : listaFunkos) suma += f.getPrecio(); // Suma los precios de todos los funkos de la lista
 
         double media;
-        if(listaFunkos.isEmpty()){
-            media = 0;  //Si listaFunkos esta vacia, devuelve de media 0
-        }else{
-            media = suma / listaFunkos.size(); //Si hay algo en listaFunkos, devuelve la media de listaFunkos
+        if (listaFunkos.isEmpty()) {
+            media = 0;  // Si la lista está vacía, la media es 0 (evitamos dividir entre 0)
+        } else {
+            media = suma / listaFunkos.size(); // Dividimos la suma total entre el número de funkos
         }
 
-        //System.out.println("Media de precios: " + (listaFunkos.isEmpty() ? 0 : suma / listaFunkos.size()));
-        System.out.println("Media de precios:" + String.format("%.2f", media) + "€");
-                                                    //Lo pasamos a String y el %.2f es para caparlo a solo 2 decimales.
+        // String.format("%.2f", media) convierte el double a String con solo 2 decimales
+        System.out.println("Media de precios: " + String.format("%.2f", media) + "€");
     }
 
-    //TODO: como indica en el enunciado
-    //Filtra y muestra por modelos listaFunkos
+    // Filtra y muestra los funkos que coincidan con el modelo introducido por el usuario
     public static void mostrarPorModelos(ArrayList<Funko> listaFunkos) {
-        Scanner scan = new Scanner(System.in);
+        Scanner scan = new Scanner(System.in);  // Scanner local para leer el modelo buscado
         System.out.print("Introduce el modelo: ");
-        String modelo = scan.nextLine();
-        for (Funko f : listaFunkos) if (f.getModelo().equalsIgnoreCase(modelo)) System.out.println(f);
-        //Recorre listaFunkos comparando si hay algun modelo igual al que ha puesto el usuario para seguidamente mostrarlos por pantalla
+        String modelo = scan.nextLine();        // Leemos el modelo que introduce el usuario
+        for (Funko f : listaFunkos)                                 // Recorremos toda la lista
+            if (f.getModelo().equalsIgnoreCase(modelo))             // Si el modelo coincide (sin distinguir mayúsculas/minúsculas)...
+                System.out.println(f);                              // ...mostramos ese funko
     }
 
-    //Muestra todos los funkos con el filtro del año de 2023
+    // Muestra todos los funkos cuya fecha de lanzamiento pertenezca al año 2023
     public static void mostrarFunkos2023(ArrayList<Funko> listaFunkos) {
-        for (Funko f : listaFunkos){
-            if (f.getFecha_lanzamiento().startsWith("2023")) {
-                System.out.println(f);
+        for (Funko f : listaFunkos) {                               // Recorremos toda la lista
+            if (f.getFecha_lanzamiento().startsWith("2023")) {      // Si la fecha empieza por "2023"...
+                System.out.println(f);                              // ...mostramos ese funko
             }
         }
-        //Recorre listaFunkos y si "Fecha_lanzamiento" empieza por 2023 muestra el funko
     }
 }
