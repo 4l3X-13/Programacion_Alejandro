@@ -1,4 +1,4 @@
-package Tema8.Hogwarts;
+package Tema8.RepasoSQL;
 
 public class Asignatura {
     public int id;

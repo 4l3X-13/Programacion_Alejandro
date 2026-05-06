@@ -1,4 +1,4 @@
-package Tema8.Hogwarts;
+package Tema8.RepasoSQL;
 
 import java.sql.*;
 import java.util.ArrayList;
