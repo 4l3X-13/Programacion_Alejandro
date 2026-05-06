@@ -1,22 +1,28 @@
 package Tema8.RepasoSQL;
 
 public class Asignatura {
-    public int id;
-    public String nombre;
-    public int aula;
 
-    public Asignatura(int id, String nombre, int aula) {
-        this.id = id;
+    private int idAsignatura;
+    private String nombre;
+    private String aula;
+    private Boolean obligatoria;
+
+    public Asignatura() {
+    }
+
+    public Asignatura(int idAsignatura, String nombre, String aula, Boolean obligatoria) {
+        this.idAsignatura = idAsignatura;
         this.nombre = nombre;
         this.aula = aula;
+        this.obligatoria = obligatoria;
     }
 
-    public int getId() {
-        return id;
+    public int getIdAsignatura() {
+        return idAsignatura;
     }
 
-    public void setId(int id) {
-        this.id = id;
+    public void setIdAsignatura(int idAsignatura) {
+        this.idAsignatura = idAsignatura;
     }
 
     public String getNombre() {
@@ -27,23 +33,19 @@ public class Asignatura {
         this.nombre = nombre;
     }
 
-    public int getAula() {
+    public String getAula() {
         return aula;
     }
 
-    public void setAula(int aula) {
+    public void setAula(String aula) {
         this.aula = aula;
     }
-
 
     @Override
     public String toString() {
         return "Asignatura{" +
-                "id=" + id +
+                "idAsignatura=" + idAsignatura +
                 ", nombre='" + nombre + '\'' +
-                ", aula=" + aula +
                 '}';
     }
 }
-
-
