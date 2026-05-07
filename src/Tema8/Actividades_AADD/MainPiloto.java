@@ -4,8 +4,7 @@ import java.sql.SQLException;
 import java.util.List;
 import java.util.Scanner;
 
-public class Main {
-
+public class MainPiloto {
     private static final Scanner sc = new Scanner(System.in);
 
     public static void main(String[] args) {
