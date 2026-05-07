@@ -9,8 +9,8 @@ public class MainPiloto {
 
     public static void main(String[] args) {
         System.out.println("    GESTIÓN DE PILOTOS – F1 2006     ");
-        boolean running = true;
-        while (running) {
+        boolean opcion = true;
+        while (opcion) {
             printMenu();
             int option = readInt("  Elige una opción: ");
 
@@ -25,22 +25,20 @@ public class MainPiloto {
                     case 7 -> PilotsCRUD.ShowBuildersClassification();
                     case 0 -> {
                         System.out.println("¡Hasta luego!");
-                        running = false;
+                        opcion = false;
                     }
                     default -> System.out.println("⚠  Opción no válida. Elige entre 0 y 7.");
                 }
             } catch (SQLException e) {
-                // El error se muestra pero el menú sigue vivo
-                System.err.println("✗ Error de base de datos: " + e.getMessage());
+                System.err.println("Error de base de datos: " + e.getMessage());
             } catch (NumberFormatException e) {
-                System.err.println("✗ Valor numérico inválido: " + e.getMessage());
+                System.err.println("Valor numérico inválido: " + e.getMessage());
             }
         }
         sc.close();
     }
 
-    // ─── Menú ─────────────────────────────────────────────────────────────────
-
+    //  Menú
     private static void printMenu() {
         System.out.println("  1. Añadir piloto                   ");
         System.out.println("  2. Buscar piloto por ID            ");
@@ -52,11 +50,11 @@ public class MainPiloto {
         System.out.println("  0. Salir                           ");
     }
 
-    // ─── Flujos de cada opción ────────────────────────────────────────────────
+    //  Flujos de cada opción
 
     //Opción 1: pide datos al usuario y crea el piloto.
     private static void createPilotFlow() throws SQLException {
-        System.out.println("\n── NUEVO PILOTO ──────────────────────");
+        System.out.println("\n NUEVO PILOTO ");
         Piloto pilot = readPilotFromConsole(true);
         PilotsCRUD.CreatePilot(pilot);
     }
@@ -69,7 +67,7 @@ public class MainPiloto {
         if (pilot != null) {
             System.out.println("\n" + pilot);
         } else {
-            System.out.println("⚠  No existe ningún piloto con ID " + id);
+            System.out.println("No existe ningún piloto con ID " + id);
         }
     }
 
@@ -78,10 +76,10 @@ public class MainPiloto {
     private static void readAllPilotsFlow() throws SQLException {
         List<Piloto> pilots = PilotsCRUD.ReadPilots();
         if (pilots.isEmpty()) {
-            System.out.println("⚠  No hay pilotos en la base de datos.");
+            System.out.println("No hay pilotos en la base de datos.");
             return;
         }
-        System.out.println("\n── PILOTOS (" + pilots.size() + ") ──────────────────────────");
+        System.out.println("\n PILOTOS (" + pilots.size());
         pilots.forEach(System.out::println);
     }
 
@@ -91,7 +89,7 @@ public class MainPiloto {
         int id = readInt("ID del piloto a actualizar: ");
         Piloto existing = PilotsCRUD.ReadPilot(id);
         if (existing == null) {
-            System.out.println("⚠  No existe ningún piloto con ID " + id);
+            System.out.println("No existe ningún piloto con ID " + id);
             return;
         }
         System.out.println("Piloto actual → " + existing);
@@ -107,11 +105,11 @@ public class MainPiloto {
         int id = readInt("ID del piloto a eliminar: ");
         Piloto pilot = PilotsCRUD.ReadPilot(id);
         if (pilot == null) {
-            System.out.println("⚠  No existe ningún piloto con ID " + id);
+            System.out.println("  No existe ningún piloto con ID " + id);
             return;
         }
         System.out.print("¿Eliminar a " + pilot.getForename() + " " + pilot.getSurname()
-                + "? También se borrarán sus resultados. (s/n): ");
+                + "¿ También se borrarán sus resultados. (s/n): ");
         String confirm = sc.nextLine().trim();
         if (confirm.equalsIgnoreCase("s")) {
             PilotsCRUD.DeletePilot(pilot);
@@ -125,22 +123,22 @@ public class MainPiloto {
     private static Piloto readPilotFromConsole(boolean preguntaID) {
         int id = 0;
         if (preguntaID) {
-            id = readInt("Driver ID    : ");
+            id = readInt("Driver ID: ");
         }
         System.out.print("Código (ej: ALO): ");
         String code = sc.nextLine().trim();
         System.out.print("Nombre           : ");
-        String fore = sc.nextLine().trim();
+        String nombre = sc.nextLine().trim();
         System.out.print("Apellido         : ");
-        String sur = sc.nextLine().trim();
+        String apellido = sc.nextLine().trim();
         System.out.print("Nacimiento (YYYY-MM-DD): ");
-        String dob = sc.nextLine().trim();
+        String nacimiento = sc.nextLine().trim();
         System.out.print("Nacionalidad     : ");
-        String nat = sc.nextLine().trim();
+        String nacionalidad = sc.nextLine().trim();
         System.out.print("URL Wikipedia    : ");
         String url = sc.nextLine().trim();
 
-        return new Piloto(id, code, fore, sur, dob, nat, url);
+        return new Piloto(id, code, nombre, apellido, nacimiento, nacionalidad, url);
     }
 
 
