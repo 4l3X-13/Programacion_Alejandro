@@ -16,18 +16,18 @@ public class MainPiloto {
 
             try {
                 switch (option) {
-                    case 1 -> createPilotFlow();
-                    case 2 -> readPilotFlow();
-                    case 3 -> readAllPilotsFlow();
-                    case 4 -> updatePilotFlow();
-                    case 5 -> deletePilotFlow();
-                    case 6 -> PilotsCRUD.ShowPilotClassification();
-                    case 7 -> PilotsCRUD.ShowBuildersClassification();
-                    case 0 -> {
+                    case 1 : createPilotFlow();
+                    case 2 : readPilotFlow();
+                    case 3 : readAllPilotsFlow();
+                    case 4 : updatePilotFlow();
+                    case 5 : deletePilotFlow();
+                    case 6 : PilotsCRUD.ShowPilotClassification();
+                    case 7 : PilotsCRUD.ShowBuildersClassification();
+                    case 0 : {
                         System.out.println("¡Hasta luego!");
                         opcion = false;
                     }
-                    default -> System.out.println("⚠  Opción no válida. Elige entre 0 y 7.");
+                    default : System.out.println("⚠  Opción no válida. Elige entre 0 y 7.");
                 }
             } catch (SQLException e) {
                 System.err.println("Error de base de datos: " + e.getMessage());
@@ -79,7 +79,7 @@ public class MainPiloto {
             System.out.println("No hay pilotos en la base de datos.");
             return;
         }
-        System.out.println("\n PILOTOS (" + pilots.size());
+        System.out.println("\n PILOTOS (" + pilots.size() + ")");
         pilots.forEach(System.out::println);
     }
 
