@@ -60,7 +60,7 @@ public class FunkoApp {
     // Lee un CSV donde cada línea es un funko y los guarda en un ArrayList<Funko>
     public static ArrayList<Funko> cargarFunkos() throws IOException {
         // Abrimos el archivo CSV con BufferedReader para leerlo línea a línea
-        BufferedReader br = new BufferedReader(new FileReader("/home/alenavzaf/IdeaProjects/Programacion_Alejandro/src/Tema7/Funkos2/funkos.csv"));
+        BufferedReader br = new BufferedReader(new FileReader("C:\\Users\\alex\\IdeaProjects\\Programacion_Alejandro\\src\\Tema7\\Funkos2\\funkos.csv"));
         ArrayList<Funko> listaFunkos = new ArrayList<>();   // Creamos la lista vacía donde guardaremos los funkos
         String linea;                                        // Variable auxiliar para almacenar cada línea leída
         br.readLine();  // Consumimos la primera línea (cabecera) para no procesarla como un funko
@@ -80,7 +80,7 @@ public class FunkoApp {
     // Guarda el contenido actual de listaFunkos en el CSV, sobreescribiendo los datos anteriores
     public static void guardarFunkos(ArrayList<Funko> listaFunkos) throws IOException {
         // Abrimos el archivo CSV con BufferedWriter (false = sobreescribir, no añadir al final)
-        BufferedWriter bw = new BufferedWriter(new FileWriter("/home/alenavzaf/IdeaProjects/Programacion_Alejandro/src/Tema7/Funkos2/funkos.csv", false));
+        BufferedWriter bw = new BufferedWriter(new FileWriter("C:\\Users\\alex\\IdeaProjects\\Programacion_Alejandro\\src\\Tema7\\Funkos2\\funkos.csv", false));
         bw.write("codigo,nombre,modelo,precio,fecha_lanzamiento"); // Escribimos la cabecera del CSV
         bw.newLine();                                               // Saltamos a la siguiente línea tras la cabecera
         for (Funko f : listaFunkos) {                              // Recorremos cada funko de la lista
@@ -114,7 +114,16 @@ public class FunkoApp {
         System.out.println("Introduce el código del Funko a borrar: ");
         String codigo = scan.nextLine();        // Leemos el código introducido por el usuario
         // removeIf recorre todos los elementos del ArrayList y elimina aquellos que cumplan la condición lambda (->)
-        listaFunkos.removeIf(f -> f.getCode().equals(codigo)); // Elimina el funko cuyo código coincide con el introducido por el usuario
+        //listaFunkos.removeIf(f -> f.getCode().equals(codigo)); // Elimina el funko cuyo código coincide con el introducido por el usuario
+        //OTRA FORMA
+        for (int i = 0; i < listaFunkos.size(); i++) {
+            if (listaFunkos.get(i).getCode().equals(codigo)) {
+                listaFunkos.remove(i);
+                System.out.println("Funko borrado exitosamente!");
+            }
+            break;
+        }
+
     }
 
     // Imprime por pantalla todos los funkos de listaFunkos

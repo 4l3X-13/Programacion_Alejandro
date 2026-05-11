@@ -1,4 +1,4 @@
-COD,NOMBRE,MODELO,PRECIO,FECHA_LANZAMIENTO
+codigo,nombre,modelo,precio,fecha_lanzamiento
 3b6c6f58-79b9-434b-82ab-01a2d6e4434a,Spiderman Delight,MARVEL,15.99,2022-05-01
 f8f7ae42-5b01-4d3b-82ab-2d1a2d6e4434a,Stitch Hula,DISNEY,25.99,2023-01-01
 6b6c6f58-7c6b-434b-82ab-01b2d6e4434a,Naruto Shippuden,ANIME,19.99,2022-08-01
@@ -89,3 +89,4 @@ cd6c6f58-7c6b-434b-82ab-01d2d6e4434b,The Big Bang Theory Sheldon,OTROS,49.99,202
 dd6c6f58-7c6b-434b-82ab-01d2d6e4434b,Sherlock Holmes,OTROS,50.99,2023-11-05
 ed6c6f58-7c6b-434b-82ab-01d2d6e4434b,Doctor Who Tardis,OTROS,51.99,2023-12-05
 fd6c6f58-7c6b-434b-82ab-01d2d6e4434b,Peaky Blinders Tommy,OTROS,52.99,2023-10-05
+12345,Alejandr,yo,20.0,2006-04-29
