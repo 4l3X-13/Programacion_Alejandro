@@ -19,19 +19,18 @@ public class MainPiloto {
                     case 1:
                         createPilotFlow();
                     case 2:
-                        readPilotFlow();
+                        leerPilotos();
                     case 3:
-                        readAllPilotsFlow();
+                        leerTodosPilotos();
                     case 4:
-                        updatePilotFlow();
+                        actualizarPiloto();
                     case 5:
-                        deletePilotFlow();
+                        eliminarPilotos();
                     case 6:
                         PilotsCRUD.ShowPilotClassification();
                     case 7:
-                        PilotsCRUD.ShowBuildersClassification();
+                        PilotsCRUD.buildersClasificacion();
                     case 0: {
-                        System.out.println("¡Hasta luego!");
                         opcion = false;
                     }
                     default:
@@ -69,7 +68,7 @@ public class MainPiloto {
 
     //Opción 2: busca por ID y muestra el piloto si existe.
 
-    private static void readPilotFlow() throws SQLException {
+    private static void leerPilotos() throws SQLException {
         int id = readInt("ID del piloto: ");
         Piloto pilot = PilotsCRUD.ReadPilot(id);
         if (pilot != null) {
@@ -81,7 +80,7 @@ public class MainPiloto {
 
     //Opción 3: lista todos los pilotos.
 
-    private static void readAllPilotsFlow() throws SQLException {
+    private static void leerTodosPilotos() throws SQLException {
         List<Piloto> pilots = PilotsCRUD.ReadPilots();
         if (pilots.isEmpty()) {
             System.out.println("No hay pilotos en la base de datos.");
@@ -93,7 +92,7 @@ public class MainPiloto {
 
     //Opción 4: verifica que el piloto existe, pide nuevos datos y actualiza.
 
-    private static void updatePilotFlow() throws SQLException {
+    private static void actualizarPiloto() throws SQLException {
         int id = readInt("ID del piloto a actualizar: ");
         Piloto existing = PilotsCRUD.ReadPilot(id);
         if (existing == null) {
@@ -109,7 +108,7 @@ public class MainPiloto {
 
     //Opción 5: verifica que el piloto existe, pide confirmación y elimina.
 
-    private static void deletePilotFlow() throws SQLException {
+    private static void eliminarPilotos() throws SQLException {
         int id = readInt("ID del piloto a eliminar: ");
         Piloto pilot = PilotsCRUD.ReadPilot(id);
         if (pilot == null) {

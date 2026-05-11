@@ -175,7 +175,7 @@ public class PilotsCRUD {
     }
 
 
-    public static void ShowBuildersClassification() throws SQLException {
+    public static void buildersClasificacion() throws SQLException {
         Connection conn = DatabaseConnection.getInstance().getConnection();
         try (PreparedStatement ps = conn.prepareStatement(SQL_BUILDERS_CLASSIFICATION)) {
             ResultSet rs = ps.executeQuery();
