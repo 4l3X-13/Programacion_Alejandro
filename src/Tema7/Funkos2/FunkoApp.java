@@ -144,7 +144,9 @@ public class FunkoApp {
     // Calcula y muestra la media de precios de todos los funkos de listaFunkos
     public static void mostrarMediaPrecios(ArrayList<Funko> listaFunkos) {
         double suma = 0;
-        for (Funko f : listaFunkos) suma += f.getPrecio(); // Suma los precios de todos los funkos de la lista
+        for (int i = 0; i < listaFunkos.size(); i++) {
+            suma += listaFunkos.get(i).getPrecio();
+        }
 
         double media;
         if (listaFunkos.isEmpty()) {
