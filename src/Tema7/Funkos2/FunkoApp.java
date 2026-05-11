@@ -83,10 +83,10 @@ public class FunkoApp {
         BufferedWriter bw = new BufferedWriter(new FileWriter("C:\\Users\\alex\\IdeaProjects\\Programacion_Alejandro\\src\\Tema7\\Funkos2\\funkos.csv", false));
         bw.write("codigo,nombre,modelo,precio,fecha_lanzamiento"); // Escribimos la cabecera del CSV
         bw.newLine();                                               // Saltamos a la siguiente línea tras la cabecera
-        for (Funko f : listaFunkos) {                              // Recorremos cada funko de la lista
-            // Construimos la línea CSV con los campos separados por comas
+        for (int i = 0; i < listaFunkos.size(); i++) {
+            Funko f = listaFunkos.get(i);
             bw.write(f.getCode() + "," + f.getNombre() + "," + f.getModelo() + "," + f.getPrecio() + "," + f.getFecha_lanzamiento());
-            bw.newLine();   // Saltamos a la siguiente línea tras cada funko
+            bw.newLine();
         }
         bw.close(); // Cerramos el BufferedWriter para asegurarnos de que se escriben todos los datos
     }
