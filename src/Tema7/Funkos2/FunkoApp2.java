@@ -17,7 +17,8 @@ public class FunkoApp2 {
             System.out.println("4. MOSTRAR FUNKO MAS CARO");
             System.out.println("5. MOSTRAR MEDIA DE PRECIOS DE LOS FUNKOS");
             System.out.println("6. MOSTRAR LOS FUNKOS POR MODELOS");
-            System.out.println("7. MOSTRAR LOS FUNKOS DE 2023");
+            System.out.println("7. SERIALIZAR FUNKOS");
+            System.out.println("8. MOSTRAR LOS FUNKOS DE 2023");
             System.out.println("0. SALIR");
             System.out.print("Introduce la opción que quieras: ");
             opcion = scanner1.nextInt();    // Leemos la opción que elige el usuario
@@ -46,7 +47,12 @@ public class FunkoApp2 {
                     System.out.println("MOSTRAR LOS FUNKOS POR MODELOS: ");
                     mostrarPorModelos(listaFunkos);     // Llama al método que filtra los funkos por modelo
                     break;
+
                 case 7:
+                    System.out.println("SERIALIZAR FUNKOS: ");
+                    serializarFunkos(listaFunkos);
+                    break;
+                case 8:
                     System.out.println("MOSTRAR LOS FUNKOS DE 2023: ");
                     mostrarFunkos2023(listaFunkos);     // Llama al método que muestra los funkos del año 2023
                     break;
@@ -85,6 +91,7 @@ public class FunkoApp2 {
         } catch (IOException exception) {
             System.out.println("Error al escribir el funko");
         }
+        System.out.println("Funkos serializados correcamente.");
     }
 
     // Pide al usuario que escriba los parámetros del funko que quiere añadir y lo añade a listaFunkos
