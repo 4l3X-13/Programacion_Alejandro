@@ -9,12 +9,9 @@ import java.util.List;
 
 public class PilotsCRUD {
 
-    // SQL centralizadas
-
     private static final String SQL_INSERT =
             "INSERT INTO drivers (driverid, code, forename, surname, dob, nationality, url) " +
                     "VALUES (?, ?, ?, ?, ?, ?, ?)";
-    // No insertamos constructorid porque el enunciado pide ignorar esa FK
 
     private static final String SQL_SELECT_BY_ID =
             "SELECT driverid, code, forename, surname, dob, nationality, url " +
@@ -49,7 +46,6 @@ public class PilotsCRUD {
                     "GROUP BY c.constructorid, c.name, c.nationality " +
                     "ORDER BY total_points DESC";
 
-    // ─── Método auxiliar privado: ResultSet → Pilot ───────────────────────────
 
     private static Piloto buildPilotFromResultSet(ResultSet rs) throws SQLException {
         return new Piloto(
