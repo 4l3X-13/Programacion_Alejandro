@@ -94,12 +94,12 @@ public class MainPiloto {
 
     private static void actualizarPiloto() throws SQLException {
         int id = readInt("ID del piloto a actualizar: ");
-        Piloto existing = PilotsCRUD.ReadPilot(id);
-        if (existing == null) {
+        Piloto yaExiste = PilotsCRUD.ReadPilot(id);
+        if (yaExiste == null) {
             System.out.println("No existe ningún piloto con ID " + id);
             return;
         }
-        System.out.println("Piloto actual → " + existing);
+        System.out.println("Piloto actual → " + yaExiste);
         System.out.println("Introduce los nuevos datos (ID no se puede cambiar):");
         Piloto updated = readPilotFromConsole(false);  // false = no pedimos ID
         updated.setDriverId(id);
@@ -110,16 +110,16 @@ public class MainPiloto {
 
     private static void eliminarPilotos() throws SQLException {
         int id = readInt("ID del piloto a eliminar: ");
-        Piloto pilot = PilotsCRUD.ReadPilot(id);
-        if (pilot == null) {
+        Piloto piloto = PilotsCRUD.ReadPilot(id);
+        if (piloto == null) {
             System.out.println("  No existe ningún piloto con ID " + id);
             return;
         }
-        System.out.print("¿Eliminar a " + pilot.getForename() + " " + pilot.getSurname()
-                + "¿ También se borrarán sus resultados. (s/n): ");
+        System.out.print("¿Eliminar a " + piloto.getForename() + " " + piloto.getSurname()
+                + "¿ También se borrarán sus resultados. (si/no): ");
         String confirm = sc.nextLine().trim();
-        if (confirm.equalsIgnoreCase("s")) {
-            PilotsCRUD.DeletePilot(pilot);
+        if (confirm.equalsIgnoreCase("si")) {
+            PilotsCRUD.DeletePilot(piloto);
         } else {
             System.out.println("Operación cancelada.");
         }
@@ -134,7 +134,7 @@ public class MainPiloto {
         }
         System.out.print("Código (ej: ALO): ");
         String code = sc.nextLine().trim();
-        System.out.print("Nombre           : ");
+        System.out.print("Nombre: ");
         String nombre = sc.nextLine().trim();
         System.out.print("Apellido         : ");
         String apellido = sc.nextLine().trim();
