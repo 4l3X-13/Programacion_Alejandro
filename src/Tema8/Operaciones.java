@@ -1,4 +1,4 @@
-package Tema8.RepasoSQL;
+package Tema8;
 
 import java.sql.*;
 import java.util.ArrayList;

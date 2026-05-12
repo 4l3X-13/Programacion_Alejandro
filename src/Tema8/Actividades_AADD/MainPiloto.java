@@ -45,7 +45,7 @@ public class MainPiloto {
         sc.close();
     }
 
-    //  Menú
+
     private static void printMenu() {
         System.out.println("  1. Añadir piloto                   ");
         System.out.println("  2. Buscar piloto por ID            ");
@@ -57,20 +57,17 @@ public class MainPiloto {
         System.out.println("  0. Salir                           ");
     }
 
-    //  Flujos de cada opción
 
-    //Opción 1: pide datos al usuario y crea el piloto.
     private static void createPilotFlow() throws SQLException {
         System.out.println("\n NUEVO PILOTO ");
-        Piloto pilot = readPilotFromConsole(true);
+        TEMA8.AADD.Piloto pilot = readPilotFromConsole(true);
         PilotsCRUD.CreatePilot(pilot);
     }
 
-    //Opción 2: busca por ID y muestra el piloto si existe.
 
     private static void leerPilotos() throws SQLException {
         int id = readInt("ID del piloto: ");
-        Piloto pilot = PilotsCRUD.ReadPilot(id);
+        TEMA8.AADD.Piloto pilot = PilotsCRUD.ReadPilot(id);
         if (pilot != null) {
             System.out.println("\n" + pilot);
         } else {
@@ -78,7 +75,6 @@ public class MainPiloto {
         }
     }
 
-    //Opción 3: lista todos los pilotos.
 
     private static void leerTodosPilotos() throws SQLException {
         List<Piloto> pilots = PilotsCRUD.ReadPilots();
@@ -90,7 +86,6 @@ public class MainPiloto {
         pilots.forEach(System.out::println);
     }
 
-    //Opción 4: verifica que el piloto existe, pide nuevos datos y actualiza.
 
     private static void actualizarPiloto() throws SQLException {
         int id = readInt("ID del piloto a actualizar: ");
@@ -106,7 +101,6 @@ public class MainPiloto {
         PilotsCRUD.UpdatePilot(updated);
     }
 
-    //Opción 5: verifica que el piloto existe, pide confirmación y elimina.
 
     private static void eliminarPilotos() throws SQLException {
         int id = readInt("ID del piloto a eliminar: ");
@@ -125,7 +119,6 @@ public class MainPiloto {
         }
     }
 
-    // ─── Helpers de consola ───────────────────────────────────────────────────
 
     private static Piloto readPilotFromConsole(boolean preguntaID) {
         int id = 0;

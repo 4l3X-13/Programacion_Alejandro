@@ -138,9 +138,12 @@ public class FunkoApp2 {
     public static void mostrarFunkoMasCaro(ArrayList<Funko> listaFunkos) {
         if (listaFunkos.isEmpty()) return;          // Si la lista está vacía, salimos sin hacer nada
         Funko caro = listaFunkos.get(0);            // Tomamos el primer funko como el más caro provisionalmente
-        for (Funko f : listaFunkos)                 // Recorremos toda la lista comparando precios
-            if (f.getPrecio() > caro.getPrecio())   // Si encontramos uno más caro que el actual "campeón"...
-                caro = f;                           // ...lo actualizamos como el nuevo más caro
+        for (int i = 0; i < listaFunkos.size(); i++) {
+            Funko f = listaFunkos.get(i);
+            if (f.getPrecio() > caro.getPrecio()) {
+                caro = f;
+            }
+        }                      // ...lo actualizamos como el nuevo más caro
         System.out.println("El más caro es: " + caro); // Mostramos el funko más caro encontrado
     }
 
