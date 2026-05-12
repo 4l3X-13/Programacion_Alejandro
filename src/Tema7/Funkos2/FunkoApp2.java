@@ -120,7 +120,7 @@ public class FunkoApp2 {
         //listaFunkos.removeIf(f -> f.getCode().equals(codigo)); // Elimina el funko cuyo código coincide con el introducido por el usuario
         //OTRA FORMA
         for (int i = 0; i < listaFunkos.size(); i++) {
-            if (listaFunkos.get(i).getCode().equals(codigo)) {
+            if (listaFunkos.get(i).getCode().equalsIgnoreCase(codigo)) {
                 listaFunkos.remove(i);
                 System.out.println("Funko borrado exitosamente!");
             }
