@@ -60,14 +60,14 @@ public class MainPiloto {
 
     private static void createPilotFlow() throws SQLException {
         System.out.println("\n NUEVO PILOTO ");
-        TEMA8.AADD.Piloto pilot = readPilotFromConsole(true);
+        Piloto pilot = readPilotFromConsole(true);
         PilotsCRUD.CreatePilot(pilot);
     }
 
 
     private static void leerPilotos() throws SQLException {
         int id = readInt("ID del piloto: ");
-        TEMA8.AADD.Piloto pilot = PilotsCRUD.ReadPilot(id);
+        Piloto pilot = PilotsCRUD.ReadPilot(id);
         if (pilot != null) {
             System.out.println("\n" + pilot);
         } else {
@@ -109,7 +109,7 @@ public class MainPiloto {
             System.out.println("  No existe ningún piloto con ID " + id);
             return;
         }
-        System.out.print("¿Eliminar a " + piloto.getForename() + " " + piloto.getSurname()
+        System.out.print("¿Eliminar a " + piloto.getNombre() + " " + piloto.getApellido()
                 + "¿ También se borrarán sus resultados. (si/no): ");
         String confirm = sc.nextLine().trim();
         if (confirm.equalsIgnoreCase("si")) {

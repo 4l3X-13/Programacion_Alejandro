@@ -26,7 +26,7 @@ public class Piloto {
     }
 
 
-    public int getDriverId() {
+    public int getId_del_piloto() {
         return driverId;
     }
 
@@ -34,7 +34,7 @@ public class Piloto {
         this.driverId = driverId;
     }
 
-    public String getCode() {
+    public String getCodigo() {
         return code;
     }
 
@@ -42,7 +42,7 @@ public class Piloto {
         this.code = code;
     }
 
-    public String getForename() {
+    public String getNombre() {
         return forename;
     }
 
@@ -50,7 +50,7 @@ public class Piloto {
         this.forename = forename;
     }
 
-    public String getSurname() {
+    public String getApellido() {
         return surname;
     }
 
@@ -58,7 +58,7 @@ public class Piloto {
         this.surname = surname;
     }
 
-    public String getDob() {
+    public String getFecha_de_nacimiento() {
         return dob;
     }
 
@@ -66,7 +66,7 @@ public class Piloto {
         this.dob = dob;
     }
 
-    public String getNationality() {
+    public String getNacionalidad() {
         return nationality;
     }
 

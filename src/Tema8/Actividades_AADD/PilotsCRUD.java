@@ -49,37 +49,35 @@ public class PilotsCRUD {
 
     private static Piloto buildPilotFromResultSet(ResultSet rs) throws SQLException {
         return new Piloto(
-                rs.getInt("driverid"),
-                rs.getString("code"),
-                rs.getString("forename"),
-                rs.getString("surname"),
-                rs.getString("dob"),
-                rs.getString("nationality"),
+                rs.getInt("id_del_piloto"),
+                rs.getString("codigo"),
+                rs.getString("nombre"),
+                rs.getString("apellido"),
+                rs.getString("fecha_de_nacimiento"),
+                rs.getString("nacionalidad"),
                 rs.getString("url")
         );
     }
 
 
-    //CREATE
 
     public static void CreatePilot(Piloto pilot) throws SQLException {
-        Connection conn = DatabaseConnection.getInstance().getConnection();
-        try (PreparedStatement ps = conn.prepareStatement(SQL_INSERT)) {
-            ps.setInt(1, pilot.getDriverId());
-            ps.setString(2, pilot.getCode());
-            ps.setString(3, pilot.getForename());
-            ps.setString(4, pilot.getSurname());
-            ps.setString(5, pilot.getDob());           // formato esperado: YYYY-MM-DD
-            ps.setString(6, pilot.getNationality());
+        Connection conexion = DatabaseConnection.getInstance().getConnection();
+        try (PreparedStatement ps = conexion.prepareStatement(SQL_INSERT)) {
+            ps.setInt(1, pilot.getId_del_piloto());
+            ps.setString(2, pilot.getCodigo());
+            ps.setString(3, pilot.getNombre());
+            ps.setString(4, pilot.getApellido());
+            ps.setString(5, pilot.getFecha_de_nacimiento());           // (YYYY-MM-DD)
+            ps.setString(6, pilot.getNacionalidad());
             ps.setString(7, pilot.getUrl());
 
-            int rows = ps.executeUpdate();
-            System.out.println("✓ Piloto insertado correctamente. Filas afectadas: " + rows);
+            int filas = ps.executeUpdate();
+            System.out.println(" Piloto insertado correctamente. Filas afectadas: " + filas);
         }
     }
 
 
-    //READ (uno por ID)
 
     public static Piloto ReadPilot(int driverId) throws SQLException {
         Connection conn = DatabaseConnection.getInstance().getConnection();
@@ -94,13 +92,12 @@ public class PilotsCRUD {
     }
 
 
-    //READ (todos)
 
 
     public static List<Piloto> ReadPilots() throws SQLException {
         List<Piloto> pilots = new ArrayList<>();
-        Connection conn = DatabaseConnection.getInstance().getConnection();
-        try (PreparedStatement ps = conn.prepareStatement(SQL_SELECT_ALL)) {
+        Connection conexion = DatabaseConnection.getInstance().getConnection();
+        try (PreparedStatement ps = conexion.prepareStatement(SQL_SELECT_ALL)) {
             ResultSet rs = ps.executeQuery();
             while (rs.next()) {
                 pilots.add(buildPilotFromResultSet(rs));
@@ -110,33 +107,31 @@ public class PilotsCRUD {
     }
 
 
-    //UPDATE
 
     public static void UpdatePilot(Piloto pilot) throws SQLException {
-        Connection conn = DatabaseConnection.getInstance().getConnection();
-        try (PreparedStatement ps = conn.prepareStatement(SQL_UPDATE)) {
-            ps.setString(1, pilot.getCode());
-            ps.setString(2, pilot.getForename());
-            ps.setString(3, pilot.getSurname());
-            ps.setString(4, pilot.getDob());
-            ps.setString(5, pilot.getNationality());
+        Connection conexion = DatabaseConnection.getInstance().getConnection();
+        try (PreparedStatement ps = conexion.prepareStatement(SQL_UPDATE)) {
+            ps.setString(1, pilot.getCodigo());
+            ps.setString(2, pilot.getNombre());
+            ps.setString(3, pilot.getApellido());
+            ps.setString(4, pilot.getFecha_de_nacimiento());
+            ps.setString(5, pilot.getNacionalidad());
             ps.setString(6, pilot.getUrl());
-            ps.setInt(7, pilot.getDriverId());    // WHERE driverid = ?
+            ps.setInt(7, pilot.getId_del_piloto());    // WHERE driverid = ?
 
-            int rows = ps.executeUpdate();
-            System.out.println("✓ Piloto actualizado correctamente. Filas afectadas: " + rows);
+            int filas = ps.executeUpdate();
+            System.out.println("Piloto actualizado correctamente. Filas afectadas: " + filas);
         }
     }
 
 
-    //DELETE
 
     public static void DeletePilot(Piloto pilot) throws SQLException {
-        Connection conn = DatabaseConnection.getInstance().getConnection();
-        try (PreparedStatement ps = conn.prepareStatement(SQL_DELETE)) {
-            ps.setInt(1, pilot.getDriverId());
-            int rows = ps.executeUpdate();
-            System.out.println("✓ Piloto eliminado correctamente. Filas afectadas: " + rows);
+        Connection conexion = DatabaseConnection.getInstance().getConnection();
+        try (PreparedStatement ps = conexion.prepareStatement(SQL_DELETE)) {
+            ps.setInt(1, pilot.getId_del_piloto());
+            int filas = ps.executeUpdate();
+            System.out.println("Piloto eliminado correctamente. Filas afectadas: " + filas);
         }
     }
 
@@ -148,22 +143,19 @@ public class PilotsCRUD {
         try (PreparedStatement ps = conn.prepareStatement(SQL_PILOT_CLASSIFICATION)) {
             ResultSet rs = ps.executeQuery();
 
-            System.out.println("\n╔══════════════════════════════════════════════════════════╗");
-            System.out.println("║     CLASIFICACIÓN MUNDIAL DE PILOTOS – F1 2006           ║");
-            System.out.println("╠══════════════════════════════════════════════════════════╣");
-            System.out.printf("║ %-3s  %-5s  %-22s  %-13s  %s%n",
-                    "POS", "COD", "PILOTO", "NACIÓN", "PTS║");
-            System.out.println("╠══════════════════════════════════════════════════════════╣");
+            System.out.println("     CLASIFICACIÓN MUNDIAL DE PILOTOS – F1 2006           ");
+            System.out.printf(" %-3s  %-5s  %-22s  %-13s  %s%n",
+                    "POS", "COD", "PILOTO", "NACIÓN", "PTS");
 
-            int pos = 1;
+            int posicion = 1;
             while (rs.next()) {
-                String name = rs.getString("forename") + " " + rs.getString("surname");
-                System.out.printf("║ %-3d  %-5s  %-22s  %-13s  %3d║%n",
-                        pos++,
-                        rs.getString("code"),
+                String name = rs.getString("nombre") + " " + rs.getString("apellido");
+                System.out.printf(" %-3d  %-5s  %-22s  %-13s  %3d%n",
+                        posicion++,
+                        rs.getString("codigo"),
                         name,
-                        rs.getString("nationality"),
-                        rs.getInt("total_points")
+                        rs.getString("nacionalidad"),
+                        rs.getInt("total_puntos")
                 );
             }
             System.out.println("+\n");
@@ -183,9 +175,9 @@ public class PilotsCRUD {
             while (rs.next()) {
                 System.out.printf(" %-3d  %-22s  %-12s  %3d %n",
                         pos++,
-                        rs.getString("name"),
-                        rs.getString("nationality"),
-                        rs.getInt("total_points")
+                        rs.getString("nombre"),
+                        rs.getString("nacionalidad"),
+                        rs.getInt("total_puntos")
                 );
             }
             System.out.println("\n");
